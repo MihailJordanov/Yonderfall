@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bhbrw7lh73x1f" path="res://levels/props/animated/torch.tscn" id="3_bbb3f"]
 [ext_resource type="PackedScene" uid="uid://dv28bqpemmsjj" path="res://levels/props/animated/plant.tscn" id="4_8kxej"]
 [ext_resource type="Texture2D" uid="uid://c2jjhvttxuj1" path="res://levels/tilesets/sprites/light_stream.jpg" id="8_fbe1t"]
-[ext_resource type="PackedScene" uid="uid://byj8hak15bljl" path="res://player/player.tscn" id="8_givfn"]
+[ext_resource type="PackedScene" uid="uid://cn8agg0dff18h" path="res://general/general_spawn/player_spawn.tscn" id="9_ehu2k"]
 [ext_resource type="Script" uid="uid://i0mj0vycwybm" path="res://general/scripts/level_bounds.gd" id="9_uatrh"]
 [ext_resource type="PackedScene" uid="uid://dx6od3nsgcgi8" path="res://general/level_transition/level_transition.tscn" id="10_ggtjj"]
 
@@ -2862,9 +2862,6 @@ speed_scale = 0.9
 modulate = Color(0.15815999, 0.24762364, 0.36422682, 1)
 position = Vector2(1183, 230)
 
-[node name="Player" parent="." instance=ExtResource("8_givfn")]
-position = Vector2(22, 86)
-
 [node name="LevelBoudns" type="Node2D" parent="."]
 z_index = 256
 position = Vector2(-96, 0)
@@ -2891,3 +2888,6 @@ target_area_name = "LevelTransition"
 color = Color(0.2901961, 0.41960785, 0.36078432, 1)
 energy = 0.9
 blend_mode = 2
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("9_ehu2k")]
+position = Vector2(-56, 231)

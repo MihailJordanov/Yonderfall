@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn8agg0dff18h"]
+
+[ext_resource type="Texture2D" uid="uid://cfyohbdjats07" path="res://player/sprites/samurai_sprites.png" id="1_sar5d"]
+[ext_resource type="Script" uid="uid://da2fgqwqum386" path="res://general/general_spawn/player_spawn.gd" id="1_su34x"]
+
+[node name="PlayerSpawn" type="Node2D"]
+z_index = 5
+script = ExtResource("1_su34x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1.8247963, 0.16877277, 1)
+position = Vector2(0, -64)
+texture = ExtResource("1_sar5d")
+hframes = 12
+vframes = 8
