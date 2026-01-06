@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=4 uid="uid://ciuac7sd14b6r"]
+[gd_scene load_steps=27 format=4 uid="uid://ciuac7sd14b6r"]
 
+[ext_resource type="Material" uid="uid://br3ee7g5souf1" path="res://materials_and_shaders/fog_fade_material.tres" id="1_o526s"]
 [ext_resource type="TileSet" uid="uid://mre05p3xygab" path="res://levels/tilesets/main_street.tres" id="1_thnwo"]
 [ext_resource type="PackedScene" uid="uid://byj8hak15bljl" path="res://player/player.tscn" id="2_ve26d"]
 [ext_resource type="PackedScene" uid="uid://dv28bqpemmsjj" path="res://levels/props/animated/plant.tscn" id="3_4bwcv"]
@@ -7,6 +8,31 @@
 [ext_resource type="Texture2D" uid="uid://c2jjhvttxuj1" path="res://levels/tilesets/sprites/light_stream.jpg" id="7_o526s"]
 [ext_resource type="Script" uid="uid://i0mj0vycwybm" path="res://general/scripts/level_bounds.gd" id="7_ygy8q"]
 [ext_resource type="PackedScene" uid="uid://dx6od3nsgcgi8" path="res://general/level_transition/level_transition.tscn" id="10_var1j"]
+
+[sub_resource type="Gradient" id="Gradient_o526s"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g371p"]
+seed = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_var1j"]
+height = 128
+noise = SubResource("FastNoiseLite_g371p")
+color_ramp = SubResource("Gradient_o526s")
+seamless = true
+normalize = false
+seamless_blend_skirt = 0.3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_var1j"]
+frequency = 0.0068
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g371p"]
+height = 128
+noise = SubResource("FastNoiseLite_var1j")
+color_ramp = SubResource("Gradient_o526s")
+seamless = true
+normalize = false
+seamless_blend_skirt = 0.3
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ygy8q"]
 blend_mode = 1
@@ -2566,9 +2592,75 @@ height = 256
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o526s"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_g371p"]
+colors = PackedColorArray(1.328688, 1.8247963, 0.99329084, 1, 0.72156864, 1, 0.53333336, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_var1j"]
+gradient = SubResource("Gradient_g371p")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_var1j"]
+offsets = PackedFloat32Array(0, 0.3490566, 0.6886792, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oox2s"]
+gradient = SubResource("Gradient_var1j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o526s"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(400, 172, 1)
+direction = Vector3(0, 0, 0)
+initial_velocity_max = 300.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.75
+scale_max = 1.25
+color_ramp = SubResource("GradientTexture1D_oox2s")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.049999975
+turbulence_enabled = true
+turbulence_initial_displacement_min = 0.10000149
+turbulence_initial_displacement_max = 0.2000015
+
 [node name="01" type="Node2D"]
 
 [node name="BGParallaxLayers" type="Node2D" parent="."]
+
+[node name="Parallax2DFog2" type="Parallax2D" parent="BGParallaxLayers"]
+z_index = 2
+scroll_scale = Vector2(1.375, 1)
+scroll_offset = Vector2(0, 108)
+repeat_size = Vector2(512, 0)
+autoscroll = Vector2(-10, 0)
+repeat_times = 2
+
+[node name="FogSprite" type="Sprite2D" parent="BGParallaxLayers/Parallax2DFog2"]
+modulate = Color(0.40229985, 0.47057676, 0.44367978, 0.4)
+material = ExtResource("1_o526s")
+position = Vector2(231, 98)
+texture = SubResource("NoiseTexture2D_var1j")
+
+[node name="Parallax2DFog" type="Parallax2D" parent="BGParallaxLayers"]
+z_index = 2
+scroll_scale = Vector2(1.3, 1)
+scroll_offset = Vector2(0, 108)
+repeat_size = Vector2(512, 0)
+autoscroll = Vector2(-25, 0)
+repeat_times = 2
+
+[node name="FogSprite" type="Sprite2D" parent="BGParallaxLayers/Parallax2DFog"]
+modulate = Color(0.8117647, 0.9411765, 0.8901961, 0.4)
+material = ExtResource("1_o526s")
+position = Vector2(231, 98)
+texture = SubResource("NoiseTexture2D_g371p")
 
 [node name="Parallax2D9Foregroudn" type="Parallax2D" parent="BGParallaxLayers"]
 scroll_scale = Vector2(1.2, 1.2)
@@ -2714,7 +2806,7 @@ tile_map_data = PackedByteArray("AAD+/wYAAQAUAAcAAAADAAYAAQAUAAcAAAAKAAUAAQAUAAc
 tile_set = ExtResource("1_thnwo")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="BGParallaxLayers/Parallax2D"]
-tile_map_data = PackedByteArray("AAD8//r/AQAEAAAAAAD8//v/AQAEAAEAAAD8//z/AQAEAAIAAAD8//3/AQAEAAEAAAD8//7/AQAEAAIAAAD8////AQAEAAEAAAD8/wAAAQAEAAIAAAD8/wEAAQAEAAEAAAD8/wIAAQAEAAIAAAD8/wMAAQAEAAEAAAD8/wQAAQAEAAIAAAD8/wUAAQAEAAEAAAD8/wYAAQAEAAIAAAD8/wcAAQAEAAMAAAD8/wgAAQAFAAQAAAD9/wcAAQABAAAAAAD9/wgAAQABAAEAAAD+/wcAAQAFAAMAAAD+/wgAAQAFAAQAAAD//wcAAQAHAAMAAAD//wgAAQAHAAQAAAAAAAcAAQADAAAAAAAAAAgAAQADAAEAAAABAAcAAQACAAAAAAABAAgAAQACAAEAAAACAAcAAQADAAAAAAACAAgAAQADAAEAAAADAAcAAQAFAAMAAAADAAgAAQAFAAQAAAAEAAcAAQAGAAMAAAAEAAgAAQAGAAQAAAAFAAcAAQAHAAMAAAAFAAgAAQAHAAQAAAAGAAYAAQAIAAIAAAAGAAcAAQAIAAMAAAAGAAgAAQAHAAQAAAAHAAYAAQAJAAIAAAAHAAcAAQAJAAMAAAAHAAgAAQAIAAQAAAAIAAYAAQAKAAIAAAAIAAcAAQAKAAMAAAAIAAgAAQAJAAQAAAAJAAYAAQALAAIAAAAJAAcAAQALAAMAAAAJAAgAAQALAAQAAAAKAAYAAQAFAAMAAAAKAAcAAQAFAAQAAAAKAAgAAQAMAAQAAAALAAYAAQAGAAMAAAALAAcAAQAGAAQAAAALAAgAAQANAAQAAAAMAAYAAQAHAAMAAAAMAAcAAQAHAAQAAAAMAAgAAQANAAQAAAANAAUAAQAIAAIAAAANAAYAAQAIAAMAAAANAAcAAQAIAAQAAAANAAgAAQANAAQAAAAOAAUAAQAJAAIAAAAOAAYAAQAJAAMAAAAOAAcAAQAJAAQAAAAOAAgAAQANAAQAAAAPAAUAAQAOAAIAAAAPAAYAAQAOAAMAAAAPAAcAAQAOAAQAAAAPAAgAAQANAAQAAAAQAAUAAQAPAAIAAAAQAAYAAQAPAAMAAAAQAAcAAQAPAAQAAAAQAAgAAQANAAQAAAARAAYAAQAFAAMAAAARAAcAAQAFAAQAAAARAAgAAQANAAQAAAASAAYAAQAGAAMAAAASAAcAAQAGAAQAAAASAAgAAQANAAQAAAATAAYAAQAHAAMAAAATAAcAAQAHAAQAAAATAAgAAQANAAQAAAAUAAYAAQABAAAAAAAUAAcAAQABAAEAAAAUAAgAAQANAAQAAAAVAAYAAQACAAAAAAAVAAcAAQACAAEAAAAVAAgAAQANAAQAAAAWAAYAAQADAAAAAAAWAAcAAQADAAEAAAAWAAgAAQANAAQAAAA=")
+tile_map_data = PackedByteArray("AAD8//r/AQAEAAAAAAD8//v/AQAEAAEAAAD8//z/AQAEAAIAAAD8//3/AQAEAAEAAAD8//7/AQAEAAIAAAD8////AQAEAAEAAAD8/wAAAQAEAAIAAAD8/wEAAQAEAAEAAAD8/wIAAQAEAAIAAAD8/wMAAQAEAAEAAAD8/wQAAQAEAAIAAAD8/wUAAQAEAAEAAAD8/wYAAQAEAAIAAAD8/wcAAQAEAAMAAAD8/wgAAQAFAAQAAAD9/wcAAQABAAAAAAD9/wgAAQABAAEAAAD+/wcAAQAFAAMAAAD+/wgAAQAFAAQAAAD//wcAAQAHAAMAAAD//wgAAQAHAAQAAAAAAAcAAQADAAAAAAAAAAgAAQADAAEAAAABAAcAAQACAAAAAAABAAgAAQACAAEAAAACAAcAAQADAAAAAAACAAgAAQADAAEAAAADAAcAAQAFAAMAAAADAAgAAQAFAAQAAAAEAAcAAQAGAAMAAAAEAAgAAQAGAAQAAAAFAAcAAQAHAAMAAAAFAAgAAQAHAAQAAAAGAAYAAQAIAAIAAAAGAAcAAQAIAAMAAAAGAAgAAQAIAAQAAAAHAAYAAQAJAAIAAAAHAAcAAQAJAAMAAAAHAAgAAQAJAAQAAAAIAAYAAQAKAAIAAAAIAAcAAQAKAAMAAAAIAAgAAQAKAAQAAAAJAAYAAQALAAIAAAAJAAcAAQALAAMAAAAJAAgAAQALAAQAAAAKAAYAAQAFAAMAAAAKAAcAAQAFAAQAAAAKAAgAAQAMAAQAAAALAAYAAQAGAAMAAAALAAcAAQAGAAQAAAALAAgAAQANAAQAAAAMAAYAAQAHAAMAAAAMAAcAAQAHAAQAAAAMAAgAAQANAAQAAAANAAUAAQAIAAIAAAANAAYAAQAIAAMAAAANAAcAAQAIAAQAAAANAAgAAQANAAQAAAAOAAUAAQAJAAIAAAAOAAYAAQAJAAMAAAAOAAcAAQAJAAQAAAAOAAgAAQANAAQAAAAPAAUAAQAOAAIAAAAPAAYAAQAOAAMAAAAPAAcAAQAOAAQAAAAPAAgAAQANAAQAAAAQAAUAAQAPAAIAAAAQAAYAAQAPAAMAAAAQAAcAAQAPAAQAAAAQAAgAAQANAAQAAAARAAYAAQAFAAMAAAARAAcAAQAFAAQAAAARAAgAAQANAAQAAAASAAYAAQAGAAMAAAASAAcAAQAGAAQAAAASAAgAAQANAAQAAAATAAYAAQAHAAMAAAATAAcAAQAHAAQAAAATAAgAAQANAAQAAAAUAAYAAQABAAAAAAAUAAcAAQABAAEAAAAUAAgAAQANAAQAAAAVAAYAAQACAAAAAAAVAAcAAQACAAEAAAAVAAgAAQANAAQAAAAWAAYAAQADAAAAAAAWAAcAAQADAAEAAAAWAAgAAQANAAQAAAA=")
 tile_set = ExtResource("1_thnwo")
 
 [node name="Props" type="Node2D" parent="BGParallaxLayers"]
@@ -2769,3 +2861,13 @@ size = 11
 location = 1
 target_level = "uid://i1y3mf3x26b3"
 target_area_name = "LevelTransition"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_o526s")
+position = Vector2(287, 120)
+amount = 25
+texture = SubResource("GradientTexture2D_var1j")
+lifetime = 5.0
+randomness = 0.85
+visibility_rect = Rect2(-250, -100, 500, 200)
+process_material = SubResource("ParticleProcessMaterial_o526s")

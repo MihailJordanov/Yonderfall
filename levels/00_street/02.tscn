@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=4 uid="uid://i1y3mf3x26b3"]
+[gd_scene load_steps=22 format=4 uid="uid://i1y3mf3x26b3"]
 
+[ext_resource type="Material" uid="uid://br3ee7g5souf1" path="res://materials_and_shaders/fog_fade_material.tres" id="1_ehu2k"]
 [ext_resource type="TileSet" uid="uid://mre05p3xygab" path="res://levels/tilesets/main_street.tres" id="1_jfech"]
 [ext_resource type="Texture2D" uid="uid://b8262io74ycpg" path="res://levels/tilesets/sprites/forgotten_forest_example_tileset.png" id="2_bbb3f"]
 [ext_resource type="PackedScene" uid="uid://bhbrw7lh73x1f" path="res://levels/props/animated/torch.tscn" id="3_bbb3f"]
@@ -8,6 +9,29 @@
 [ext_resource type="PackedScene" uid="uid://byj8hak15bljl" path="res://player/player.tscn" id="8_givfn"]
 [ext_resource type="Script" uid="uid://i0mj0vycwybm" path="res://general/scripts/level_bounds.gd" id="9_uatrh"]
 [ext_resource type="PackedScene" uid="uid://dx6od3nsgcgi8" path="res://general/level_transition/level_transition.tscn" id="10_ggtjj"]
+
+[sub_resource type="Gradient" id="Gradient_o526s"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o526s"]
+seed = 1
+frequency = 0.0179
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ehu2k"]
+height = 256
+noise = SubResource("FastNoiseLite_o526s")
+color_ramp = SubResource("Gradient_o526s")
+seamless = true
+seamless_blend_skirt = 0.3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g371p"]
+frequency = 0.0046
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ggtjj"]
+noise = SubResource("FastNoiseLite_g371p")
+color_ramp = SubResource("Gradient_o526s")
+seamless = true
+seamless_blend_skirt = 0.3
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fbe1t"]
 blend_mode = 1
@@ -2571,6 +2595,34 @@ fill_to = Vector2(0, 0)
 [node name="02" type="Node2D"]
 
 [node name="BGParallaxLayers" type="Node2D" parent="."]
+
+[node name="Parallax2DFog2" type="Parallax2D" parent="BGParallaxLayers"]
+z_index = 2
+scroll_scale = Vector2(1.375, 1)
+scroll_offset = Vector2(0, 77)
+repeat_size = Vector2(512, 0)
+autoscroll = Vector2(-15, 0)
+repeat_times = 2
+
+[node name="FogSprite" type="Sprite2D" parent="BGParallaxLayers/Parallax2DFog2"]
+modulate = Color(0.4379462, 0.4694513, 0.62219584, 1)
+material = ExtResource("1_ehu2k")
+position = Vector2(231, 98)
+texture = SubResource("NoiseTexture2D_ehu2k")
+
+[node name="Parallax2DFog" type="Parallax2D" parent="BGParallaxLayers"]
+z_index = 2
+scroll_scale = Vector2(1.3, 1)
+scroll_offset = Vector2(0, 77)
+repeat_size = Vector2(512, 0)
+autoscroll = Vector2(-30, 0)
+repeat_times = 2
+
+[node name="FogSprite" type="Sprite2D" parent="BGParallaxLayers/Parallax2DFog"]
+modulate = Color(0.14868063, 0.20808762, 0.14373006, 1)
+material = ExtResource("1_ehu2k")
+position = Vector2(231, 98)
+texture = SubResource("NoiseTexture2D_ggtjj")
 
 [node name="Parallax2D9Foregroudn" type="Parallax2D" parent="BGParallaxLayers"]
 scroll_scale = Vector2(1.2, 1.2)
