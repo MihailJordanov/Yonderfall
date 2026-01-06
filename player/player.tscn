@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://byj8hak15bljl"]
+[gd_scene load_steps=19 format=3 uid="uid://byj8hak15bljl"]
 
 [ext_resource type="Script" uid="uid://ck8a75fjibwxb" path="res://player/scripts/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://bnsmh0nvj33p8" path="res://player/states/idle.gd" id="2_g1dw6"]
@@ -103,7 +103,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_hg6s5"]
 resource_name = "jump"
-length = 0.7
+length = 0.45
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -112,7 +112,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.09, 0.15, 0.21, 0.28, 0.35, 0.44),
+"times": PackedFloat32Array(0, 0.02, 0.06, 0.11, 0.17, 0.24, 0.33, 0.43),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [24, 25, 26, 27, 28, 29, 30, 31]
@@ -171,6 +171,17 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_boad6"]
 size = Vector2(12, 3)
+
+[sub_resource type="Gradient" id="Gradient_boad6"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rgyib"]
+gradient = SubResource("Gradient_boad6")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
@@ -240,3 +251,9 @@ max_results = 12
 collision_mask = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -24)
+color = Color(1, 0.8, 0.56078434, 1)
+energy = 0.6
+texture = SubResource("GradientTexture2D_rgyib")
