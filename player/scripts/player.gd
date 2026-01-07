@@ -46,6 +46,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func _physics_process(_delta: float) -> void:
+	update_direction()
 	velocity.y += gravity * _delta * gravity_multiplier
 	velocity.y = clampf( velocity.y, -1000.0, max_fall_velocity )
 	move_and_slide()
