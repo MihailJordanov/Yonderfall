@@ -10,6 +10,15 @@ const DEBUG_JUMP_INDICATOR = preload("uid://crbvi4i2do0v4")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 #endregion
 
+#region /// player stats
+var hp : float = 20
+var max_hp : float = 20
+var dash : bool = false
+var double_jump : bool = false
+var ground_slam : bool = false
+var morph_roll : bool = false
+#endregion
+
 #region /// export variables
 @export var move_speed : float = 150
 @export var max_fall_velocity : float = 600.0

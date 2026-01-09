@@ -39,6 +39,10 @@ speed_scale = 1.1
 position = Vector2(360, 226)
 speed_scale = 0.9
 
+[node name="Torch5" parent="BGParallaxLayers/Props" instance=ExtResource("5_ye7wm")]
+position = Vector2(1072, 356)
+speed_scale = 0.9
+
 [node name="Plant" parent="BGParallaxLayers/Props" instance=ExtResource("3_sno2x")]
 modulate = Color(0.20760944, 0.2412464, 0.35064948, 1)
 position = Vector2(153, 355)
