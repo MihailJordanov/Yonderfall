@@ -43,14 +43,17 @@ func _ready() -> void:
 		self.queue_free()
 	initialize_states()
 	self.call_deferred( "reparent", get_tree().root )
+	Messages.player_healed.connect( _on_player_healed )
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:
-	update_direction()
+	if event.is_action_pressed("action"):
+		Messages.player_interact.emit( self )
 	change_state(current_state.handle_input( event ))
 	pass
 
 func _process(_delta: float) -> void:
+	update_direction()
 	change_state( current_state.process( _delta ) )
 	pass
 
@@ -111,7 +114,6 @@ func update_direction() -> void:
 			sprite.flip_h = false
 	pass
 	
-	
 func add_debug_indicator( color : Color = Color.RED ) -> void:
 	var d : Node2D = DEBUG_JUMP_INDICATOR.instantiate()
 	get_tree().root.add_child( d )
@@ -119,4 +121,9 @@ func add_debug_indicator( color : Color = Color.RED ) -> void:
 	d.modulate = color
 	await get_tree().create_timer( 3.0 ).timeout
 	d.queue_free()
+	pass
+	
+func _on_player_healed( amount : float ) -> void:
+	hp += amount
+	print(123)
 	pass
