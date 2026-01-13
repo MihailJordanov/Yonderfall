@@ -85,6 +85,7 @@ target_level = "uid://pvtb72pru3rr"
 target_area_name = "LevelTransition"
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
 color = Color(0.08702164, 0.099469066, 0.09381115, 1)
 blend_mode = 2
 
