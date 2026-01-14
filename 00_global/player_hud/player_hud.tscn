@@ -10,11 +10,11 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_vb1bs")
 height = 16
 
-[sub_resource type="Gradient" id="Gradient_tdgrf"]
+[sub_resource type="Gradient" id="Gradient_26715"]
 colors = PackedColorArray(0.8627451, 0.34117648, 0.34117648, 1, 0.9019608, 0.5254902, 0.5254902, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4jtec"]
-gradient = SubResource("Gradient_tdgrf")
+gradient = SubResource("Gradient_26715")
 
 [node name="PlayerHud" type="CanvasLayer"]
 process_mode = 3
@@ -35,9 +35,9 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 0
 offset_left = 8.0
-offset_top = 6.0
+offset_top = 8.0
 offset_right = 108.0
-offset_bottom = 26.0
+offset_bottom = 28.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Control/HPMarginContainer"]
 layout_mode = 2
