@@ -14,8 +14,8 @@ func _ready() -> void:
 	await get_tree().process_frame
 	load_scene_finished.emit()
 	
-	if not current_scene_uid:
-		current_scene_uid = "uid://ciuac7sd14b6r"
+	var current_scene = get_tree().current_scene.scene_file_path
+	current_scene_uid = ResourceUID.path_to_uid( current_scene )
 	
 	pass
 
