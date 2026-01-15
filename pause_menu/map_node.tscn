@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cy0mqkcpqxv8w"]
+[gd_scene load_steps=2 format=3 uid="uid://cy0mqkcpqxv8w"]
+
+[ext_resource type="Script" uid="uid://70fwmoahaht8" path="res://pause_menu/scripts/map_node.gd" id="1_j1ovi"]
 
 [node name="MapNode" type="Control"]
 custom_minimum_size = Vector2(12, 6)
@@ -6,6 +8,12 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 12.0
 offset_bottom = 6.0
+script = ExtResource("1_j1ovi")
+linked_scene = null
+entrances_top = null
+entrances_right = null
+entrances_bottom = null
+entrances_left = null
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1, 1)
@@ -53,6 +61,10 @@ text = "Level name"
 
 [node name="TransitionBlocks" type="Control" parent="."]
 unique_name_in_owner = true
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

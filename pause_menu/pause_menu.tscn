@@ -1,10 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://k7j3ofdeklgd"]
+[gd_scene load_steps=9 format=3 uid="uid://k7j3ofdeklgd"]
 
 [ext_resource type="Script" uid="uid://d0ryv1h0w8jkx" path="res://pause_menu/scripts/pause_menu.gd" id="1_rd7dy"]
 [ext_resource type="PackedScene" uid="uid://cy0mqkcpqxv8w" path="res://pause_menu/map_node.tscn" id="2_rd7dy"]
 
 [sub_resource type="FontVariation" id="FontVariation_5hbt6"]
 spacing_glyph = 6
+
+[sub_resource type="Gradient" id="Gradient_rd7dy"]
+offsets = PackedFloat32Array(0, 0.55333334, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.44705883, 0.99607843, 1, 1, 0, 0.84967804, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uwtdo"]
+gradient = SubResource("Gradient_rd7dy")
+width = 5
+height = 5
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Animation" id="Animation_b4s0c"]
+resource_name = "default"
+length = 0.7
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.5529412, 0.80355185, 1, 0.49019608)]
+}
+
+[sub_resource type="Animation" id="Animation_s1glv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wn31l"]
+_data = {
+&"RESET": SubResource("Animation_s1glv"),
+&"default": SubResource("Animation_b4s0c")
+}
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -73,34 +124,90 @@ offset_bottom = 187.0
 [node name="MapNode" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(0.38039216, 0.5686275, 0.3019608, 1)
 layout_mode = 0
-offset_left = 34.0
+offset_left = 32.0
 offset_top = 48.0
 offset_right = 51.0
-offset_bottom = 54.0
+offset_bottom = 56.0
+linked_scene = "uid://ciuac7sd14b6r"
+entrances_top = Array[float]([])
+entrances_right = Array[float]([3.0])
+entrances_bottom = Array[float]([])
+entrances_left = Array[float]([])
 
 [node name="MapNode2" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(0.38039216, 0.5686275, 0.3019608, 1)
 layout_mode = 0
 offset_left = 52.0
 offset_top = 48.0
-offset_right = 84.0
-offset_bottom = 54.0
+offset_right = 88.0
+offset_bottom = 56.0
+linked_scene = "uid://i1y3mf3x26b3"
+entrances_top = Array[float]([])
+entrances_right = Array[float]([2.6])
+entrances_bottom = Array[float]([4.8])
+entrances_left = Array[float]([2.6])
 
-[node name="MapNode3" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
+[node name="MapNode2_save" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(1, 0.45490196, 0.6156863, 1)
 layout_mode = 0
-offset_left = 85.0
+offset_left = 89.0
 offset_top = 48.0
-offset_right = 101.0
-offset_bottom = 54.0
+offset_right = 107.0
+offset_bottom = 56.0
+linked_scene = "uid://pvtb72pru3rr"
+entrances_top = Array[float]([])
+entrances_right = Array[float]([])
+entrances_bottom = Array[float]([])
+entrances_left = Array[float]([3.0])
+
+[node name="MapNode3" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
+modulate = Color(0.29803923, 0.47058824, 0.63529414, 1)
+layout_mode = 0
+offset_left = 55.0
+offset_top = 57.0
+offset_right = 84.0
+offset_bottom = 67.0
+linked_scene = "uid://cch8l8r4cggny"
+entrances_top = Array[float]([2.4])
+entrances_right = Array[float]([5.0])
+entrances_bottom = Array[float]([])
+entrances_left = Array[float]([])
 
 [node name="MapNode4" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(0.29803923, 0.47058824, 0.63529414, 1)
 layout_mode = 0
-offset_left = 52.0
-offset_top = 55.0
-offset_right = 78.0
-offset_bottom = 63.0
+offset_left = 85.0
+offset_top = 57.0
+offset_right = 104.0
+offset_bottom = 80.0
+linked_scene = "uid://xg48m3hem7xn"
+entrances_top = Array[float]([])
+entrances_right = Array[float]([])
+entrances_bottom = Array[float]([])
+entrances_left = Array[float]([4.8])
+
+[node name="PlayerIndicator" type="Control" parent="Control/PauseScreen/Map"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 0
+offset_left = 35.0
+offset_top = 53.0
+offset_right = 35.0
+offset_bottom = 53.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/PauseScreen/Map/PlayerIndicator"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+texture = SubResource("GradientTexture2D_uwtdo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/PauseScreen/Map/PlayerIndicator"]
+libraries = {
+&"": SubResource("AnimationLibrary_wn31l")
+}
+autoplay = "default"
 
 [node name="Label" type="Label" parent="Control/PauseScreen"]
 layout_mode = 0

@@ -51,6 +51,7 @@ func _ready() -> void:
 	initialize_states()
 	self.call_deferred( "reparent", get_tree().root )
 	Messages.player_healed.connect( _on_player_healed )
+	Messages.back_to_title_screen.connect( queue_free )
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:

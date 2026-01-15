@@ -51,6 +51,7 @@ func _on_back_to_title_pressed() -> void:
 	
 	SceneManager.transition_scene( "res://title_screen/title_screen.tscn", "", Vector2.ZERO, "up" )
 	get_tree().paused = false
+	Messages.back_to_title_screen.emit()
 	queue_free()
 	pass
 	
