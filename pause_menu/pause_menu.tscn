@@ -18,6 +18,21 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
+[sub_resource type="Animation" id="Animation_s1glv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_b4s0c"]
 resource_name = "default"
 length = 0.7
@@ -34,21 +49,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.5529412, 0.80355185, 1, 0.49019608)]
-}
-
-[sub_resource type="Animation" id="Animation_s1glv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wn31l"]
@@ -152,11 +152,11 @@ modulate = Color(1, 0.45490196, 0.6156863, 1)
 layout_mode = 0
 offset_left = 89.0
 offset_top = 48.0
-offset_right = 107.0
+offset_right = 101.0
 offset_bottom = 56.0
 linked_scene = "uid://pvtb72pru3rr"
 entrances_top = Array[float]([])
-entrances_right = Array[float]([])
+entrances_right = Array[float]([3.0])
 entrances_bottom = Array[float]([])
 entrances_left = Array[float]([3.0])
 
@@ -185,6 +185,19 @@ entrances_top = Array[float]([])
 entrances_right = Array[float]([])
 entrances_bottom = Array[float]([])
 entrances_left = Array[float]([4.8])
+
+[node name="MapNode5" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
+modulate = Color(0.95381117, 0, 1, 1)
+layout_mode = 0
+offset_left = 102.0
+offset_top = 48.0
+offset_right = 132.0
+offset_bottom = 56.0
+linked_scene = "uid://cqo6anr484t2l"
+entrances_top = Array[float]([])
+entrances_right = Array[float]([])
+entrances_bottom = Array[float]([])
+entrances_left = Array[float]([3.0])
 
 [node name="PlayerIndicator" type="Control" parent="Control/PauseScreen/Map"]
 unique_name_in_owner = true

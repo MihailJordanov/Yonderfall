@@ -36,7 +36,7 @@ func process( _delta: float ) -> PlayerState:
 	set_jump_frame()
 	return next_state
 	
-func physics_process(delta: float) -> PlayerState:
+func physics_process( _delta: float) -> PlayerState:
 	if player.is_on_floor():
 		return idle
 	if player.velocity.y >= 0:
