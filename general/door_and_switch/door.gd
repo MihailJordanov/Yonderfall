@@ -2,7 +2,7 @@
 @icon( "res://general/icons/door.svg" )
 class_name Door extends Node2D
 
-const DOOR_CRASH_AUDIO = preload("uid://csv33syapqfst")
+const DOOR_CRASH_AUDIO = preload("uid://booi4gte0ko1r")
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -19,6 +19,7 @@ func _ready() -> void:
 	pass
 	
 func _on_switch_activated() -> void:
+	Audio.play_spatial_sound( DOOR_CRASH_AUDIO, global_position )
 	animation_player.play( "open" )
 	pass
 	

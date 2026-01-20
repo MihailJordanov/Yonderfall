@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cj7cpe3hvdewm"]
 
-[ext_resource type="Script" uid="uid://b0m55jbnhsgkb" path="res://general/door_and_switch/swich.gd" id="1_fdnrw"]
+[ext_resource type="Script" uid="uid://b0m55jbnhsgkb" path="res://general/door_and_switch/switch.gd" id="1_fdnrw"]
 [ext_resource type="Texture2D" uid="uid://dcdisry7e7np7" path="res://general/door_and_switch/door_and_switch.png" id="1_kqpv6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqpv6"]

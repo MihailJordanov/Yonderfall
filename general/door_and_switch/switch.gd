@@ -32,7 +32,7 @@ func _on_player_exited( _n : Node2D ) -> void:
 	pass
 
 func _on_player_interacted( _player : Player ) -> void:
-	
+	Audio.play_spatial_sound( DOOR_SWITCH_AUDIO, global_position )
 	SaveManager.persistent_data[ unique_name() ] = "open"
 	activted.emit()
 	set_open()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://ciuac7sd14b6r"]
+[gd_scene load_steps=29 format=4 uid="uid://ciuac7sd14b6r"]
 
 [ext_resource type="Material" uid="uid://br3ee7g5souf1" path="res://materials_and_shaders/fog_fade_material.tres" id="1_lxo52"]
 [ext_resource type="Texture2D" uid="uid://c2jjhvttxuj1" path="res://levels/tilesets/sprites/light_stream.jpg" id="2_qmi1f"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://i0mj0vycwybm" path="res://general/scripts/level_bounds.gd" id="6_u8wdh"]
 [ext_resource type="PackedScene" uid="uid://dx6od3nsgcgi8" path="res://general/level_transition/level_transition.tscn" id="7_644ei"]
 [ext_resource type="PackedScene" uid="uid://cn8agg0dff18h" path="res://general/general_spawn/player_spawn.tscn" id="8_36vfp"]
+[ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="9_lu13m"]
+[ext_resource type="AudioStream" uid="uid://cw24ii4kfdylq" path="res://music/forest_02.mp3" id="10_xgv2r"]
 
 [sub_resource type="Gradient" id="Gradient_o526s"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -2872,3 +2874,9 @@ process_material = SubResource("ParticleProcessMaterial_o526s")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("8_36vfp")]
 position = Vector2(8, 226)
+
+[node name="MusicAutoTrigger" type="Node" parent="."]
+script = ExtResource("9_lu13m")
+track = ExtResource("10_xgv2r")
+reverb = 1
+metadata/_custom_type_script = "uid://dsi7na4bldclj"

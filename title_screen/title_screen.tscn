@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://c11uuivxhxig4"]
+[gd_scene load_steps=31 format=4 uid="uid://c11uuivxhxig4"]
 
 [ext_resource type="Material" uid="uid://br3ee7g5souf1" path="res://materials_and_shaders/fog_fade_material.tres" id="1_0m3ch"]
 [ext_resource type="Script" uid="uid://sgaa6i85tbu4" path="res://title_screen/title_screen.gd" id="1_fk0fn"]
@@ -6,6 +6,8 @@
 [ext_resource type="TileSet" uid="uid://mre05p3xygab" path="res://levels/tilesets/main_street.tres" id="3_oqrgu"]
 [ext_resource type="Texture2D" uid="uid://b8262io74ycpg" path="res://levels/tilesets/sprites/forgotten_forest_example_tileset.png" id="4_fv0o7"]
 [ext_resource type="PackedScene" uid="uid://dv28bqpemmsjj" path="res://levels/props/animated/plant.tscn" id="5_1oos5"]
+[ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="7_fv0o7"]
+[ext_resource type="AudioStream" uid="uid://dsjjfixxup2ey" path="res://music/title_02.mp3" id="8_1oos5"]
 
 [sub_resource type="Gradient" id="Gradient_o526s"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -3106,3 +3108,8 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Load Slot 03
 "
+
+[node name="MusicAutoTrigger" type="Node" parent="."]
+script = ExtResource("7_fv0o7")
+track = ExtResource("8_1oos5")
+metadata/_custom_type_script = "uid://dsi7na4bldclj"

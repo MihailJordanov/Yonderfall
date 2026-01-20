@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bvxtyfivmcpu0"]
+[gd_scene load_steps=16 format=4 uid="uid://bvxtyfivmcpu0"]
 
 [ext_resource type="TileSet" uid="uid://mre05p3xygab" path="res://levels/tilesets/main_street.tres" id="1_pjuri"]
 [ext_resource type="PackedScene" uid="uid://bhbrw7lh73x1f" path="res://levels/props/animated/torch.tscn" id="2_re2j1"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dx6od3nsgcgi8" path="res://general/level_transition/level_transition.tscn" id="4_0ri7m"]
 [ext_resource type="PackedScene" uid="uid://cn8agg0dff18h" path="res://general/general_spawn/player_spawn.tscn" id="5_1hleu"]
 [ext_resource type="PackedScene" uid="uid://btswyg3g1oqnp" path="res://general/door_and_switch/door.tscn" id="6_x4thj"]
-[ext_resource type="PackedScene" uid="uid://cj7cpe3hvdewm" path="res://general/door_and_switch/swich.tscn" id="7_0ri7m"]
+[ext_resource type="PackedScene" uid="uid://cj7cpe3hvdewm" path="res://general/door_and_switch/switch.tscn" id="7_0ri7m"]
+[ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="8_1hleu"]
+[ext_resource type="AudioStream" uid="uid://bvuoq71kx4occ" path="res://music/dungeon_02.mp3" id="9_eficc"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x4thj"]
 blend_mode = 1
@@ -101,7 +103,7 @@ position = Vector2(0, 433)
 size = 3
 location = 0
 target_level = "uid://xg48m3hem7xn"
-target_area_name = "LevelTransition2"
+target_area_name = "LevelTransition4"
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(0.08702164, 0.099469066, 0.09381115, 1)
@@ -126,3 +128,9 @@ lifetime = 5.0
 randomness = 0.85
 visibility_rect = Rect2(-550, -300, 1000, 400)
 process_material = SubResource("ParticleProcessMaterial_eficc")
+
+[node name="MusicAutoTrigger" type="Node" parent="."]
+script = ExtResource("8_1hleu")
+track = ExtResource("9_eficc")
+reverb = 3
+metadata/_custom_type_script = "uid://dsi7na4bldclj"

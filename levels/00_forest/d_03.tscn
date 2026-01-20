@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://cbovqo0unenrs"]
+[gd_scene load_steps=9 format=4 uid="uid://cbovqo0unenrs"]
 
 [ext_resource type="TileSet" uid="uid://mre05p3xygab" path="res://levels/tilesets/main_street.tres" id="1_06sex"]
 [ext_resource type="PackedScene" uid="uid://bhbrw7lh73x1f" path="res://levels/props/animated/torch.tscn" id="2_u5t0d"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://i0mj0vycwybm" path="res://general/scripts/level_bounds.gd" id="4_hdsfq"]
 [ext_resource type="PackedScene" uid="uid://dx6od3nsgcgi8" path="res://general/level_transition/level_transition.tscn" id="5_mt0p4"]
 [ext_resource type="PackedScene" uid="uid://cn8agg0dff18h" path="res://general/general_spawn/player_spawn.tscn" id="6_8k7e8"]
+[ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="7_5342b"]
+[ext_resource type="AudioStream" uid="uid://bvuoq71kx4occ" path="res://music/dungeon_02.mp3" id="8_hdsfq"]
 
 [node name="D03" type="Node2D"]
 
@@ -94,3 +96,9 @@ blend_mode = 2
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("6_8k7e8")]
 position = Vector2(87, 274)
+
+[node name="MusicAutoTrigger" type="Node" parent="."]
+script = ExtResource("7_5342b")
+track = ExtResource("8_hdsfq")
+reverb = 2
+metadata/_custom_type_script = "uid://dsi7na4bldclj"

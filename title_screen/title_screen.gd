@@ -33,6 +33,8 @@ func _ready() -> void:
 	load_slot_2.pressed.connect( _on_load_game_pressed.bind( 1 ) ) 
 	load_slot_3.pressed.connect( _on_load_game_pressed.bind( 2 ) ) 
 	
+	Audio.setup_button_audio( self )
+	
 	show_main_menu()
 	animation_player.animation_finished.connect( _on_animation_finished )
 	pass
