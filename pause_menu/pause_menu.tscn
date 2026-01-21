@@ -106,7 +106,6 @@ horizontal_alignment = 2
 
 [node name="PauseScreen" type="Control" parent="Control"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -235,8 +234,34 @@ offset_bottom = 90.0
 linked_scene = "uid://bvxtyfivmcpu0"
 entrances_top = Array[float]([])
 entrances_right = Array[float]([])
+entrances_bottom = Array[float]([6.4])
+entrances_left = Array[float]([4.925])
+
+[node name="MapNode_d_05" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
+modulate = Color(0.29803923, 0.47058824, 0.63529414, 1)
+layout_mode = 0
+offset_left = 91.0
+offset_top = 91.0
+offset_right = 116.0
+offset_bottom = 102.0
+linked_scene = "uid://inormjhuc56f"
+entrances_top = Array[float]([20.0])
+entrances_right = Array[float]([4.1])
 entrances_bottom = Array[float]([])
-entrances_left = Array[float]([2.0])
+entrances_left = Array[float]([])
+
+[node name="MapNode_d_06" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
+modulate = Color(1, 0.45490196, 0.6156863, 1)
+layout_mode = 0
+offset_left = 117.0
+offset_top = 91.0
+offset_right = 149.0
+offset_bottom = 105.0
+linked_scene = "uid://dsjb177gij4fa"
+entrances_top = Array[float]([])
+entrances_right = Array[float]([])
+entrances_bottom = Array[float]([])
+entrances_left = Array[float]([4.05])
 
 [node name="PlayerIndicator" type="Control" parent="Control/PauseScreen/Map"]
 unique_name_in_owner = true
@@ -296,6 +321,7 @@ text = "System
 
 [node name="System" type="Control" parent="Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

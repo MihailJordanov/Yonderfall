@@ -48,7 +48,7 @@ turbulence_enabled = true
 turbulence_initial_displacement_min = 0.10000149
 turbulence_initial_displacement_max = 0.2000015
 
-[node name="D03" type="Node2D"]
+[node name="D04" type="Node2D"]
 
 [node name="BGParallaxLayers" type="Node2D" parent="."]
 
@@ -104,6 +104,13 @@ size = 3
 location = 0
 target_level = "uid://xg48m3hem7xn"
 target_area_name = "LevelTransition4"
+
+[node name="LevelTransition2" parent="." instance=ExtResource("4_0ri7m")]
+position = Vector2(258, 898)
+size = 3
+location = 3
+target_level = "uid://inormjhuc56f"
+target_area_name = "LevelTransition"
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(0.08702164, 0.099469066, 0.09381115, 1)

@@ -146,7 +146,7 @@ func load_configuration() -> void:
 	if err != OK:
 		AudioServer.set_bus_volume_linear( 2, 0.2 )
 		AudioServer.set_bus_volume_linear( 3, 1.0 )
-		AudioServer.set_bus_volume_linear( 4, 1.0 )
+		AudioServer.set_bus_volume_linear( 4, 0.5 )
 		save_configuration()
 		return
 	
