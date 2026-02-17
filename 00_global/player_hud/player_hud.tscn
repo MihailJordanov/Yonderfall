@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2r51gp1aph7e"]
+[gd_scene load_steps=9 format=3 uid="uid://d2r51gp1aph7e"]
 
 [ext_resource type="Texture2D" uid="uid://c75jcku4elofg" path="res://00_global/player_hud/player_bar_frame_2.png" id="1_hv14i"]
 [ext_resource type="Script" uid="uid://2d0h164xuubx" path="res://00_global/player_hud/player_hud.gd" id="1_vb1bs"]
+[ext_resource type="Resource" uid="uid://nyy2xnf7xtb2" path="res://00_global/visual_effects/hit_particle_settings/hit_magic_blue.tres" id="3_26715"]
 
 [sub_resource type="Gradient" id="Gradient_vb1bs"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -19,6 +20,7 @@ gradient = SubResource("Gradient_26715")
 [sub_resource type="GDScript" id="GDScript_vb1bs"]
 script/source = "extends Button
 
+@export var particle_settings : HitParticleSettings
 
 
 func _ready() -> void:
@@ -28,7 +30,8 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
-	VisualEffects.camera_shake()
+	var pos : Vector2 = get_tree().get_first_node_in_group(\"Player\").global_position
+	VisualEffects.hit_particles( pos, Vector2(0, -1), particle_settings )
 	pass
 "
 
@@ -79,10 +82,12 @@ nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_26715")
 texture_progress = SubResource("GradientTexture2D_4jtec")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
 offset_left = 375.0
 offset_top = 18.0
 offset_right = 452.0
 offset_bottom = 41.0
-text = "Test Shake"
+text = "Test Part"
 script = SubResource("GDScript_vb1bs")
+particle_settings = ExtResource("3_26715")
