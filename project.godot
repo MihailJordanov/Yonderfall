@@ -13,7 +13,7 @@ config_version=5
 config/name="Yonderfall"
 run/main_scene="uid://ciuac7sd14b6r"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://b1rja2jn0kmif"
 
 [autoload]
 
@@ -22,6 +22,7 @@ SaveManager="*res://00_global/save_manager.gd"
 Messages="*res://00_global/messages.gd"
 PlayerHud="*res://00_global/player_hud/player_hud.tscn"
 Audio="*res://00_global/audio/audio.tscn"
+VisualEffects="*res://00_global/visual_effects/visual_effects.gd"
 
 [display]
 

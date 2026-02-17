@@ -136,10 +136,10 @@ offset_bottom = 187.0
 [node name="MapNode_f_01" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(0.38039216, 0.5686275, 0.3019608, 1)
 layout_mode = 0
-offset_left = 32.0
-offset_top = 48.0
-offset_right = 51.0
-offset_bottom = 56.0
+offset_left = 53.0
+offset_top = 83.0
+offset_right = 72.0
+offset_bottom = 91.0
 linked_scene = "uid://ciuac7sd14b6r"
 entrances_top = Array[float]([])
 entrances_right = Array[float]([3.0])
@@ -149,10 +149,10 @@ entrances_left = Array[float]([])
 [node name="MapNode_f_02" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(0.38039216, 0.5686275, 0.3019608, 1)
 layout_mode = 0
-offset_left = 52.0
-offset_top = 48.0
-offset_right = 88.0
-offset_bottom = 56.0
+offset_left = 73.0
+offset_top = 83.0
+offset_right = 109.0
+offset_bottom = 91.0
 linked_scene = "uid://i1y3mf3x26b3"
 entrances_top = Array[float]([])
 entrances_right = Array[float]([2.6])
@@ -162,23 +162,49 @@ entrances_left = Array[float]([2.6])
 [node name="MapNode_c_01" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(1, 0.45490196, 0.6156863, 1)
 layout_mode = 0
-offset_left = 89.0
-offset_top = 48.0
-offset_right = 101.0
-offset_bottom = 56.0
+offset_left = 110.0
+offset_top = 83.0
+offset_right = 122.0
+offset_bottom = 91.0
 linked_scene = "uid://pvtb72pru3rr"
 entrances_top = Array[float]([])
 entrances_right = Array[float]([3.0])
 entrances_bottom = Array[float]([])
 entrances_left = Array[float]([3.0])
 
+[node name="MapNode_c_02" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
+modulate = Color(0.95381117, 0, 1, 1)
+layout_mode = 0
+offset_left = 123.0
+offset_top = 83.0
+offset_right = 153.0
+offset_bottom = 91.0
+linked_scene = "uid://cqo6anr484t2l"
+entrances_top = Array[float]([20.025])
+entrances_right = Array[float]([])
+entrances_bottom = Array[float]([12.825])
+entrances_left = Array[float]([3.0])
+
+[node name="MapNode_c_03" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
+modulate = Color(0.95381117, 0, 1, 1)
+layout_mode = 0
+offset_left = 126.0
+offset_top = 70.0
+offset_right = 160.0
+offset_bottom = 82.0
+linked_scene = "uid://hco44nmcx7lc"
+entrances_top = Array[float]([])
+entrances_right = Array[float]([2.0])
+entrances_bottom = Array[float]([16.85])
+entrances_left = Array[float]([6.325, 2.3249998])
+
 [node name="MapNode_d_01" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(0.29803923, 0.47058824, 0.63529414, 1)
 layout_mode = 0
-offset_left = 55.0
-offset_top = 57.0
-offset_right = 84.0
-offset_bottom = 67.0
+offset_left = 76.0
+offset_top = 92.0
+offset_right = 105.0
+offset_bottom = 102.0
 linked_scene = "uid://cch8l8r4cggny"
 entrances_top = Array[float]([2.4])
 entrances_right = Array[float]([5.0])
@@ -188,36 +214,23 @@ entrances_left = Array[float]([])
 [node name="MapNode_d_02" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(0.29803923, 0.47058824, 0.63529414, 1)
 layout_mode = 0
-offset_left = 85.0
-offset_top = 57.0
-offset_right = 104.0
-offset_bottom = 80.0
+offset_left = 106.0
+offset_top = 92.0
+offset_right = 125.0
+offset_bottom = 115.0
 linked_scene = "uid://xg48m3hem7xn"
 entrances_top = Array[float]([])
 entrances_right = Array[float]([2.0, 6.7, 18.0])
 entrances_bottom = Array[float]([])
 entrances_left = Array[float]([5.0249996])
 
-[node name="MapNode_c_02" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
-modulate = Color(0.95381117, 0, 1, 1)
-layout_mode = 0
-offset_left = 102.0
-offset_top = 48.0
-offset_right = 132.0
-offset_bottom = 56.0
-linked_scene = "uid://cqo6anr484t2l"
-entrances_top = Array[float]([])
-entrances_right = Array[float]([])
-entrances_bottom = Array[float]([12.825])
-entrances_left = Array[float]([3.0])
-
 [node name="MapNode_d_03" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(0.29803923, 0.47058824, 0.63529414, 1)
 layout_mode = 0
-offset_left = 105.0
-offset_top = 57.0
-offset_right = 132.0
-offset_bottom = 69.0
+offset_left = 126.0
+offset_top = 92.0
+offset_right = 153.0
+offset_bottom = 104.0
 linked_scene = "uid://cbovqo0unenrs"
 entrances_top = Array[float]([10.375])
 entrances_right = Array[float]([])
@@ -227,10 +240,10 @@ entrances_left = Array[float]([2.0, 7.0])
 [node name="MapNode_d_04" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(0.29803923, 0.47058824, 0.63529414, 1)
 layout_mode = 0
-offset_left = 105.0
-offset_top = 70.0
-offset_right = 132.0
-offset_bottom = 90.0
+offset_left = 126.0
+offset_top = 105.0
+offset_right = 153.0
+offset_bottom = 125.0
 linked_scene = "uid://bvxtyfivmcpu0"
 entrances_top = Array[float]([])
 entrances_right = Array[float]([])
@@ -240,10 +253,10 @@ entrances_left = Array[float]([4.925])
 [node name="MapNode_d_05" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(0.29803923, 0.47058824, 0.63529414, 1)
 layout_mode = 0
-offset_left = 91.0
-offset_top = 91.0
-offset_right = 116.0
-offset_bottom = 102.0
+offset_left = 112.0
+offset_top = 126.0
+offset_right = 137.0
+offset_bottom = 137.0
 linked_scene = "uid://inormjhuc56f"
 entrances_top = Array[float]([20.0])
 entrances_right = Array[float]([4.1])
@@ -253,10 +266,10 @@ entrances_left = Array[float]([])
 [node name="MapNode_d_06" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(1, 0.45490196, 0.6156863, 1)
 layout_mode = 0
-offset_left = 117.0
-offset_top = 91.0
-offset_right = 149.0
-offset_bottom = 105.0
+offset_left = 138.0
+offset_top = 126.0
+offset_right = 170.0
+offset_bottom = 140.0
 linked_scene = "uid://dsjb177gij4fa"
 entrances_top = Array[float]([])
 entrances_right = Array[float]([])
@@ -267,10 +280,10 @@ entrances_left = Array[float]([4.05])
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 0
-offset_left = 35.0
-offset_top = 53.0
-offset_right = 35.0
-offset_bottom = 53.0
+offset_left = 56.0
+offset_top = 88.0
+offset_right = 56.0
+offset_bottom = 88.0
 
 [node name="TextureRect" type="TextureRect" parent="Control/PauseScreen/Map/PlayerIndicator"]
 layout_mode = 0
