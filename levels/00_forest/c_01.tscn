@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://pvtb72pru3rr"]
+[gd_scene load_steps=12 format=4 uid="uid://pvtb72pru3rr"]
 
 [ext_resource type="TileSet" uid="uid://mre05p3xygab" path="res://levels/tilesets/main_street.tres" id="1_l7w7i"]
 [ext_resource type="PackedScene" uid="uid://bhbrw7lh73x1f" path="res://levels/props/animated/torch.tscn" id="2_2wmjj"]
@@ -8,6 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://btwlujl2vkha8" path="res://general/save_point/save_point.tscn" id="6_0s5f4"]
 [ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="7_o3dtk"]
 [ext_resource type="AudioStream" uid="uid://26p12wkmv6od" path="res://music/adventure_01.mp3" id="8_o3dtk"]
+[ext_resource type="AudioStream" uid="uid://bkhuhg7v1gfq0" path="res://general/audio/hit.wav" id="10_ic5lf"]
+[ext_resource type="Script" uid="uid://bcu5i735m7nue" path="res://general/scripts/damage_area.gd" id="10_vg4kf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vg4kf"]
+size = Vector2(44, 38)
 
 [node name="C01" type="Node2D"]
 
@@ -70,3 +75,25 @@ script = ExtResource("7_o3dtk")
 track = ExtResource("8_o3dtk")
 reverb = 1
 metadata/_custom_type_script = "uid://dsi7na4bldclj"
+
+[node name="DamageArea" type="Area2D" parent="."]
+position = Vector2(313, 331)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("10_vg4kf")
+audio = ExtResource("10_ic5lf")
+metadata/_custom_type_script = "uid://bcu5i735m7nue"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(20, 1)
+shape = SubResource("RectangleShape2D_vg4kf")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-198, 1)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(333, 332)
+shape = SubResource("RectangleShape2D_vg4kf")
+debug_color = Color(0.19796896, 1, 0, 0.41960785)

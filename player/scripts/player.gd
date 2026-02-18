@@ -8,6 +8,7 @@ const DEBUG_JUMP_INDICATOR = preload("uid://crbvi4i2do0v4")
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
 @onready var one_way_platform_shape_cast: ShapeCast2D = $OneWayPlatformShapeCast2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var attack_area: AttackArea = %AttackArea
 #endregion
 
 #region /// player stats
@@ -63,16 +64,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		add_child( pasue_menu )
 		return
 	
-		
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_MINUS:
-			if Input.is_key_pressed( KEY_SHIFT ):
-				max_hp -= 10
-			hp -= 2	
-		elif event.keycode == KEY_EQUAL:
-			if Input.is_key_pressed( KEY_SHIFT ):
-				max_hp += 10
-			hp += 2
+	# Debug
+	if OS.is_debug_build():
+		if event.is_action_pressed("attack"):
+			attack_area.activete()
+			return
+		if event is InputEventKey and event.pressed:
+			if event.keycode == KEY_MINUS:
+				if Input.is_key_pressed( KEY_SHIFT ):
+					max_hp -= 10
+				hp -= 2
+			elif event.keycode == KEY_EQUAL:
+				if Input.is_key_pressed( KEY_SHIFT ):
+					max_hp += 10
+				hp += 2
+	# end Debug
 		
 	change_state(current_state.handle_input( event ))
 	pass
@@ -133,6 +139,7 @@ func update_direction() -> void:
 	direction = Vector2(x_axis, y_axis)
 	
 	if prev_direction.x != direction.x:
+		attack_area.flip( direction.x )
 		if direction.x < 0:
 			sprite.flip_h = true
 		elif direction.x > 0:
