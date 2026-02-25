@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://byj8hak15bljl"]
+[gd_scene load_steps=27 format=3 uid="uid://byj8hak15bljl"]
 
 [ext_resource type="Script" uid="uid://ck8a75fjibwxb" path="res://player/scripts/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://bnsmh0nvj33p8" path="res://player/states/idle.gd" id="2_g1dw6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://6auoq88ixb7i" path="res://player/states/fall.gd" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://2jf0wilfa55n" path="res://player/states/crouch.gd" id="6_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://cfyohbdjats07" path="res://player/sprites/samurai_sprites.png" id="7_boad6"]
+[ext_resource type="Script" uid="uid://dc0mnpx8jlf6y" path="res://player/states/attack.gd" id="7_ebec5"]
 [ext_resource type="Script" uid="uid://dhdyth355ak14" path="res://player/scripts/player_camera.gd" id="8_8t03j"]
 [ext_resource type="Script" uid="uid://o8evqg065rxv" path="res://player/scripts/input_hints.gd" id="8_hg6s5"]
 [ext_resource type="Texture2D" uid="uid://c756uo3amaafh" path="res://player/sprites/input_icons.png" id="9_8t03j"]
@@ -32,6 +33,64 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ebec5"]
+resource_name = "attack"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40, 41]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -41.000004)]
+}
+
+[sub_resource type="Animation" id="Animation_yllr7"]
+resource_name = "attack_2"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [48, 49, 50, 51]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -41.000004)]
 }
 
 [sub_resource type="Animation" id="Animation_2ieo8"]
@@ -155,6 +214,8 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ebec5"]
 _data = {
 &"RESET": SubResource("Animation_rgyib"),
+&"attack": SubResource("Animation_ebec5"),
+&"attack_2": SubResource("Animation_yllr7"),
 &"crouch": SubResource("Animation_2ieo8"),
 &"idle": SubResource("Animation_boad6"),
 &"jump": SubResource("Animation_hg6s5"),
@@ -176,7 +237,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebec5"]
-size = Vector2(34, 12)
+size = Vector2(40, 8)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 5
@@ -207,8 +268,12 @@ script = ExtResource("5_g6k8r")
 unique_name_in_owner = true
 script = ExtResource("6_g6k8r")
 
+[node name="Attack" type="Node" parent="States"]
+unique_name_in_owner = true
+script = ExtResource("7_ebec5")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -41)
+position = Vector2(0, -41.000004)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("7_boad6")
 hframes = 12
@@ -269,14 +334,13 @@ hframes = 16
 
 [node name="AttackArea" type="Area2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -28)
+position = Vector2(0, -25)
 collision_layer = 0
 collision_mask = 96
 script = ExtResource("11_2ieo8")
-damage = 10.0
 metadata/_custom_type_script = "uid://ge3vobctdr8l"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(17, 0)
+position = Vector2(20, 0)
 shape = SubResource("RectangleShape2D_ebec5")
 debug_color = Color(1, 0, 0.008024216, 0.41960785)

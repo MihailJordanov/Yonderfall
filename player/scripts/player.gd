@@ -56,6 +56,8 @@ func _ready() -> void:
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_released("jump"):
+		velocity.y *= 0.5
 	if event.is_action_pressed("action"):
 		Messages.player_interact.emit( self )
 	elif event.is_action_pressed( "pause" ):
@@ -66,9 +68,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	# Debug
 	if OS.is_debug_build():
-		if event.is_action_pressed("attack"):
-			attack_area.activete()
-			return
 		if event is InputEventKey and event.pressed:
 			if event.keycode == KEY_MINUS:
 				if Input.is_key_pressed( KEY_SHIFT ):

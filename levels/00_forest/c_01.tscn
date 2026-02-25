@@ -77,7 +77,7 @@ reverb = 1
 metadata/_custom_type_script = "uid://dsi7na4bldclj"
 
 [node name="DamageArea" type="Area2D" parent="."]
-position = Vector2(313, 331)
+position = Vector2(352, 331)
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("10_vg4kf")
@@ -85,15 +85,13 @@ audio = ExtResource("10_ic5lf")
 metadata/_custom_type_script = "uid://bcu5i735m7nue"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
-position = Vector2(20, 1)
 shape = SubResource("RectangleShape2D_vg4kf")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(-198, 1)
+position = Vector2(161, 336)
 collision_layer = 32
 collision_mask = 0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(333, 332)
 shape = SubResource("RectangleShape2D_vg4kf")
 debug_color = Color(0.19796896, 1, 0, 0.41960785)
