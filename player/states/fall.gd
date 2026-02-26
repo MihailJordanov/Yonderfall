@@ -14,7 +14,7 @@ func enter() -> void:
 	player.animation_player.play("jump")
 	player.animation_player.pause()
 	player.gravity_multiplier = fall_gravity_multiplier
-	if player.previouse_state == jump:
+	if player.previouse_state == jump or player.previouse_state == attack:
 		coyole_timer = 0
 	else:
 		coyole_timer = coyote_time

@@ -56,7 +56,7 @@ func _ready() -> void:
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_released("jump"):
+	if event.is_action_released("jump") and velocity.y < 0:
 		velocity.y *= 0.5
 	if event.is_action_pressed("action"):
 		Messages.player_interact.emit( self )
