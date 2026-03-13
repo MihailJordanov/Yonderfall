@@ -30,8 +30,9 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
-	var pos : Vector2 = get_tree().get_first_node_in_group(\"Player\").global_position
-	VisualEffects.hit_particles( pos, Vector2(0, -1), particle_settings )
+	#var pos : Vector2 = get_tree().get_first_node_in_group(\"Player\").global_position
+	#VisualEffects.hit_particles( pos, Vector2(0, -1), particle_settings )
+	PlayerHud.show_game_over()
 	pass
 "
 
@@ -83,11 +84,74 @@ texture_under = SubResource("GradientTexture2D_26715")
 texture_progress = SubResource("GradientTexture2D_4jtec")
 
 [node name="Button" type="Button" parent="Control"]
+visible = false
 layout_mode = 0
-offset_left = 375.0
-offset_top = 18.0
-offset_right = 452.0
-offset_bottom = 41.0
-text = "Test Part"
+offset_left = 350.0
+offset_top = 12.0
+offset_right = 471.0
+offset_bottom = 35.0
+text = "Test Game Over
+"
 script = SubResource("GDScript_vb1bs")
 particle_settings = ExtResource("3_26715")
+
+[node name="GameOver" type="Control" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7882353)
+
+[node name="Label" type="Label" parent="Control/GameOver"]
+modulate = Color(0.47843137, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -16.0
+offset_right = 38.5
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = 25.0
+offset_right = 152.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoadButton" type="Button" parent="Control/GameOver/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "load last save"
+
+[node name="QuitButton" type="Button" parent="Control/GameOver/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "quit to title"
