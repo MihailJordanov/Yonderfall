@@ -39,9 +39,6 @@ tile_set = ExtResource("1_u6uvq")
 [node name="Torch" parent="BGParallaxLayers/Props" instance=ExtResource("2_ocngb")]
 position = Vector2(45, 362)
 
-[node name="Torch2" parent="BGParallaxLayers/Props" instance=ExtResource("2_ocngb")]
-position = Vector2(657, 362)
-
 [node name="Torch3" parent="BGParallaxLayers/Props" instance=ExtResource("2_ocngb")]
 position = Vector2(1106, 362)
 

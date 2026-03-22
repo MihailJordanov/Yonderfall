@@ -5,6 +5,7 @@ func init() -> void:
 	
 func enter() -> void:
 	player.animation_player.play("idle")
+	player.jump_count = 0
 	pass
 	
 func exit() -> void:
