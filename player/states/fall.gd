@@ -19,7 +19,8 @@ func enter() -> void:
 	if player.jump_count == 0:
 		player.jump_count = 1
 	
-	if player.previouse_state == jump or player.previouse_state == attack:
+	var prev : PlayerState = player.previouse_state
+	if prev == jump or prev == attack or prev == dash:
 		coyole_timer = 0
 	elif player.previouse_state == crouch:
 		coyole_timer = 0
@@ -35,6 +36,8 @@ func exit() -> void:
 	
 	
 func handle_input( _event : InputEvent ) -> PlayerState:
+	if _event.is_action_pressed( "dash" ) and player.can_dash():
+		return dash
 	if _event.is_action_pressed( "attack" ):
 		return attack
 	if _event.is_action_pressed( "jump" ):
