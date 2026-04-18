@@ -115,7 +115,7 @@ func setup_player() -> void:
 	pass
 
 func get_file_name( slot : int ) -> String:
-	return "user:// " + SLOTS[ slot ] + ".sav"
+	return "user://" + SLOTS[ slot ] + ".sav"
 	
 func save_file_exists( slot : int ) -> bool:
 	return FileAccess.file_exists( get_file_name( slot ) )

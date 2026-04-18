@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://pvtb72pru3rr"]
+[gd_scene load_steps=10 format=4 uid="uid://pvtb72pru3rr"]
 
 [ext_resource type="TileSet" uid="uid://mre05p3xygab" path="res://levels/tilesets/main_street.tres" id="1_l7w7i"]
 [ext_resource type="PackedScene" uid="uid://bhbrw7lh73x1f" path="res://levels/props/animated/torch.tscn" id="2_2wmjj"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://btwlujl2vkha8" path="res://general/save_point/save_point.tscn" id="6_0s5f4"]
 [ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="7_o3dtk"]
 [ext_resource type="AudioStream" uid="uid://26p12wkmv6od" path="res://music/adventure_01.mp3" id="8_o3dtk"]
+[ext_resource type="PackedScene" uid="uid://b8oak52egvksj" path="res://levels/props/breakable/crate_wooden.tscn" id="9_rj57h"]
 
 [node name="C01" type="Node2D"]
 
@@ -70,3 +71,9 @@ script = ExtResource("7_o3dtk")
 track = ExtResource("8_o3dtk")
 reverb = 1
 metadata/_custom_type_script = "uid://dsi7na4bldclj"
+
+[node name="Crate" parent="." instance=ExtResource("9_rj57h")]
+position = Vector2(351, 344)
+
+[node name="Crate2" parent="." instance=ExtResource("9_rj57h")]
+position = Vector2(351, 309)
