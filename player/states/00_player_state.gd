@@ -14,6 +14,7 @@ var next_state : PlayerState
 @onready var take_damage: PlayerStateTakeDamage = %TakeDamage
 @onready var death: PlayerStateDeath = %Death
 @onready var dash: PlayerStateDash = %Dash
+@onready var ground_slam: PlayerStateGroundSlam = %GroundSlam
 #endregion
 
 func init() -> void:
