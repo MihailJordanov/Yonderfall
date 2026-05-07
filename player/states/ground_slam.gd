@@ -71,8 +71,13 @@ func check_collisions( _delta: float ) -> bool:
 			
 			if c.get_parent() is Breakable:
 				var b : Breakable = c.get_parent()
+
+				if b.get_parent() is AbilityPickUp:
+					continue
+
 				b.queue_free()
 				Audio.play_spatial_sound( b.destroy_audio, pos )
+
 				for p in b.destroy_particles:
 					VisualEffects.hit_particles( pos, Vector2.DOWN, p )
 			else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://ciuac7sd14b6r"]
+[gd_scene load_steps=32 format=4 uid="uid://ciuac7sd14b6r"]
 
 [ext_resource type="Material" uid="uid://br3ee7g5souf1" path="res://materials_and_shaders/fog_fade_material.tres" id="1_lxo52"]
 [ext_resource type="Texture2D" uid="uid://c2jjhvttxuj1" path="res://levels/tilesets/sprites/light_stream.jpg" id="2_qmi1f"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cw24ii4kfdylq" path="res://music/forest_02.mp3" id="10_xgv2r"]
 [ext_resource type="PackedScene" uid="uid://lk683o3xeous" path="res://enemies/slime/slime.tscn" id="11_xgv2r"]
 [ext_resource type="PackedScene" uid="uid://b8oak52egvksj" path="res://levels/props/breakable/crate_wooden.tscn" id="12_e8vvn"]
+[ext_resource type="PackedScene" uid="uid://b0lk1pkdo6mb" path="res://general/ability_pickup/ability_pickup.tscn" id="13_o448x"]
 
 [sub_resource type="Gradient" id="Gradient_o526s"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -2894,3 +2895,14 @@ position = Vector2(-66, 210)
 
 [node name="Crate3" parent="." instance=ExtResource("12_e8vvn")]
 position = Vector2(284, 147)
+
+[node name="AbilityPickup" parent="." instance=ExtResource("13_o448x")]
+position = Vector2(342, 170)
+type = 2
+
+[node name="AbilityPickup2" parent="." instance=ExtResource("13_o448x")]
+position = Vector2(388, 170)
+type = 1
+
+[node name="AbilityPickup3" parent="." instance=ExtResource("13_o448x")]
+position = Vector2(433, 170)

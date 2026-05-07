@@ -18,6 +18,7 @@ signal damage_taken
 @onready var damage_area: DamageArea = %DamageArea
 #endregion
 
+
 #region /// player stats
 var hp : float = 20 :
 	set( value ):
