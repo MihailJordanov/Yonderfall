@@ -358,7 +358,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebec5"]
-size = Vector2(40, 8)
+size = Vector2(40, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjvpn"]
 size = Vector2(24, 34)
@@ -494,7 +494,7 @@ script = ExtResource("11_2ieo8")
 metadata/_custom_type_script = "uid://ge3vobctdr8l"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(20, 0)
+position = Vector2(20, 3)
 shape = SubResource("RectangleShape2D_ebec5")
 debug_color = Color(1, 0, 0.008024216, 0.41960785)
 
