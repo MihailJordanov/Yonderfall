@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cn8agg0dff18h" path="res://general/general_spawn/player_spawn.tscn" id="8_36vfp"]
 [ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="9_lu13m"]
 [ext_resource type="AudioStream" uid="uid://cw24ii4kfdylq" path="res://music/forest_02.mp3" id="10_xgv2r"]
-[ext_resource type="PackedScene" uid="uid://lk683o3xeous" path="res://enemies/slime/slime.tscn" id="11_xgv2r"]
 [ext_resource type="PackedScene" uid="uid://b8oak52egvksj" path="res://levels/props/breakable/crate_wooden.tscn" id="12_e8vvn"]
+[ext_resource type="PackedScene" uid="uid://difevbwcfjh86" path="res://enemies/slime_2/slime_2.tscn" id="13_gm8td"]
 [ext_resource type="PackedScene" uid="uid://b0lk1pkdo6mb" path="res://general/ability_pickup/ability_pickup.tscn" id="13_o448x"]
 
 [sub_resource type="Gradient" id="Gradient_o526s"]
@@ -2884,9 +2884,6 @@ track = ExtResource("10_xgv2r")
 reverb = 1
 metadata/_custom_type_script = "uid://dsi7na4bldclj"
 
-[node name="Slime" parent="." instance=ExtResource("11_xgv2r")]
-position = Vector2(100, 97)
-
 [node name="Crate" parent="." instance=ExtResource("12_e8vvn")]
 position = Vector2(199, 210)
 
@@ -2906,3 +2903,6 @@ type = 1
 
 [node name="AbilityPickup3" parent="." instance=ExtResource("13_o448x")]
 position = Vector2(433, 170)
+
+[node name="Slime2" parent="." instance=ExtResource("13_gm8td")]
+position = Vector2(62, 97)

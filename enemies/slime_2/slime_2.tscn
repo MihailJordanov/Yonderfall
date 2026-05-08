@@ -1,11 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://difevbwcfjh86"]
+[gd_scene load_steps=21 format=3 uid="uid://difevbwcfjh86"]
 
 [ext_resource type="Script" uid="uid://dt4rmsnjokw2p" path="res://enemies/scripts/enemy.gd" id="1_7cba3"]
 [ext_resource type="Texture2D" uid="uid://chwovlff7qrcw" path="res://enemies/slime/slime.png" id="2_e3lcx"]
 [ext_resource type="Script" uid="uid://dak6q8x114k8r" path="res://general/scripts/harard_area.gd" id="3_mafwj"]
 [ext_resource type="Script" uid="uid://bcu5i735m7nue" path="res://general/scripts/damage_area.gd" id="4_iyqwc"]
 [ext_resource type="AudioStream" uid="uid://sym8xw61ky2t" path="res://enemies/slime/slime_hit.wav" id="5_53kym"]
-[ext_resource type="Script" uid="uid://d0ljfne1r68md" path="res://enemies/scripts/edge_detector.gd" id="6_482dd"]
+[ext_resource type="Script" uid="uid://c4dukpp3clwix" path="res://enemies/scripts/enemy_state_machine.gd" id="7_iyqwc"]
+[ext_resource type="Script" uid="uid://dltwib441hdt5" path="res://enemies/scripts/states/es_walk.gd" id="8_5napv"]
+[ext_resource type="Script" uid="uid://dajsdl00ngs6e" path="res://enemies/scripts/decision_engines/decision_engine_basic.gd" id="8_53kym"]
+[ext_resource type="Script" uid="uid://udrqr0gsf55q" path="res://enemies/scripts/states/es_stun.gd" id="9_ovel5"]
+[ext_resource type="Script" uid="uid://crw1aksvsc3ng" path="res://enemies/scripts/states/es_death.gd" id="10_3jlja"]
+[ext_resource type="AudioStream" uid="uid://bm8yej0v44vlc" path="res://enemies/slime/slime_death.wav" id="11_ovel5"]
+[ext_resource type="Script" uid="uid://cu57e10clt4a7" path="res://enemies/scripts/sensors/edge_sensor.gd" id="12_ovel5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ptp6l"]
 radius = 8.0
@@ -133,13 +139,38 @@ position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_5napv")
 debug_color = Color(0.70196074, 0, 0.22511725, 0.41960785)
 
-[node name="EdgeDetector" type="RayCast2D" parent="."]
-position = Vector2(7, 0)
-target_position = Vector2(0, 8)
-script = ExtResource("6_482dd")
-metadata/_custom_type_script = "uid://d0ljfne1r68md"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_0nqm1")
 }
+
+[node name="EnemyStateMachine" type="Node" parent="."]
+script = ExtResource("7_iyqwc")
+metadata/_custom_type_script = "uid://c4dukpp3clwix"
+
+[node name="ESWalk" type="Node" parent="EnemyStateMachine"]
+unique_name_in_owner = true
+script = ExtResource("8_5napv")
+animation_name = "walk"
+metadata/_custom_type_script = "uid://dltwib441hdt5"
+
+[node name="ESStun" type="Node" parent="EnemyStateMachine"]
+unique_name_in_owner = true
+script = ExtResource("9_ovel5")
+metadata/_custom_type_script = "uid://udrqr0gsf55q"
+
+[node name="ESDeath" type="Node" parent="EnemyStateMachine"]
+unique_name_in_owner = true
+script = ExtResource("10_3jlja")
+death_audio = ExtResource("11_ovel5")
+metadata/_custom_type_script = "uid://crw1aksvsc3ng"
+
+[node name="DecisionEngineBasic" type="Node" parent="."]
+script = ExtResource("8_53kym")
+metadata/_custom_type_script = "uid://dajsdl00ngs6e"
+
+[node name="EdgeSensor" type="RayCast2D" parent="."]
+position = Vector2(7, 0)
+target_position = Vector2(0, 8)
+script = ExtResource("12_ovel5")
+metadata/_custom_type_script = "uid://cu57e10clt4a7"

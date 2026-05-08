@@ -87,6 +87,7 @@ func play_animation( anim_name : String ) -> void:
 	pass
 	
 func _on_damage_taken( a : AttackArea ) -> void:
+	blackboard.damage_source = a
 	blackboard.health -= a.damage
 	if blackboard.health <= 0:
 		damage_area.queue_free()
