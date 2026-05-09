@@ -62,6 +62,7 @@ func setup() -> void:
 	
 	
 func _physics_process( _delta: float ) -> void:
+	blackboard.update_distance_to_target( global_position )
 	state_machine.change_state( decision_engine.decide() )
 	if affected_by_gravity:
 		velocity += get_gravity() * _delta
