@@ -62,11 +62,11 @@ func process( _delta: float ) -> PlayerState:
 func physics_process( _delta: float) -> PlayerState:
 	if player.is_on_floor():
 		VisualEffects.land_dust( player.global_position )
-		Audio.play_spatial_sound( audio, player.global_position )
+		Audio.play_spatial_sound( audio, player.global_position, false, true, 0.5 )
 		if buffer_timer > 0:
 			player.jump_count = 0
 			return jump   
-		return idle
+		return idle	
 	player.velocity.x = player.direction.x * player.move_speed
 	return next_state
 	

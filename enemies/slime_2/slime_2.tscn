@@ -256,6 +256,10 @@ metadata/_custom_type_script = "uid://cu57e10clt4a7"
 
 [node name="PlayerSensor" type="Area2D" parent="."]
 script = ExtResource("13_3jlja")
+search_duration = null
+use_audio_sensor = null
+audio_detected_dist = null
+min_audio_sence = null
 metadata/_custom_type_script = "uid://bwyb45ikitk1a"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerSensor"]

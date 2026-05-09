@@ -67,5 +67,5 @@ func do_jump() -> void:
 			return
 	player.jump_count += 1
 	player.velocity.y -= jump_velocity
-	Audio.play_spatial_sound( audio, player.global_position )
+	Audio.play_spatial_sound( audio, player.global_position, false, true, 0.25 )
 	pass
