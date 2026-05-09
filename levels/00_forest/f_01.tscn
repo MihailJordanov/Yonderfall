@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://ciuac7sd14b6r"]
+[gd_scene load_steps=33 format=4 uid="uid://ciuac7sd14b6r"]
 
 [ext_resource type="Material" uid="uid://br3ee7g5souf1" path="res://materials_and_shaders/fog_fade_material.tres" id="1_lxo52"]
 [ext_resource type="Texture2D" uid="uid://c2jjhvttxuj1" path="res://levels/tilesets/sprites/light_stream.jpg" id="2_qmi1f"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b8oak52egvksj" path="res://levels/props/breakable/crate_wooden.tscn" id="12_e8vvn"]
 [ext_resource type="PackedScene" uid="uid://difevbwcfjh86" path="res://enemies/slime_2/slime_2.tscn" id="13_gm8td"]
 [ext_resource type="PackedScene" uid="uid://b0lk1pkdo6mb" path="res://general/ability_pickup/ability_pickup.tscn" id="13_o448x"]
+[ext_resource type="PackedScene" uid="uid://cykqmelyvi6bn" path="res://general/health_pickup/health_pickup.tscn" id="14_gm8td"]
 
 [sub_resource type="Gradient" id="Gradient_o526s"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -2906,3 +2907,21 @@ position = Vector2(433, 170)
 
 [node name="Slime2" parent="." instance=ExtResource("13_gm8td")]
 position = Vector2(62, 97)
+
+[node name="Slime3" parent="." instance=ExtResource("13_gm8td")]
+position = Vector2(130, 97)
+
+[node name="Slime4" parent="." instance=ExtResource("13_gm8td")]
+position = Vector2(310, 97)
+
+[node name="Slime5" parent="." instance=ExtResource("13_gm8td")]
+position = Vector2(131, 224)
+
+[node name="Slime6" parent="." instance=ExtResource("13_gm8td")]
+position = Vector2(62, 224)
+
+[node name="HealthPickup" parent="." instance=ExtResource("14_gm8td")]
+position = Vector2(-71, 92)
+
+[node name="HealthPickup2" parent="." instance=ExtResource("14_gm8td")]
+position = Vector2(253, 183)
