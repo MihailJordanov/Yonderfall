@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="9_lu13m"]
 [ext_resource type="AudioStream" uid="uid://cw24ii4kfdylq" path="res://music/forest_02.mp3" id="10_xgv2r"]
 [ext_resource type="PackedScene" uid="uid://wulphhwlj8ho" path="res://enemies/skeleton_warrior/skeleton_warrior.tscn" id="11_xgv2r"]
-[ext_resource type="PackedScene" uid="uid://b8oak52egvksj" path="res://levels/props/breakable/crate_wooden.tscn" id="12_e8vvn"]
+[ext_resource type="Script" uid="uid://dprf5hd51ltal" path="res://general/scripts/patrol_limit.gd" id="12_e8vvn"]
 
 [sub_resource type="Gradient" id="Gradient_o526s"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -2886,5 +2886,13 @@ metadata/_custom_type_script = "uid://dsi7na4bldclj"
 [node name="SkeletonWarrior" parent="." instance=ExtResource("11_xgv2r")]
 position = Vector2(126, 217)
 
-[node name="Crate" parent="." instance=ExtResource("12_e8vvn")]
-position = Vector2(237, 196)
+[node name="PatrolLimit" type="Node2D" parent="SkeletonWarrior"]
+position = Vector2(-59, 6)
+script = ExtResource("12_e8vvn")
+metadata/_custom_type_script = "uid://dprf5hd51ltal"
+
+[node name="PatrolLimit2" type="Node2D" parent="SkeletonWarrior"]
+position = Vector2(46, 2)
+script = ExtResource("12_e8vvn")
+side = 2
+metadata/_custom_type_script = "uid://dprf5hd51ltal"
