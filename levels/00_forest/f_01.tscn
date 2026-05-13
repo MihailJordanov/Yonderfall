@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://ciuac7sd14b6r"]
+[gd_scene load_steps=31 format=4 uid="uid://ciuac7sd14b6r"]
 
 [ext_resource type="Material" uid="uid://br3ee7g5souf1" path="res://materials_and_shaders/fog_fade_material.tres" id="1_lxo52"]
 [ext_resource type="Texture2D" uid="uid://c2jjhvttxuj1" path="res://levels/tilesets/sprites/light_stream.jpg" id="2_qmi1f"]
@@ -10,10 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cn8agg0dff18h" path="res://general/general_spawn/player_spawn.tscn" id="8_36vfp"]
 [ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="9_lu13m"]
 [ext_resource type="AudioStream" uid="uid://cw24ii4kfdylq" path="res://music/forest_02.mp3" id="10_xgv2r"]
+[ext_resource type="PackedScene" uid="uid://wulphhwlj8ho" path="res://enemies/skeleton_warrior/skeleton_warrior.tscn" id="11_xgv2r"]
 [ext_resource type="PackedScene" uid="uid://b8oak52egvksj" path="res://levels/props/breakable/crate_wooden.tscn" id="12_e8vvn"]
-[ext_resource type="PackedScene" uid="uid://difevbwcfjh86" path="res://enemies/slime_2/slime_2.tscn" id="13_gm8td"]
-[ext_resource type="PackedScene" uid="uid://b0lk1pkdo6mb" path="res://general/ability_pickup/ability_pickup.tscn" id="13_o448x"]
-[ext_resource type="PackedScene" uid="uid://cykqmelyvi6bn" path="res://general/health_pickup/health_pickup.tscn" id="14_gm8td"]
 
 [sub_resource type="Gradient" id="Gradient_o526s"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -2812,7 +2810,7 @@ tile_map_data = PackedByteArray("AAD+/wYAAQAUAAcAAAADAAYAAQAUAAcAAAAKAAUAAQAUAAc
 tile_set = ExtResource("3_2xan8")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="BGParallaxLayers/Parallax2D"]
-tile_map_data = PackedByteArray("AAD8//r/AQAEAAAAAAD8//v/AQAEAAEAAAD8//z/AQAEAAIAAAD8//3/AQAEAAEAAAD8//7/AQAEAAIAAAD8////AQAEAAEAAAD8/wAAAQAEAAIAAAD8/wEAAQAEAAEAAAD8/wIAAQAEAAIAAAD8/wMAAQAEAAEAAAD8/wQAAQAEAAIAAAD8/wUAAQAEAAEAAAD8/wYAAQAEAAIAAAD8/wcAAQAEAAMAAAD8/wgAAQAFAAQAAAD9/wcAAQABAAAAAAD9/wgAAQABAAEAAAD+/wcAAQAFAAMAAAD+/wgAAQAFAAQAAAD//wcAAQAHAAMAAAD//wgAAQAHAAQAAAAAAAcAAQADAAAAAAAAAAgAAQADAAEAAAABAAcAAQACAAAAAAABAAgAAQACAAEAAAACAAcAAQADAAAAAAACAAgAAQADAAEAAAADAAcAAQAFAAMAAAADAAgAAQAFAAQAAAAEAAcAAQAGAAMAAAAEAAgAAQAGAAQAAAAFAAcAAQAHAAMAAAAFAAgAAQAHAAQAAAAGAAYAAQAIAAIAAAAGAAcAAQAIAAMAAAAGAAgAAQAIAAQAAAAHAAYAAQAJAAIAAAAHAAcAAQAJAAMAAAAHAAgAAQAJAAQAAAAIAAYAAQAKAAIAAAAIAAcAAQAKAAMAAAAIAAgAAQAKAAQAAAAJAAYAAQALAAIAAAAJAAcAAQALAAMAAAAJAAgAAQALAAQAAAAKAAYAAQAFAAMAAAAKAAcAAQAFAAQAAAAKAAgAAQAMAAQAAAALAAYAAQAGAAMAAAALAAcAAQAGAAQAAAALAAgAAQANAAQAAAAMAAYAAQAHAAMAAAAMAAcAAQAHAAQAAAAMAAgAAQANAAQAAAANAAUAAQAIAAIAAAANAAYAAQAIAAMAAAANAAcAAQAIAAQAAAANAAgAAQANAAQAAAAOAAUAAQAJAAIAAAAOAAYAAQAJAAMAAAAOAAcAAQAJAAQAAAAOAAgAAQANAAQAAAAPAAUAAQAOAAIAAAAPAAYAAQAOAAMAAAAPAAcAAQAOAAQAAAAPAAgAAQANAAQAAAAQAAUAAQAPAAIAAAAQAAYAAQAPAAMAAAAQAAcAAQAPAAQAAAAQAAgAAQANAAQAAAARAAYAAQAMAAIAAAARAAcAAQAMAAMAAAARAAgAAQAMAAQAAAASAAYAAQANAAIAAAASAAcAAQANAAMAAAASAAgAAQANAAQAAAATAAYAAQAOAAIAAAATAAcAAQAOAAMAAAATAAgAAQAOAAQAAAAUAAYAAQAPAAIAAAAUAAcAAQAPAAMAAAAVAAgAAQAGAAQAAAAUAAgAAQAPAAQAAAAVAAcAAQAGAAMAAAABAAMAAQAQAAYAAAACAAMAAQARAAYAAAADAAMAAQASAAYAAAAEAAMAAQATAAYAAAA=")
+tile_map_data = PackedByteArray("AAD8//r/AQAEAAAAAAD8//v/AQAEAAEAAAD8//z/AQAEAAIAAAD8//3/AQAEAAEAAAD8//7/AQAEAAIAAAD8////AQAEAAEAAAD8/wAAAQAEAAIAAAD8/wEAAQAEAAEAAAD8/wIAAQAEAAIAAAD8/wMAAQAEAAEAAAD8/wQAAQAEAAIAAAD8/wUAAQAEAAEAAAD8/wYAAQAEAAIAAAD8/wcAAQAEAAMAAAD8/wgAAQAFAAQAAAD9/wcAAQABAAAAAAD9/wgAAQABAAEAAAD+/wcAAQAFAAMAAAD+/wgAAQAFAAQAAAD//wcAAQAHAAMAAAD//wgAAQAHAAQAAAAAAAcAAQADAAAAAAAAAAgAAQADAAEAAAABAAcAAQACAAAAAAABAAgAAQACAAEAAAACAAcAAQADAAAAAAACAAgAAQADAAEAAAADAAcAAQAFAAMAAAADAAgAAQAFAAQAAAAEAAcAAQAGAAMAAAAEAAgAAQAGAAQAAAAFAAcAAQAHAAMAAAAFAAgAAQAHAAQAAAAGAAYAAQAIAAIAAAAGAAcAAQAIAAMAAAAGAAgAAQAIAAQAAAAHAAYAAQAJAAIAAAAHAAcAAQAJAAMAAAAHAAgAAQAJAAQAAAAIAAYAAQAKAAIAAAAIAAcAAQAKAAMAAAAIAAgAAQAKAAQAAAAJAAYAAQALAAIAAAAJAAcAAQALAAMAAAAJAAgAAQALAAQAAAAKAAYAAQAFAAMAAAAKAAcAAQAFAAQAAAAKAAgAAQAMAAQAAAALAAYAAQAGAAMAAAALAAcAAQAGAAQAAAALAAgAAQANAAQAAAAMAAYAAQAHAAMAAAAMAAcAAQAHAAQAAAAMAAgAAQANAAQAAAANAAUAAQAIAAIAAAANAAYAAQAIAAMAAAANAAcAAQAIAAQAAAANAAgAAQANAAQAAAAOAAUAAQAJAAIAAAAOAAYAAQAJAAMAAAAOAAcAAQAJAAQAAAAOAAgAAQANAAQAAAAPAAUAAQAOAAIAAAAPAAYAAQAOAAMAAAAPAAcAAQAOAAQAAAAPAAgAAQANAAQAAAAQAAUAAQAPAAIAAAAQAAYAAQAPAAMAAAAQAAcAAQAPAAQAAAAQAAgAAQANAAQAAAARAAYAAQAMAAIAAAARAAcAAQAMAAMAAAARAAgAAQAMAAQAAAASAAYAAQANAAIAAAASAAcAAQANAAMAAAASAAgAAQANAAQAAAATAAYAAQAOAAIAAAATAAcAAQAOAAMAAAATAAgAAQAOAAQAAAAUAAYAAQAPAAIAAAAUAAcAAQAPAAMAAAAVAAgAAQAGAAQAAAAUAAgAAQAPAAQAAAAVAAcAAQAGAAMAAAA=")
 tile_set = ExtResource("3_2xan8")
 
 [node name="Props" type="Node2D" parent="BGParallaxLayers"]
@@ -2885,43 +2883,8 @@ track = ExtResource("10_xgv2r")
 reverb = 1
 metadata/_custom_type_script = "uid://dsi7na4bldclj"
 
+[node name="SkeletonWarrior" parent="." instance=ExtResource("11_xgv2r")]
+position = Vector2(126, 217)
+
 [node name="Crate" parent="." instance=ExtResource("12_e8vvn")]
-position = Vector2(199, 210)
-
-[node name="Crate2" parent="." instance=ExtResource("12_e8vvn")]
-position = Vector2(-66, 210)
-
-[node name="Crate3" parent="." instance=ExtResource("12_e8vvn")]
-position = Vector2(284, 147)
-
-[node name="AbilityPickup" parent="." instance=ExtResource("13_o448x")]
-position = Vector2(342, 170)
-type = 2
-
-[node name="AbilityPickup2" parent="." instance=ExtResource("13_o448x")]
-position = Vector2(388, 170)
-type = 1
-
-[node name="AbilityPickup3" parent="." instance=ExtResource("13_o448x")]
-position = Vector2(433, 170)
-
-[node name="Slime2" parent="." instance=ExtResource("13_gm8td")]
-position = Vector2(62, 97)
-
-[node name="Slime3" parent="." instance=ExtResource("13_gm8td")]
-position = Vector2(130, 97)
-
-[node name="Slime4" parent="." instance=ExtResource("13_gm8td")]
-position = Vector2(310, 97)
-
-[node name="Slime5" parent="." instance=ExtResource("13_gm8td")]
-position = Vector2(131, 224)
-
-[node name="Slime6" parent="." instance=ExtResource("13_gm8td")]
-position = Vector2(62, 224)
-
-[node name="HealthPickup" parent="." instance=ExtResource("14_gm8td")]
-position = Vector2(-71, 92)
-
-[node name="HealthPickup2" parent="." instance=ExtResource("14_gm8td")]
-position = Vector2(253, 183)
+position = Vector2(237, 196)

@@ -16,11 +16,22 @@ func _ready() -> void:
 func decide() -> EnemyState:
 	
 	
-	
+	#if blackboard.damage_source:
+	#	if blackboard.health <= 0:
+	#		return es_death
+	#	else:
+	#		return es_stun
+			
 	#if currer_state is ESDeath or not blackboard.can_decide:
 	#	return null
-	
+		
+	#if blackboard.target:
+	#	if blackboard.distance_to_target < 40:
+	#		return attack_state?
+	#	return chase_state
 	return null
+	
+
 	
 	
 	

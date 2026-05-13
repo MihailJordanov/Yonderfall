@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://hco44nmcx7lc"]
+[gd_scene load_steps=13 format=4 uid="uid://hco44nmcx7lc"]
 
 [ext_resource type="Texture2D" uid="uid://dvbe4cinikixa" path="res://levels/backgrounds/Clouds/Clouds 1/1.png" id="1_5mifl"]
 [ext_resource type="TileSet" uid="uid://mre05p3xygab" path="res://levels/tilesets/main_street.tres" id="1_cytd7"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cn8agg0dff18h" path="res://general/general_spawn/player_spawn.tscn" id="5_eylff"]
 [ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="8_va6he"]
 [ext_resource type="AudioStream" uid="uid://26p12wkmv6od" path="res://music/adventure_01.mp3" id="9_xoajb"]
+[ext_resource type="PackedScene" uid="uid://b0lk1pkdo6mb" path="res://general/ability_pickup/ability_pickup.tscn" id="12_dskfu"]
 
 [node name="C03" type="Node2D"]
 
@@ -115,7 +116,6 @@ target_level = "uid://cqo6anr484t2l"
 target_area_name = "LevelTransition3"
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-visible = false
 color = Color(0.08702164, 0.099469066, 0.09381115, 1)
 energy = 0.15
 blend_mode = 2
@@ -128,3 +128,7 @@ script = ExtResource("8_va6he")
 track = ExtResource("9_xoajb")
 reverb = 1
 metadata/_custom_type_script = "uid://dsi7na4bldclj"
+
+[node name="AbilityPickup" parent="." instance=ExtResource("12_dskfu")]
+position = Vector2(308, 322)
+type = 1

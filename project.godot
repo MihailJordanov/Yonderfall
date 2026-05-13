@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Yonderfall"
-run/main_scene="uid://ciuac7sd14b6r"
+run/main_scene="uid://c11uuivxhxig4"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://b1rja2jn0kmif"
 

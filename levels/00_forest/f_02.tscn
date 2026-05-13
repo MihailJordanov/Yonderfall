@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://i1y3mf3x26b3"]
+[gd_scene load_steps=27 format=4 uid="uid://i1y3mf3x26b3"]
 
 [ext_resource type="Material" uid="uid://br3ee7g5souf1" path="res://materials_and_shaders/fog_fade_material.tres" id="1_7sgex"]
 [ext_resource type="Texture2D" uid="uid://c2jjhvttxuj1" path="res://levels/tilesets/sprites/light_stream.jpg" id="2_nejqp"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://cn8agg0dff18h" path="res://general/general_spawn/player_spawn.tscn" id="9_k3jgy"]
 [ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="10_tqpks"]
 [ext_resource type="AudioStream" uid="uid://cw24ii4kfdylq" path="res://music/forest_02.mp3" id="11_fmd7i"]
+[ext_resource type="PackedScene" uid="uid://b0lk1pkdo6mb" path="res://general/ability_pickup/ability_pickup.tscn" id="12_mkvx3"]
+[ext_resource type="PackedScene" uid="uid://lk683o3xeous" path="res://enemies/slime/slime.tscn" id="13_615nt"]
+[ext_resource type="PackedScene" uid="uid://b8oak52egvksj" path="res://levels/props/breakable/crate_wooden.tscn" id="14_uhwa7"]
 
 [sub_resource type="Gradient" id="Gradient_o526s"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -2906,3 +2909,23 @@ script = ExtResource("10_tqpks")
 track = ExtResource("11_fmd7i")
 reverb = 2
 metadata/_custom_type_script = "uid://dsi7na4bldclj"
+
+[node name="AbilityPickup" parent="." instance=ExtResource("12_mkvx3")]
+position = Vector2(257, 193)
+
+[node name="AbilityPickup2" parent="." instance=ExtResource("12_mkvx3")]
+position = Vector2(293, 193)
+type = 1
+
+[node name="AbilityPickup3" parent="." instance=ExtResource("12_mkvx3")]
+position = Vector2(328, 193)
+type = 2
+
+[node name="Slime" parent="." instance=ExtResource("13_615nt")]
+position = Vector2(597, 173)
+
+[node name="Crate" parent="." instance=ExtResource("14_uhwa7")]
+position = Vector2(667, 177)
+
+[node name="Crate2" parent="." instance=ExtResource("14_uhwa7")]
+position = Vector2(540, 177)
