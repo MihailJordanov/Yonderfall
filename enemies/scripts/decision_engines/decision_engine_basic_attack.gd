@@ -14,6 +14,7 @@ extends DecisionEngine
 @onready var es_death: ESDeath = %ESDeath
 @onready var es_idle: ESIdle = %ESIdle
 
+var x_epsilon : float = 8.0
 
 func _ready() -> void:
 	await super()
@@ -33,12 +34,22 @@ func decide() -> EnemyState:
 	if blackboard.target:
 		if attack_state.can_attack():
 			return attack_state
+			
 		if attack_state.is_in_range():
 			return es_idle
+		
+		if _is_close_to_target_x():
+			return es_idle
+			
 		return chase_state
 	return es_walk
 	
 	
+func _is_close_to_target_x() -> bool:
+	if not blackboard.target:
+		return false
+	
+	return abs(blackboard.target.global_position.x - enemy.global_position.x) <= x_epsilon
 	
 	
 	

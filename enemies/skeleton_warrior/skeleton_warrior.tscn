@@ -361,12 +361,13 @@ metadata/_custom_type_script = "uid://cu57e10clt4a7"
 
 [node name="PlayerSensor" type="Area2D" parent="."]
 script = ExtResource("13_nqtek")
+search_duration = 3.0
 use_audio_sensor = false
 metadata/_custom_type_script = "uid://bwyb45ikitk1a"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerSensor"]
-position = Vector2(0, -10)
-polygon = PackedVector2Array(0, -41, 256, -169, 256, 87)
+position = Vector2(0, -57)
+polygon = PackedVector2Array(0, 0, 256, -128, 256, 128)
 
 [node name="EnemyHitParticles" type="Marker2D" parent="."]
 position = Vector2(0, -7)

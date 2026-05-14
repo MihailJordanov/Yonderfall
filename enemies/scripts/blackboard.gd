@@ -14,3 +14,5 @@ func update_distance_to_target( pos : Vector2 ) -> void:
 	else:
 		distance_to_target = -1
 	pass
+
+	
