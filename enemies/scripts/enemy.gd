@@ -121,6 +121,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 func _update_face_left() -> void:
 	if not Engine.is_editor_hint():
 		return
-	for c in Sprite2D:
-		c.flip_h = face_left_on_start
+	for c in get_children():
+		if c is Sprite2D:
+			c.flip_h = face_left_on_start
 	pass

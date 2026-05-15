@@ -264,6 +264,7 @@ size = Vector2(58, 75)
 collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_008mv")
+health = 6.0
 death_sound = ExtResource("2_id5wf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

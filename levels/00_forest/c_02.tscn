@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cqo6anr484t2l"]
+[gd_scene load_steps=18 format=4 uid="uid://cqo6anr484t2l"]
 
 [ext_resource type="TileSet" uid="uid://mre05p3xygab" path="res://levels/tilesets/main_street.tres" id="1_u6uvq"]
 [ext_resource type="PackedScene" uid="uid://bhbrw7lh73x1f" path="res://levels/props/animated/torch.tscn" id="2_ocngb"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://bcu5i735m7nue" path="res://general/scripts/damage_area.gd" id="11_u0fop"]
 [ext_resource type="Resource" uid="uid://dsc1dwedvm103" path="res://00_global/visual_effects/hit_particle_settings/hit_wood_medium.tres" id="12_2de2f"]
 [ext_resource type="Resource" uid="uid://jn8vxc23ms21" path="res://00_global/visual_effects/hit_particle_settings/hit_wood_large.tres" id="13_0no8u"]
+[ext_resource type="PackedScene" uid="uid://difevbwcfjh86" path="res://enemies/slime_2/slime_2.tscn" id="15_0no8u"]
+[ext_resource type="Script" uid="uid://dprf5hd51ltal" path="res://general/scripts/patrol_limit.gd" id="16_qmnx7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thh3c"]
 size = Vector2(128, 155)
@@ -114,3 +116,31 @@ metadata/_custom_type_script = "uid://bcu5i735m7nue"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Breakable/DamageArea"]
 position = Vector2(9, -22.5)
 shape = SubResource("RectangleShape2D_thh3c")
+
+[node name="Slime2" parent="." instance=ExtResource("15_0no8u")]
+position = Vector2(240, 357)
+
+[node name="PatrolLimit" type="Node2D" parent="Slime2"]
+position = Vector2(-86, 1)
+script = ExtResource("16_qmnx7")
+metadata/_custom_type_script = "uid://dprf5hd51ltal"
+
+[node name="PatrolLimit2" type="Node2D" parent="Slime2"]
+position = Vector2(163, 1)
+script = ExtResource("16_qmnx7")
+side = 2
+metadata/_custom_type_script = "uid://dprf5hd51ltal"
+
+[node name="Slime3" parent="." instance=ExtResource("15_0no8u")]
+position = Vector2(1014, 360)
+
+[node name="PatrolLimit" type="Node2D" parent="Slime3"]
+position = Vector2(-86, 1)
+script = ExtResource("16_qmnx7")
+metadata/_custom_type_script = "uid://dprf5hd51ltal"
+
+[node name="PatrolLimit2" type="Node2D" parent="Slime3"]
+position = Vector2(68, 0)
+script = ExtResource("16_qmnx7")
+side = 2
+metadata/_custom_type_script = "uid://dprf5hd51ltal"
