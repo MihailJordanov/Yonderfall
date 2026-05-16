@@ -2989,6 +2989,7 @@ vertical_alignment = 1
 
 [node name="MainMenu" type="VBoxContainer" parent="Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3012,6 +3013,11 @@ text = "Continue"
 unique_name_in_owner = true
 layout_mode = 2
 text = "New Game"
+
+[node name="Quit Game Button" type="Button" parent="Control/MainMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/MainMenu"]
 libraries = {
@@ -3096,18 +3102,71 @@ layout_mode = 2
 [node name="LoadSlot1" type="Button" parent="Control/LoadGameMenu"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Load Slot 01"
+text = "Load Save 01"
 
 [node name="LoadSlot2" type="Button" parent="Control/LoadGameMenu"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Load Slot 02"
+text = "Load Save 02"
 
 [node name="LoadSlot3" type="Button" parent="Control/LoadGameMenu"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Load Slot 03
+text = "Load Save 03
 "
+
+[node name="AreYouSurePanel" type="Panel" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -35.0
+offset_right = 83.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AreYouSureMenu" type="VBoxContainer" parent="Control/AreYouSurePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -45.0
+offset_right = 78.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Control/AreYouSurePanel/AreYouSureMenu"]
+modulate = Color(0.94117653, 0.41240084, 0.4039216, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.003921569, 0.003921569, 0.003921569, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 16
+text = "Overwrite Save?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Control/AreYouSurePanel/AreYouSureMenu"]
+layout_mode = 2
+
+[node name="KeepButton" type="Button" parent="Control/AreYouSurePanel/AreYouSureMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Keep"
+
+[node name="ReplaceButton" type="Button" parent="Control/AreYouSurePanel/AreYouSureMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Replace"
 
 [node name="MusicAutoTrigger" type="Node" parent="."]
 script = ExtResource("7_fv0o7")
