@@ -31,6 +31,12 @@ func _ready() -> void:
 		set_physics_process( false )
 		return
 		
+	health = float(SaveManager.persistent_data.get_or_add(unique_name(), health))
+		
+	if health <= 0:
+		queue_free()
+		return
+		
 	setup()
 	pass
 	
@@ -90,15 +96,18 @@ func play_animation( anim_name : String ) -> void:
 		printerr( "Animation missing", anim_name )
 	pass
 	
-func _on_damage_taken( a : AttackArea ) -> void:
+func _on_damage_taken(a : AttackArea) -> void:
 	blackboard.damage_source = a
 	blackboard.health -= a.damage
+	
+	SaveManager.persistent_data[unique_name()] = blackboard.health
+	
 	if blackboard.health <= 0:
 		damage_area.queue_free()
 		hazard_area.queue_free()
 		was_killed.emit()
-	was_hit.emit( a )
-	pass
+	
+	was_hit.emit(a)
 	
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings : PackedStringArray = []
@@ -125,3 +134,8 @@ func _update_face_left() -> void:
 		if c is Sprite2D:
 			c.flip_h = face_left_on_start
 	pass
+	
+func unique_name() -> String:
+	var u_name : String = ResourceUID.path_to_uid(owner.scene_file_path)
+	u_name += "/" + get_parent().name + "/" + name
+	return u_name

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://difevbwcfjh86"]
+[gd_scene load_steps=36 format=3 uid="uid://difevbwcfjh86"]
 
 [ext_resource type="Script" uid="uid://dt4rmsnjokw2p" path="res://enemies/scripts/enemy.gd" id="1_7cba3"]
 [ext_resource type="Texture2D" uid="uid://chwovlff7qrcw" path="res://enemies/slime/slime.png" id="2_e3lcx"]
@@ -102,27 +102,6 @@ _data = {
 &"stun": SubResource("Animation_mafwj"),
 &"walk": SubResource("Animation_ovel5")
 }
-
-[sub_resource type="GDScript" id="GDScript_3jlja"]
-script/source = "extends Label
-
-@onready var slime_2: Enemy = $\"..\"
-@onready var player_sensor: PlayerSensor = $\"../PlayerSensor\"
-
-
-func _ready() -> void:
-	pass 
-
-
-
-func _physics_process(delta: float) -> void:
-	text = \"\"
-	text = \"target = \"
-	text += slime_2.blackboard.target.name if slime_2.blackboard.target else \"\"
-	text += \"\\ndist = \"
-	text += str(slime_2.blackboard.distance_to_target)
-	pass
-"
 
 [sub_resource type="Gradient" id="Gradient_dq0sk"]
 offsets = PackedFloat32Array(0.5068493, 1)
@@ -272,12 +251,6 @@ metadata/_custom_type_script = "uid://bwyb45ikitk1a"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerSensor"]
 position = Vector2(0, -7)
 polygon = PackedVector2Array(0, 0, 256, -128, 256, 128)
-
-[node name="Label" type="Label" parent="."]
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 15.0
-script = SubResource("GDScript_3jlja")
 
 [node name="EnemyHitParticles" type="Marker2D" parent="."]
 position = Vector2(0, -7)

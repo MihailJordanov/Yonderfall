@@ -79,17 +79,20 @@ func save_game() -> void:
 	
 func load_game( slot : int ) -> void:
 	
-	if not FileAccess.file_exists( get_file_name( current_slot ) ):
+	if not FileAccess.file_exists( get_file_name( slot ) ):
 		return
 	
 	current_slot = slot
+	
 	var save_file = FileAccess.open( get_file_name( current_slot ), FileAccess.READ )
 	save_data = JSON.parse_string( save_file.get_line() )
 
 	persistent_data = save_data.get( "persistent_data", {} )
 	discovered_areas = save_data.get( "discovered_areas", [] )
+	
 	var scene_path : String = save_data.get( "scene_path", "uid://ciuac7sd14b6r" )
 	SceneManager.transition_scene( scene_path, "", Vector2.ZERO, "up" )
+	
 	await SceneManager.new_scene_ready
 	setup_player()
 	pass

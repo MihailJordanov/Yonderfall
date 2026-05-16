@@ -53,7 +53,7 @@ func show_main_menu() -> void:
 	logo.visible = true
 	new_game_menu.visible  = false
 	load_game_menu.visible = false
-	new_game_button.grab_focus()
+	load_game_button.grab_focus()
 	pass
 
 func show_new_game_menu() -> void:
