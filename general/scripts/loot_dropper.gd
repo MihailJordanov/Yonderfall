@@ -8,6 +8,8 @@ func _ready() -> void:
 		owner.was_killed.connect( drop_loot )
 	elif owner is Breakable:
 		owner.destroyed.connect( drop_loot )
+	elif owner is Shade:
+		pass
 	pass
 	
 func drop_loot() -> void:

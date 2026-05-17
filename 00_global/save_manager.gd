@@ -11,7 +11,7 @@ var save_data : Dictionary
 var discovered_areas : Array = []
 var persistent_data : Dictionary = {}
 
-const SHADOW_SCENE = preload("uid://cvq5kdfy1dtfb")
+const SHADOW_SCENE = preload("uid://cv82dnhup5fxu")
 
 
 func _ready() -> void:
@@ -199,7 +199,7 @@ func spawn_shadow_for_scene(scene_uid : String) -> void:
 	
 	var data : Dictionary = persistent_data[key]
 	
-	var shadow : Enemy = SHADOW_SCENE.instantiate()
+	var shadow : Shade = SHADOW_SCENE.instantiate()
 	current_scene.add_child(shadow)
 	
 	shadow.global_position = Vector2(
