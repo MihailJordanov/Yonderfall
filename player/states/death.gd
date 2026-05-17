@@ -6,6 +6,11 @@ func init() -> void:
 	pass
 	
 func enter() -> void:
+	SaveManager.save_shadow_position(
+		SceneManager.current_scene_uid,
+		player.global_position
+	)
+	
 	player.animation_player.play("death")
 	Audio.play_spatial_sound( DEATH_AUDIO, player.global_position, true,  )
 	Audio.play_music( null )

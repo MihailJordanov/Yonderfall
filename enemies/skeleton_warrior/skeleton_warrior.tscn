@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://wulphhwlj8ho"]
+[gd_scene load_steps=50 format=3 uid="uid://wulphhwlj8ho"]
 
 [ext_resource type="Script" uid="uid://dt4rmsnjokw2p" path="res://enemies/scripts/enemy.gd" id="1_008mv"]
 [ext_resource type="AudioStream" uid="uid://c4yqjrrspf3df" path="res://enemies/skeleton_warrior/skeleton_death.wav" id="2_id5wf"]
@@ -45,37 +45,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [72]
-}
-
-[sub_resource type="Animation" id="Animation_mvpoi"]
-resource_name = "attack"
-length = 0.5
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1.0717735),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AttackArea")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.1],
-"method": &"activete"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_iyqwc"]
@@ -166,10 +135,105 @@ tracks/0/keys = {
 "values": [72, 73, 74, 75, 76, 77, 78]
 }
 
+[sub_resource type="Animation" id="Animation_n3cs3"]
+resource_name = "attack"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1.0717735),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackArea")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.1],
+"method": &"activete"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mvpoi"]
+resource_name = "attack_2"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1.0717735, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackArea")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.1],
+"method": &"activete"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5mduc"]
+resource_name = "attack_3"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackArea")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.1],
+"method": &"activete"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0nqm1"]
 _data = {
 &"RESET": SubResource("Animation_3jlja"),
-&"attack": SubResource("Animation_mvpoi"),
+&"attack": SubResource("Animation_n3cs3"),
+&"attack_2": SubResource("Animation_mvpoi"),
+&"attack_3": SubResource("Animation_5mduc"),
 &"death": SubResource("Animation_iyqwc"),
 &"idle": SubResource("Animation_id5wf"),
 &"run": SubResource("Animation_l0l7t"),
@@ -340,6 +404,7 @@ attack_range = 50.0
 move_speed = 0.0
 cooldown = 2.0
 attack_area = NodePath("../../AttackArea")
+attack_animations = Array[String](["attack", "attack_2", "attack_3"])
 metadata/_custom_type_script = "uid://oculcx8cj2cl"
 
 [node name="ESChase" type="Node" parent="EnemyStateMachine"]

@@ -215,6 +215,19 @@ entrances_right = Array[float]([2.0])
 entrances_bottom = Array[float]([16.85])
 entrances_left = Array[float]([6.325, 2.3249998])
 
+[node name="MapNode_c_04" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
+modulate = Color(0.95381117, 0, 1, 1)
+layout_mode = 0
+offset_left = 103.0
+offset_top = 57.0
+offset_right = 125.0
+offset_bottom = 82.0
+linked_scene = "uid://cegvf7fyn7xne"
+entrances_top = Array[float]([])
+entrances_right = Array[float]([20.0, 16.6])
+entrances_bottom = Array[float]([])
+entrances_left = Array[float]([])
+
 [node name="MapNode_d_01" parent="Control/PauseScreen/Map" instance=ExtResource("2_rd7dy")]
 modulate = Color(0.29803923, 0.47058824, 0.63529414, 1)
 layout_mode = 0

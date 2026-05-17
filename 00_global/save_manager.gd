@@ -11,6 +11,8 @@ var save_data : Dictionary
 var discovered_areas : Array = []
 var persistent_data : Dictionary = {}
 
+const SHADOW_SCENE = preload("uid://cvq5kdfy1dtfb")
+
 
 func _ready() -> void:
 	load_configuration()
@@ -95,6 +97,7 @@ func load_game( slot : int ) -> void:
 	
 	await SceneManager.new_scene_ready
 	setup_player()
+	spawn_shadow_for_scene(scene_path)
 	pass
 	
 func setup_player() -> void:
@@ -128,6 +131,8 @@ func is_area_discovered( scene_uid : String ) -> bool:
 	
 func _on_scene_entered( scene_uid : String ) -> void:
 	if discovered_areas.has( scene_uid ):
+		await get_tree().process_frame
+		spawn_shadow_for_scene(scene_uid)
 		return
 	else:
 		discovered_areas.append( scene_uid )
@@ -158,4 +163,56 @@ func load_configuration() -> void:
 	AudioServer.set_bus_volume_linear( 4, config.get_value( "audio", "ui", 1.0 ) )
 	pass
 
+#endregion
+
+#region Shadow loginc
+
+func get_scene_shadow_key(scene_uid : String) -> String:
+	return "shadow/" + scene_uid
+
+
+func save_shadow_position(scene_uid : String, pos : Vector2) -> void:
+	var key : String = get_scene_shadow_key(scene_uid)
+	persistent_data[key] = {
+		"x": pos.x,
+		"y": pos.y
+	}
+	write_current_save_file()
+
+
+func has_shadow_for_scene(scene_uid : String) -> bool:
+	return persistent_data.has(get_scene_shadow_key(scene_uid))
+
+
+func spawn_shadow_for_scene(scene_uid : String) -> void:
+	var key : String = get_scene_shadow_key(scene_uid)
+	
+	if not persistent_data.has(key):
+		return
+	
+	await get_tree().process_frame
+	
+	var current_scene := get_tree().current_scene
+	
+	if not current_scene:
+		return
+	
+	var data : Dictionary = persistent_data[key]
+	
+	var shadow : Enemy = SHADOW_SCENE.instantiate()
+	current_scene.add_child(shadow)
+	
+	shadow.global_position = Vector2(
+		data.get("x", 0),
+		data.get("y", 0)
+	)
+
+func write_current_save_file() -> void:
+	save_data["persistent_data"] = persistent_data
+	save_data["discovered_areas"] = discovered_areas
+	
+	var save_file = FileAccess.open(get_file_name(current_slot), FileAccess.WRITE)
+	save_file.store_line(JSON.stringify(save_data))
+	save_file.close()
+	
 #endregion

@@ -24,7 +24,7 @@ var hazard_area : HazardArea
 var state_machine : EnemyStateMachine
 var decision_engine : DecisionEngine
 var blackboard : Blackboard
-
+var runtime_uid : String = "123"
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -136,6 +136,15 @@ func _update_face_left() -> void:
 	pass
 	
 func unique_name() -> String:
-	var u_name : String = ResourceUID.path_to_uid(owner.scene_file_path)
-	u_name += "/" + get_parent().name + "/" + name
-	return u_name
+	var scene_id : String = SceneManager.current_scene_uid
+	
+	if owner and owner.scene_file_path != "":
+		scene_id = ResourceUID.path_to_uid(owner.scene_file_path)
+	
+	if owner == null:
+		if runtime_uid.is_empty():
+			runtime_uid = "shadow_" + str(randi())
+		
+		return scene_id + "/" + runtime_uid
+	
+	return scene_id + "/" + get_parent().name + "/" + name
