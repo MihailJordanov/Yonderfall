@@ -6,9 +6,10 @@ func init() -> void:
 	pass
 	
 func enter() -> void:
-	SaveManager.save_shadow_position(
+	SaveManager.create_and_save_shade(
 		SceneManager.current_scene_uid,
-		player.global_position
+		player.global_position,
+		"dark"
 	)
 	
 	player.animation_player.play("death")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://i1y3mf3x26b3"]
+[gd_scene load_steps=26 format=4 uid="uid://i1y3mf3x26b3"]
 
 [ext_resource type="Material" uid="uid://br3ee7g5souf1" path="res://materials_and_shaders/fog_fade_material.tres" id="1_7sgex"]
 [ext_resource type="Texture2D" uid="uid://c2jjhvttxuj1" path="res://levels/tilesets/sprites/light_stream.jpg" id="2_nejqp"]
@@ -13,7 +13,6 @@
 [ext_resource type="AudioStream" uid="uid://cw24ii4kfdylq" path="res://music/forest_02.mp3" id="11_fmd7i"]
 [ext_resource type="PackedScene" uid="uid://difevbwcfjh86" path="res://enemies/slime_2/slime_2.tscn" id="12_76nv0"]
 [ext_resource type="Script" uid="uid://dprf5hd51ltal" path="res://general/scripts/patrol_limit.gd" id="13_mkvx3"]
-[ext_resource type="PackedScene" uid="uid://cv82dnhup5fxu" path="res://shade/shade.tscn" id="14_hx6ij"]
 
 [sub_resource type="Gradient" id="Gradient_o526s"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -2897,7 +2896,6 @@ target_level = "uid://cch8l8r4cggny"
 target_area_name = "LevelTransition"
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-visible = false
 color = Color(0.2901961, 0.41960785, 0.36078432, 1)
 energy = 0.9
 blend_mode = 2
@@ -2924,6 +2922,3 @@ position = Vector2(246, -14)
 script = ExtResource("13_mkvx3")
 side = 2
 metadata/_custom_type_script = "uid://dprf5hd51ltal"
-
-[node name="Shade" parent="." instance=ExtResource("14_hx6ij")]
-position = Vector2(623, 166)

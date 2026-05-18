@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://xg48m3hem7xn"]
+[gd_scene load_steps=8 format=4 uid="uid://xg48m3hem7xn"]
 
 [ext_resource type="TileSet" uid="uid://mre05p3xygab" path="res://levels/tilesets/main_street.tres" id="1_07dwc"]
 [ext_resource type="PackedScene" uid="uid://bhbrw7lh73x1f" path="res://levels/props/animated/torch.tscn" id="2_r7nao"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cn8agg0dff18h" path="res://general/general_spawn/player_spawn.tscn" id="5_w3ln6"]
 [ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="6_0wyga"]
 [ext_resource type="AudioStream" uid="uid://bvuoq71kx4occ" path="res://music/dungeon_02.mp3" id="7_hnpcb"]
-[ext_resource type="PackedScene" uid="uid://cv82dnhup5fxu" path="res://shade/shade.tscn" id="8_2l3pq"]
 
 [node name="D02" type="Node2D"]
 
@@ -99,6 +98,3 @@ script = ExtResource("6_0wyga")
 track = ExtResource("7_hnpcb")
 reverb = 2
 metadata/_custom_type_script = "uid://dsi7na4bldclj"
-
-[node name="Shade" parent="." instance=ExtResource("8_2l3pq")]
-position = Vector2(433, 820)

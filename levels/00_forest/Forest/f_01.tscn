@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://ciuac7sd14b6r"]
+[gd_scene load_steps=30 format=4 uid="uid://ciuac7sd14b6r"]
 
 [ext_resource type="Material" uid="uid://br3ee7g5souf1" path="res://materials_and_shaders/fog_fade_material.tres" id="1_lxo52"]
 [ext_resource type="Texture2D" uid="uid://c2jjhvttxuj1" path="res://levels/tilesets/sprites/light_stream.jpg" id="2_qmi1f"]
@@ -10,8 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cn8agg0dff18h" path="res://general/general_spawn/player_spawn.tscn" id="8_36vfp"]
 [ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="9_lu13m"]
 [ext_resource type="AudioStream" uid="uid://cw24ii4kfdylq" path="res://music/forest_02.mp3" id="10_xgv2r"]
-[ext_resource type="PackedScene" uid="uid://wulphhwlj8ho" path="res://enemies/skeleton_warrior/skeleton_warrior.tscn" id="11_8l6yd"]
-[ext_resource type="Script" uid="uid://dprf5hd51ltal" path="res://general/scripts/patrol_limit.gd" id="12_avr6y"]
+[ext_resource type="PackedScene" uid="uid://c2aiqfxf54cg7" path="res://shade/shades/glitched_shade/glitched_shade.tscn" id="11_jtvu8"]
 
 [sub_resource type="Gradient" id="Gradient_o526s"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -2883,16 +2882,5 @@ track = ExtResource("10_xgv2r")
 reverb = 1
 metadata/_custom_type_script = "uid://dsi7na4bldclj"
 
-[node name="SkeletonWarrior" parent="." instance=ExtResource("11_8l6yd")]
-position = Vector2(147, 225)
-
-[node name="PatrolLimit" type="Node2D" parent="SkeletonWarrior"]
-position = Vector2(-96, 0)
-script = ExtResource("12_avr6y")
-metadata/_custom_type_script = "uid://dprf5hd51ltal"
-
-[node name="PatrolLimit2" type="Node2D" parent="SkeletonWarrior"]
-position = Vector2(100, 13)
-script = ExtResource("12_avr6y")
-side = 2
-metadata/_custom_type_script = "uid://dprf5hd51ltal"
+[node name="GlitchedShade" parent="." instance=ExtResource("11_jtvu8")]
+position = Vector2(180, 221)

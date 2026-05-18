@@ -2,6 +2,7 @@ class_name SSDeath
 extends ShadeState
 
 @export var knockback_strength: float = 110.0
+@export var death_audio : AudioStream
 
 var vel_x: float = 0.0
 var duration: float = 0.0
@@ -9,6 +10,7 @@ var timer: float = 0.0
 
 func enter() -> void:
 	shade.play_animation(animation_name if animation_name else "death")
+	Audio.play_spatial_sound( death_audio, shade.global_position )
 
 	duration = shade.animation_player.current_animation_length
 	if duration <= 0.0:
@@ -22,6 +24,7 @@ func enter() -> void:
 	await shade.animation_player.animation_finished
 	shade.clear_persistent_shade()
 	shade.queue_free()
+	shade.clear_persistent_shade()
 
 func physics_update(delta: float) -> void:
 	timer += delta

@@ -2,9 +2,9 @@ class_name SSAttack
 extends ShadeState
 
 @export var attack_range: float = 42.0
+@export var attack_vertical_range: float = 24.0
 @export var move_speed: float = 90.0
 @export var cooldown: float = 1.4
-@export var attack_area: AttackArea
 @export var attack_animations: Array[String] = ["attack"]
 
 @export_range(0.0, 1.0) var move_stop_ratio: float = 0.35
@@ -36,8 +36,6 @@ func enter() -> void:
 
 	shade.velocity.x = move_speed * blackboard.dir
 
-	if attack_area:
-		attack_area.flip(blackboard.dir)
 
 func exit() -> void:
 	blackboard.can_decide = true

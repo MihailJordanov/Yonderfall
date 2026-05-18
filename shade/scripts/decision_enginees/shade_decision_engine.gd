@@ -2,12 +2,13 @@
 class_name ShadeDecisionEngine
 extends Node
 
-@export var idle_state: ShadeState
-@export var chase_state: ShadeState
-@export var jump_state: ShadeState
-@export var attack_state: SSAttack
-@export var stun_state: ShadeState
-@export var death_state: ShadeState
+@onready var idle_state: SSIdle = %SSIdle
+@onready var chase_state: SSChase = %SSChase
+@onready var attack_state: SSAttack = %SSAttack
+@onready var death_state: SSDeath = %SSDeath
+@onready var jump_state: SSJump = %SSJump
+@onready var stun_state: SSStun = %SSStun
+
 
 @export var x_epsilon: float = 8.0
 

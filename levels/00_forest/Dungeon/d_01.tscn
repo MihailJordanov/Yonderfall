@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cch8l8r4cggny"]
+[gd_scene load_steps=12 format=4 uid="uid://cch8l8r4cggny"]
 
 [ext_resource type="TileSet" uid="uid://mre05p3xygab" path="res://levels/tilesets/main_street.tres" id="1_gti87"]
 [ext_resource type="PackedScene" uid="uid://bhbrw7lh73x1f" path="res://levels/props/animated/torch.tscn" id="2_185as"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cn8agg0dff18h" path="res://general/general_spawn/player_spawn.tscn" id="6_b20by"]
 [ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="7_lbff1"]
 [ext_resource type="AudioStream" uid="uid://bvuoq71kx4occ" path="res://music/dungeon_02.mp3" id="8_2rt8j"]
+[ext_resource type="PackedScene" uid="uid://wulphhwlj8ho" path="res://enemies/skeleton_warrior/skeleton_warrior.tscn" id="9_c6154"]
+[ext_resource type="Script" uid="uid://dprf5hd51ltal" path="res://general/scripts/patrol_limit.gd" id="10_osk1v"]
+[ext_resource type="PackedScene" uid="uid://xetjam6s6dam" path="res://shade/shades/white_shade/white_shade.tscn" id="11_osk1v"]
 
 [node name="D01" type="Node2D"]
 
@@ -98,3 +101,20 @@ script = ExtResource("7_lbff1")
 track = ExtResource("8_2rt8j")
 reverb = 1
 metadata/_custom_type_script = "uid://dsi7na4bldclj"
+
+[node name="SkeletonWarrior" parent="." instance=ExtResource("9_c6154")]
+position = Vector2(425, 222)
+
+[node name="PatrolLimit" type="Node2D" parent="SkeletonWarrior"]
+position = Vector2(-96, 0)
+script = ExtResource("10_osk1v")
+metadata/_custom_type_script = "uid://dprf5hd51ltal"
+
+[node name="PatrolLimit2" type="Node2D" parent="SkeletonWarrior"]
+position = Vector2(180, 95)
+script = ExtResource("10_osk1v")
+side = 2
+metadata/_custom_type_script = "uid://dprf5hd51ltal"
+
+[node name="WhiteShade" parent="." instance=ExtResource("11_osk1v")]
+position = Vector2(567, 317)

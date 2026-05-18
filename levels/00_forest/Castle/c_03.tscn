@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://hco44nmcx7lc"]
+[gd_scene load_steps=14 format=4 uid="uid://hco44nmcx7lc"]
 
 [ext_resource type="Texture2D" uid="uid://dvbe4cinikixa" path="res://levels/backgrounds/Clouds/Clouds 1/1.png" id="1_2tcda"]
 [ext_resource type="Texture2D" uid="uid://dduyyxr7o5m1n" path="res://levels/backgrounds/Clouds/Clouds 1/2.png" id="2_a3kgk"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://cn8agg0dff18h" path="res://general/general_spawn/player_spawn.tscn" id="9_btg4r"]
 [ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="10_584ev"]
 [ext_resource type="AudioStream" uid="uid://26p12wkmv6od" path="res://music/adventure_01.mp3" id="11_73lta"]
-[ext_resource type="PackedScene" uid="uid://b0lk1pkdo6mb" path="res://general/ability_pickup/ability_pickup.tscn" id="12_w8i5n"]
 [ext_resource type="PackedScene" uid="uid://wulphhwlj8ho" path="res://enemies/skeleton_warrior/skeleton_warrior.tscn" id="13_5nkox"]
 [ext_resource type="Script" uid="uid://dprf5hd51ltal" path="res://general/scripts/patrol_limit.gd" id="14_xg0ty"]
 
@@ -130,10 +129,6 @@ script = ExtResource("10_584ev")
 track = ExtResource("11_73lta")
 reverb = 1
 metadata/_custom_type_script = "uid://dsi7na4bldclj"
-
-[node name="AbilityPickup" parent="." instance=ExtResource("12_w8i5n")]
-position = Vector2(308, 322)
-type = 1
 
 [node name="SkeletonWarrior" parent="." instance=ExtResource("13_5nkox")]
 position = Vector2(409, 555)

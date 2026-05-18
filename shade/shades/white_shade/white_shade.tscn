@@ -1,0 +1,584 @@
+[gd_scene load_steps=59 format=3 uid="uid://xetjam6s6dam"]
+
+[ext_resource type="Script" uid="uid://bfh53q3d4caig" path="res://shade/scripts/shade_types/white_shade.gd" id="1_i64yy"]
+[ext_resource type="Texture2D" uid="uid://tkk20h6pd0hi" path="res://shade/shades/white_shade/white_shade_sprites.png" id="2_i64yy"]
+[ext_resource type="Script" uid="uid://ge3vobctdr8l" path="res://general/scripts/attack_area.gd" id="3_vurlx"]
+[ext_resource type="Script" uid="uid://bcu5i735m7nue" path="res://general/scripts/damage_area.gd" id="4_lbe7b"]
+[ext_resource type="AudioStream" uid="uid://dchwc3hmcfft2" path="res://shade/shades/dark_shade/shade_hit_sfx.wav" id="5_xqyhy"]
+[ext_resource type="Script" uid="uid://cvuhqjq3sn1bg" path="res://shade/scripts/shade_state_machine.gd" id="6_kh38p"]
+[ext_resource type="Script" uid="uid://cp5lph55c3nvt" path="res://shade/scripts/states/ss_idle.gd" id="7_pfusx"]
+[ext_resource type="Script" uid="uid://citi7j43ta1pd" path="res://shade/scripts/states/ss_chase.gd" id="8_58lue"]
+[ext_resource type="Script" uid="uid://f38fkasrid3q" path="res://shade/scripts/states/ss_attack.gd" id="9_is2ml"]
+[ext_resource type="Script" uid="uid://cw2q3nv62hsc8" path="res://shade/scripts/states/ss_death.gd" id="10_5y7j2"]
+[ext_resource type="AudioStream" uid="uid://cha4ptbscyip5" path="res://shade/shades/dark_shade/shade_death_sfx.wav" id="11_1aybw"]
+[ext_resource type="Script" uid="uid://cq3b0whxqg8xw" path="res://shade/scripts/states/ss_jump.gd" id="11_n5jht"]
+[ext_resource type="Script" uid="uid://b0b5553u1knpm" path="res://shade/scripts/states/ss_stun.gd" id="12_wo56x"]
+[ext_resource type="Script" uid="uid://cu57e10clt4a7" path="res://enemies/scripts/sensors/edge_sensor.gd" id="13_kgmgl"]
+[ext_resource type="Script" uid="uid://bwyb45ikitk1a" path="res://enemies/scripts/sensors/player_sensor.gd" id="14_eo1vm"]
+[ext_resource type="Script" uid="uid://jnpoc7qh3ppy" path="res://enemies/scripts/enemy_hit_particles.gd" id="15_2fp1l"]
+[ext_resource type="Script" uid="uid://cki462eu6q51n" path="res://00_global/visual_effects/hit_particle_settings.gd" id="16_44w3c"]
+[ext_resource type="Script" uid="uid://bdu71wuxj2dmw" path="res://general/scripts/loot_dropper.gd" id="17_rh80a"]
+[ext_resource type="Script" uid="uid://chui2n8ilx1i0" path="res://shade/scripts/decision_enginees/shade_decision_engine.gd" id="18_fa64m"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dnyu0"]
+radius = 5.0
+height = 46.0
+
+[sub_resource type="Animation" id="Animation_3jlja"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_mvpoi"]
+resource_name = "attack"
+length = 0.6
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackArea")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.1],
+"method": &"activete"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40, 41]
+}
+
+[sub_resource type="Animation" id="Animation_ae7dn"]
+resource_name = "attack_2"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [48, 49, 50, 51]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackArea")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.099999994),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.1],
+"method": &"activete"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qg5bh"]
+resource_name = "attack_3"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [60, 61, 62]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackArea")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.099999994),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.1],
+"method": &"activete"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dnyu0"]
+resource_name = "chase"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_iyqwc"]
+resource_name = "death"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [72, 73, 74]
+}
+
+[sub_resource type="Animation" id="Animation_sfrpx"]
+resource_name = "fall"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [31]
+}
+
+[sub_resource type="Animation" id="Animation_id5wf"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_2mama"]
+resource_name = "jump"
+length = 0.45
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.06, 0.11, 0.17, 0.24, 0.33, 0.43),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29, 30, 31]
+}
+
+[sub_resource type="Animation" id="Animation_l0l7t"]
+resource_name = "run"
+length = 0.56
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21000001, 0.28, 0.35, 0.42000002, 0.48999998),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_mafwj"]
+resource_name = "stun"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [85]
+}
+
+[sub_resource type="Animation" id="Animation_ovel5"]
+resource_name = "walk"
+length = 0.7
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17, 18, 19]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0nqm1"]
+_data = {
+&"RESET": SubResource("Animation_3jlja"),
+&"attack": SubResource("Animation_mvpoi"),
+&"attack_2": SubResource("Animation_ae7dn"),
+&"attack_3": SubResource("Animation_qg5bh"),
+&"chase": SubResource("Animation_dnyu0"),
+&"death": SubResource("Animation_iyqwc"),
+&"fall": SubResource("Animation_sfrpx"),
+&"idle": SubResource("Animation_id5wf"),
+&"jump": SubResource("Animation_2mama"),
+&"run": SubResource("Animation_l0l7t"),
+&"stun": SubResource("Animation_mafwj"),
+&"walk": SubResource("Animation_ovel5")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88s1u"]
+size = Vector2(40, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2flpj"]
+size = Vector2(32, 49)
+
+[sub_resource type="Gradient" id="Gradient_dq0sk"]
+offsets = PackedFloat32Array(0.5068493, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uucha"]
+gradient = SubResource("Gradient_dq0sk")
+width = 4
+height = 4
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Resource" id="Resource_uucha"]
+script = ExtResource("16_44w3c")
+count = 24
+texture = SubResource("GradientTexture2D_uucha")
+metadata/_custom_type_script = "uid://cki462eu6q51n"
+
+[sub_resource type="Gradient" id="Gradient_i64yy"]
+offsets = PackedFloat32Array(0.5068493, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1aybw"]
+gradient = SubResource("Gradient_i64yy")
+width = 4
+height = 4
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Resource" id="Resource_ko73i"]
+script = ExtResource("16_44w3c")
+count = 12
+color = Color(0.5411765, 0.5411765, 1, 1)
+texture = SubResource("GradientTexture2D_1aybw")
+metadata/_custom_type_script = "uid://cki462eu6q51n"
+
+[sub_resource type="Gradient" id="Gradient_uucha"]
+offsets = PackedFloat32Array(0.5068493, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qpicr"]
+gradient = SubResource("Gradient_uucha")
+width = 4
+height = 4
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Resource" id="Resource_qpicr"]
+script = ExtResource("16_44w3c")
+count = 24
+texture = SubResource("GradientTexture2D_qpicr")
+metadata/_custom_type_script = "uid://cki462eu6q51n"
+
+[sub_resource type="Gradient" id="Gradient_vpnvx"]
+offsets = PackedFloat32Array(0.5068493, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7lkcl"]
+gradient = SubResource("Gradient_vpnvx")
+width = 2
+height = 2
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Resource" id="Resource_vpnvx"]
+script = ExtResource("16_44w3c")
+count = 12
+color = Color(1, 1, 1, 0.75686276)
+texture = SubResource("GradientTexture2D_7lkcl")
+metadata/_custom_type_script = "uid://cki462eu6q51n"
+
+[sub_resource type="Gradient" id="Gradient_ph5du"]
+offsets = PackedFloat32Array(0.5068493, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_id5wf"]
+gradient = SubResource("Gradient_ph5du")
+width = 4
+height = 4
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Resource" id="Resource_mvpoi"]
+script = ExtResource("16_44w3c")
+count = 16
+color = Color(0.8117647, 0.5411765, 1, 1)
+texture = SubResource("GradientTexture2D_id5wf")
+metadata/_custom_type_script = "uid://cki462eu6q51n"
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dnyu0"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_g371p"]
+offsets = PackedFloat32Array(0, 0.2986111, 1)
+colors = PackedColorArray(0.5176471, 0.047058824, 0.96862745, 1, 0.7172371, 0.7172371, 0.7172371, 0.61960787, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2mama"]
+gradient = SubResource("Gradient_g371p")
+width = 24
+height = 24
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_sfrpx"]
+offsets = PackedFloat32Array(0, 0.3490566, 0.6886792, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oox2s"]
+gradient = SubResource("Gradient_sfrpx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qi2bp"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(50, 80, 1)
+direction = Vector3(0, 0, 0)
+initial_velocity_max = 300.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.75
+scale_max = 1.25
+color_ramp = SubResource("GradientTexture1D_oox2s")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.049999975
+turbulence_enabled = true
+turbulence_initial_displacement_min = 0.10000149
+turbulence_initial_displacement_max = 0.2000015
+
+[sub_resource type="Gradient" id="Gradient_boad6"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i64yy"]
+gradient = SubResource("Gradient_boad6")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="WhiteShade" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_i64yy")
+metadata/_custom_type_script = "uid://cvay333hf8bqo"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -42)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("2_i64yy")
+hframes = 12
+vframes = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -23)
+shape = SubResource("CapsuleShape2D_dnyu0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_0nqm1")
+}
+
+[node name="AttackArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -25)
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("3_vurlx")
+damage = 5.0
+metadata/_custom_type_script = "uid://ge3vobctdr8l"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(20, 3)
+shape = SubResource("RectangleShape2D_88s1u")
+debug_color = Color(1, 0, 0.008024216, 0.41960785)
+
+[node name="DamageArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -1)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("4_lbe7b")
+audio = ExtResource("5_xqyhy")
+metadata/_custom_type_script = "uid://bcu5i735m7nue"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(0, -22.5)
+shape = SubResource("RectangleShape2D_2flpj")
+debug_color = Color(0.70196074, 0, 0.22511725, 0.41960785)
+
+[node name="ShadeStateMachine" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_kh38p")
+metadata/_custom_type_script = "uid://cvuhqjq3sn1bg"
+
+[node name="SSIdle" type="Node" parent="ShadeStateMachine"]
+unique_name_in_owner = true
+script = ExtResource("7_pfusx")
+animation_name = "idle"
+metadata/_custom_type_script = "uid://b7ibbpyblrsky"
+
+[node name="SSChase" type="Node" parent="ShadeStateMachine"]
+unique_name_in_owner = true
+script = ExtResource("8_58lue")
+chase_speed = 150.0
+metadata/_custom_type_script = "uid://b7ibbpyblrsky"
+
+[node name="SSAttack" type="Node" parent="ShadeStateMachine"]
+unique_name_in_owner = true
+script = ExtResource("9_is2ml")
+move_speed = 45.0
+cooldown = 0.1
+attack_animations = Array[String](["attack", "attack_2", "attack_3"])
+metadata/_custom_type_script = "uid://b7ibbpyblrsky"
+
+[node name="SSDeath" type="Node" parent="ShadeStateMachine"]
+unique_name_in_owner = true
+script = ExtResource("10_5y7j2")
+death_audio = ExtResource("11_1aybw")
+metadata/_custom_type_script = "uid://b7ibbpyblrsky"
+
+[node name="SSJump" type="Node" parent="ShadeStateMachine"]
+unique_name_in_owner = true
+script = ExtResource("11_n5jht")
+metadata/_custom_type_script = "uid://b7ibbpyblrsky"
+
+[node name="SSStun" type="Node" parent="ShadeStateMachine"]
+unique_name_in_owner = true
+script = ExtResource("12_wo56x")
+metadata/_custom_type_script = "uid://b7ibbpyblrsky"
+
+[node name="EdgeSensor" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(7, -5)
+target_position = Vector2(0, 15)
+script = ExtResource("13_kgmgl")
+metadata/_custom_type_script = "uid://cu57e10clt4a7"
+
+[node name="WallSensor" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -8)
+target_position = Vector2(30, 0)
+collision_mask = 3
+
+[node name="PlayerSensor" type="Area2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("14_eo1vm")
+search_duration = 3.0
+metadata/_custom_type_script = "uid://bwyb45ikitk1a"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerSensor"]
+position = Vector2(0, -37)
+polygon = PackedVector2Array(0, 0, 256, -128, 256, 128)
+
+[node name="EnemyHitParticles" type="Marker2D" parent="."]
+position = Vector2(0, -7)
+script = ExtResource("15_2fp1l")
+hit_particles = Array[ExtResource("16_44w3c")]([SubResource("Resource_uucha"), SubResource("Resource_ko73i")])
+death_particles = Array[ExtResource("16_44w3c")]([SubResource("Resource_qpicr"), SubResource("Resource_vpnvx"), SubResource("Resource_mvpoi")])
+metadata/_custom_type_script = "uid://jnpoc7qh3ppy"
+
+[node name="LootDropper" type="Marker2D" parent="."]
+position = Vector2(0, -12)
+script = ExtResource("17_rh80a")
+metadata/_custom_type_script = "uid://bdu71wuxj2dmw"
+
+[node name="ShadeDecisionEngine" type="Node2D" parent="."]
+script = ExtResource("18_fa64m")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_dnyu0")
+position = Vector2(-17, -24)
+amount = 30
+texture = SubResource("GradientTexture2D_2mama")
+randomness = 0.85
+visibility_rect = Rect2(-150, -150, 300, 300)
+process_material = SubResource("ParticleProcessMaterial_qi2bp")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -24)
+color = Color(1, 0.8, 0.56078434, 1)
+texture = SubResource("GradientTexture2D_i64yy")

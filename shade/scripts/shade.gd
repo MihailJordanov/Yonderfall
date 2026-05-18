@@ -19,9 +19,9 @@ signal direction_changed(new_dir: float)
 @onready var ss_attack: SSAttack = %SSAttack
 
 
-@export var gravity: float = 980.0
-@export var max_fall_velocity: float = 600.0
-@export var max_hp: float = 8.0
+var gravity: float = 980.0
+var max_fall_velocity: float = 600.0
+var max_hp: float = 10.0
 var scene_uid: String = ""
 
 var wall_sensor_offset_x: float = 0.0
@@ -35,6 +35,7 @@ func _ready() -> void:
 		scene_uid = SceneManager.current_scene_uid
 	else:
 		scene_uid = get_tree().current_scene.scene_file_path 
+	
 	
 	hp = max_hp
 	blackboard.health = hp
@@ -122,14 +123,3 @@ func clear_persistent_shade() -> void:
 	if save_manager and save_manager.has_method("clear_shade_for_scene"):
 		save_manager.clear_shade_for_scene(scene_uid)
 		
-
-#func set_up_as_player() -> void:
-#	var player: Player = get_tree().get_first_node_in_group("Player")
-#	
-#	if not player:
-#		return
-#
-#	max_hp = player.max_hp / 2
-#	attack_area.damage = player.attack_area.damage
-#	ss_chase.chase_speed = player.move_speed * 1.2
-#	pass

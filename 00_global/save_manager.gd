@@ -11,8 +11,9 @@ var save_data : Dictionary
 var discovered_areas : Array = []
 var persistent_data : Dictionary = {}
 
-const SHADOW_SCENE = preload("uid://cv82dnhup5fxu")
-
+const DARK_SHADE_SCENE = preload("uid://cv82dnhup5fxu")
+const WHITE_SHADE_SCENE = preload("uid://xetjam6s6dam")
+const GLICHED_SHADE_SCENE = preload("uid://c2aiqfxf54cg7")
 
 func _ready() -> void:
 	load_configuration()
@@ -77,6 +78,7 @@ func save_game() -> void:
  	}
 	var save_file = FileAccess.open( get_file_name( current_slot ), FileAccess.WRITE )
 	save_file.store_line( JSON.stringify( save_data ) )
+	save_file.close()
 	pass
 	
 func load_game( slot : int ) -> void:
@@ -97,7 +99,6 @@ func load_game( slot : int ) -> void:
 	
 	await SceneManager.new_scene_ready
 	setup_player()
-	spawn_shadow_for_scene(scene_path)
 	pass
 	
 func setup_player() -> void:
@@ -132,7 +133,7 @@ func is_area_discovered( scene_uid : String ) -> bool:
 func _on_scene_entered( scene_uid : String ) -> void:
 	if discovered_areas.has( scene_uid ):
 		await get_tree().process_frame
-		spawn_shadow_for_scene(scene_uid)
+		spawn_shade_for_scene(scene_uid)
 		return
 	else:
 		discovered_areas.append( scene_uid )
@@ -165,27 +166,30 @@ func load_configuration() -> void:
 
 #endregion
 
-#region Shadow loginc
+#region Shade loginc
 
-func get_scene_shadow_key(scene_uid : String) -> String:
-	return "shadow/" + scene_uid
+func get_scene_shade_key(scene_uid : String) -> String:
+	return "shade/" + scene_uid
 
 
-func save_shadow_position(scene_uid : String, pos : Vector2) -> void:
-	var key : String = get_scene_shadow_key(scene_uid)
+func create_and_save_shade(scene_uid: String, pos: Vector2, shade_type: String = "dark") -> void:
+	var key: String = get_scene_shade_key(scene_uid)
+
 	persistent_data[key] = {
 		"x": pos.x,
-		"y": pos.y
+		"y": pos.y,
+		"type": shade_type
 	}
+
 	write_current_save_file()
 
 
-func has_shadow_for_scene(scene_uid : String) -> bool:
-	return persistent_data.has(get_scene_shadow_key(scene_uid))
+func has_shade_for_scene(scene_uid : String) -> bool:
+	return persistent_data.has(get_scene_shade_key(scene_uid))
 
 
-func spawn_shadow_for_scene(scene_uid : String) -> void:
-	var key : String = get_scene_shadow_key(scene_uid)
+func spawn_shade_for_scene(scene_uid : String) -> void:
+	var key : String = get_scene_shade_key(scene_uid)
 	
 	if not persistent_data.has(key):
 		return
@@ -199,10 +203,11 @@ func spawn_shadow_for_scene(scene_uid : String) -> void:
 	
 	var data : Dictionary = persistent_data[key]
 	
-	var shadow : Shade = SHADOW_SCENE.instantiate()
-	current_scene.add_child(shadow)
+	var shade_type: String = data.get("type", "dark")
+	var shade: Shade = get_shade_scene(shade_type).instantiate()
+	current_scene.add_child(shade)
 	
-	shadow.global_position = Vector2(
+	shade.global_position = Vector2(
 		data.get("x", 0),
 		data.get("y", 0)
 	)
@@ -215,4 +220,23 @@ func write_current_save_file() -> void:
 	save_file.store_line(JSON.stringify(save_data))
 	save_file.close()
 	
+
+func clear_shade_for_scene(scene_uid: String) -> void:
+	var key: String = get_scene_shade_key(scene_uid)
+
+	if persistent_data.has(key):
+		persistent_data.erase(key)
+		write_current_save_file()	
+		
+func get_shade_scene(shade_type: String) -> PackedScene:
+	match shade_type:
+		"white":
+			return WHITE_SHADE_SCENE
+		"dark":
+			return DARK_SHADE_SCENE
+		"gliched":
+			return GLICHED_SHADE_SCENE
+		_:
+			return DARK_SHADE_SCENE
+
 #endregion
