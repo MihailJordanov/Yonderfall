@@ -18,7 +18,7 @@ var current_state: ShadeState
 func setup(s: Shade, b: ShadeBlackboard) -> void:
 	shade = s
 	blackboard = b
-
+	
 func decide() -> ShadeState:
 	if blackboard.damage_source:
 		if blackboard.health <= 0:
@@ -34,6 +34,9 @@ func decide() -> ShadeState:
 	if attack_state and attack_state.can_attack():
 		return attack_state
 
+	if attack_state and attack_state.is_in_range():
+		return idle_state
+
 	if jump_state is SSJump and jump_state.can_jump():
 		return jump_state
 
@@ -41,7 +44,7 @@ func decide() -> ShadeState:
 		return idle_state
 
 	return chase_state
-
+	
 func _is_close_to_target_x() -> bool:
 	if not blackboard.target:
 		return false

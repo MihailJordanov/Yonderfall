@@ -13,6 +13,7 @@ var timer: float = 0.0
 var duration: float = 0.0
 var on_cooldown: bool = false
 var combo_index: int = 0
+var attack_epsilon: float = 10.0
 
 func enter() -> void:
 	var anim_name: String = attack_animations[combo_index]
@@ -65,8 +66,8 @@ func physics_update(delta: float) -> void:
 		blackboard.can_decide = true
 
 func can_attack() -> bool:
-	return blackboard.distance_to_target <= attack_range and not on_cooldown
-
+		return blackboard.distance_to_target <= attack_range and not on_cooldown
+	
 func is_in_range() -> bool:
 	return blackboard.distance_to_target <= attack_range
 

@@ -21,7 +21,6 @@ func enter() -> void:
 
 	await shade.animation_player.animation_finished
 	shade.clear_persistent_shade()
-	shade.defeated.emit(shade.scene_uid)
 	shade.queue_free()
 
 func physics_update(delta: float) -> void:

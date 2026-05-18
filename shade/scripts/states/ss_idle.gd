@@ -5,7 +5,6 @@ func enter() -> void:
 	shade.play_animation(animation_name if animation_name else "idle")
 	shade.velocity.x = 0.0
 
-	print(blackboard.target)
 	if blackboard.target:
 		var dir: float = sign(
 			blackboard.target.global_position.x - shade.global_position.x

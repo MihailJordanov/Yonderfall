@@ -20,11 +20,8 @@ func can_jump() -> bool:
 	if Time.get_ticks_msec() * 0.001 < blackboard.next_jump_time:
 		return false
 
-	if not shade.has_wall_in_front():
-		return false
-
-	var dx : float = blackboard.target.global_position.x - shade.global_position.x
-	var dy : float = blackboard.target.global_position.y - shade.global_position.y
+	var dx: float = blackboard.target.global_position.x - shade.global_position.x
+	var dy: float = blackboard.target.global_position.y - shade.global_position.y
 
 	if sign(dx) != blackboard.dir:
 		return false
@@ -35,7 +32,18 @@ func can_jump() -> bool:
 	if absf(dy) > max_target_dy:
 		return false
 
-	return true
+	var wall_in_front : bool = shade.has_wall_in_front()
+	var target_is_higher : float = dy < -24.0
+	var target_is_grounded : bool = false
+
+	if blackboard.target is CharacterBody2D:
+		target_is_grounded = blackboard.target.is_on_floor()
+
+	if target_is_higher and target_is_grounded:
+		return not wall_in_front
+
+	return wall_in_front
+	
 
 func enter() -> void:
 	started_fall = false

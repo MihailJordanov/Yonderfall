@@ -3,7 +3,6 @@
 class_name Shade
 extends CharacterBody2D
 
-signal defeated( scene_uid: String )
 signal direction_changed(new_dir: float)
 
 @onready var sprite: Sprite2D = %Sprite2D
@@ -16,12 +15,17 @@ signal direction_changed(new_dir: float)
 @onready var state_machine: ShadeStateMachine = %ShadeStateMachine
 @onready var decision_engine: ShadeDecisionEngine = $ShadeDecisionEngine
 
+@onready var ss_chase: SSChase = %SSChase
+@onready var ss_attack: SSAttack = %SSAttack
+
+
 @export var gravity: float = 980.0
 @export var max_fall_velocity: float = 600.0
 @export var max_hp: float = 8.0
 var scene_uid: String = ""
 
-var wall_sensor_offset_x: float = 30.0
+var wall_sensor_offset_x: float = 0.0
+var wall_sensor_length: float = 30.0
 
 var hp: float = 0.0
 var blackboard: ShadeBlackboard = ShadeBlackboard.new()
@@ -44,9 +48,11 @@ func _ready() -> void:
 
 	if wall_sensor:
 		wall_sensor.position.x = wall_sensor_offset_x
+		wall_sensor.target_position = Vector2(wall_sensor_length, 0.0)
 
 	state_machine.setup(self, blackboard)
 	decision_engine.setup(self, blackboard)
+	
 
 func _physics_process(delta: float) -> void:
 	_update_target_info()
@@ -83,9 +89,8 @@ func change_dir(dir: float) -> void:
 		attack_area.flip(blackboard.dir)
 
 	if wall_sensor:
-		wall_sensor.position.x = (
-			absf(wall_sensor.position.x) * blackboard.dir
-		)
+		wall_sensor.target_position.x = absf(wall_sensor.target_position.x) * blackboard.dir
+		wall_sensor.force_raycast_update()
 		
 		
 func has_wall_in_front() -> bool:
@@ -116,3 +121,15 @@ func clear_persistent_shade() -> void:
 	var save_manager := get_node_or_null("/root/SaveManager")
 	if save_manager and save_manager.has_method("clear_shade_for_scene"):
 		save_manager.clear_shade_for_scene(scene_uid)
+		
+
+#func set_up_as_player() -> void:
+#	var player: Player = get_tree().get_first_node_in_group("Player")
+#	
+#	if not player:
+#		return
+#
+#	max_hp = player.max_hp / 2
+#	attack_area.damage = player.attack_area.damage
+#	ss_chase.chase_speed = player.move_speed * 1.2
+#	pass

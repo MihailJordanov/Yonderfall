@@ -1,7 +1,7 @@
 [gd_scene load_steps=53 format=3 uid="uid://cv82dnhup5fxu"]
 
 [ext_resource type="Script" uid="uid://cvay333hf8bqo" path="res://shade/scripts/shade.gd" id="1_gboen"]
-[ext_resource type="Texture2D" uid="uid://dobfvlosec57r" path="res://shade/shade_sprites.png" id="1_so0qq"]
+[ext_resource type="Texture2D" uid="uid://cuhm88xlsdtdt" path="res://shade/shade_sprites.png" id="1_so0qq"]
 [ext_resource type="Script" uid="uid://ge3vobctdr8l" path="res://general/scripts/attack_area.gd" id="2_45572"]
 [ext_resource type="Script" uid="uid://bcu5i735m7nue" path="res://general/scripts/damage_area.gd" id="3_hlohf"]
 [ext_resource type="AudioStream" uid="uid://dchwc3hmcfft2" path="res://shade/shade_hit_sfx.wav" id="4_tso25"]
@@ -220,7 +220,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_l0l7t"]
 resource_name = "run"
-length = 0.8
+length = 0.56
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -230,7 +230,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21000001, 0.28, 0.35, 0.42000002, 0.48999998),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [12, 13, 14, 15, 16, 17, 18, 19]
@@ -412,7 +412,6 @@ turbulence_initial_displacement_max = 0.2000015
 collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_gboen")
-max_hp = 3.0
 metadata/_custom_type_script = "uid://cvay333hf8bqo"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -480,6 +479,8 @@ metadata/_custom_type_script = "uid://b7ibbpyblrsky"
 [node name="SSAttack" type="Node" parent="ShadeStateMachine"]
 unique_name_in_owner = true
 script = ExtResource("9_ksbbx")
+cooldown = 0.3
+attack_animations = Array[String](["attack", "attack_2", "attack_3"])
 metadata/_custom_type_script = "uid://b7ibbpyblrsky"
 
 [node name="SSDeath" type="Node" parent="ShadeStateMachine"]
@@ -508,17 +509,12 @@ metadata/_custom_type_script = "uid://cu57e10clt4a7"
 unique_name_in_owner = true
 position = Vector2(0, -8)
 target_position = Vector2(30, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="WallSensor"]
-libraries = {
-&"": SubResource("AnimationLibrary_0nqm1")
-}
+collision_mask = 3
 
 [node name="PlayerSensor" type="Area2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("14_6q0fn")
 search_duration = 3.0
-use_audio_sensor = false
 metadata/_custom_type_script = "uid://bwyb45ikitk1a"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerSensor"]
