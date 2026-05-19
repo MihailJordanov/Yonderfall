@@ -1,11 +1,11 @@
 class_name SSJump
 extends ShadeState
 
-@export var jump_velocity: float = -450.0
-@export var forward_speed: float = 95.0
-@export var jump_cooldown: float = 0.65
-@export var min_target_dx: float = 32.0
-@export var max_target_dy: float = 96.0
+var jump_velocity: float = -450.0
+var forward_speed: float = 95.0
+var jump_cooldown: float = 0.65
+var min_target_dx: float = 32.0
+var max_target_dy: float = 96.0
 @export var fall_animation_name: String = "fall"
 
 var started_fall: bool = false
@@ -52,6 +52,7 @@ func enter() -> void:
 
 	if blackboard.target:
 		shade.change_dir(sign(blackboard.target.global_position.x - shade.global_position.x))
+	
 
 	shade.velocity.y = jump_velocity
 	shade.velocity.x = blackboard.dir * forward_speed

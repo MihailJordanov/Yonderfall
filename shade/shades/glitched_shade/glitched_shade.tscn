@@ -1,19 +1,20 @@
-[gd_scene load_steps=56 format=3 uid="uid://c2aiqfxf54cg7"]
+[gd_scene load_steps=57 format=3 uid="uid://c2aiqfxf54cg7"]
 
 [ext_resource type="Script" uid="uid://d14irm8m1t7te" path="res://shade/scripts/shade_types/glitched_shade.gd" id="1_fjlmd"]
 [ext_resource type="Shader" uid="uid://bea6mhmlpvkjd" path="res://shade/shades/glitched_shade/digital_gliche.gdshader" id="2_yyijh"]
 [ext_resource type="Texture2D" uid="uid://cleh6gxgkypvb" path="res://shade/shades/glitched_shade/glitched_shade.png" id="3_fjlmd"]
 [ext_resource type="Script" uid="uid://ge3vobctdr8l" path="res://general/scripts/attack_area.gd" id="4_82eyk"]
 [ext_resource type="Script" uid="uid://bcu5i735m7nue" path="res://general/scripts/damage_area.gd" id="5_16q2q"]
-[ext_resource type="AudioStream" uid="uid://dchwc3hmcfft2" path="res://shade/shades/dark_shade/shade_hit_sfx.wav" id="6_x40vs"]
+[ext_resource type="AudioStream" uid="uid://dq5vpmtxanttf" path="res://shade/shades/glitched_shade/glitched_shade_hit.wav" id="6_5rner"]
 [ext_resource type="Script" uid="uid://cvuhqjq3sn1bg" path="res://shade/scripts/shade_state_machine.gd" id="7_vurb5"]
 [ext_resource type="Script" uid="uid://cp5lph55c3nvt" path="res://shade/scripts/states/ss_idle.gd" id="8_8f6d8"]
 [ext_resource type="Script" uid="uid://citi7j43ta1pd" path="res://shade/scripts/states/ss_chase.gd" id="9_jarm5"]
 [ext_resource type="Script" uid="uid://f38fkasrid3q" path="res://shade/scripts/states/ss_attack.gd" id="10_3g6ks"]
 [ext_resource type="Script" uid="uid://cw2q3nv62hsc8" path="res://shade/scripts/states/ss_death.gd" id="11_th1ea"]
 [ext_resource type="Script" uid="uid://cq3b0whxqg8xw" path="res://shade/scripts/states/ss_jump.gd" id="12_1u3my"]
-[ext_resource type="AudioStream" uid="uid://baeaipqeohuii" path="res://shade/shades/glitched_shade/gliched_shade_death.wav" id="12_5rner"]
+[ext_resource type="AudioStream" uid="uid://c4umurvnq68jg" path="res://shade/shades/glitched_shade/glliched_shade_death.wav" id="12_5j1vi"]
 [ext_resource type="Script" uid="uid://b0b5553u1knpm" path="res://shade/scripts/states/ss_stun.gd" id="13_118yb"]
+[ext_resource type="AudioStream" uid="uid://cn3sa0ebasc34" path="res://shade/shades/glitched_shade/glichted_shade_teleport.wav" id="14_5j1vi"]
 [ext_resource type="Script" uid="uid://cu57e10clt4a7" path="res://enemies/scripts/sensors/edge_sensor.gd" id="14_xpojr"]
 [ext_resource type="Script" uid="uid://bwyb45ikitk1a" path="res://enemies/scripts/sensors/player_sensor.gd" id="15_jpk2o"]
 [ext_resource type="Script" uid="uid://jnpoc7qh3ppy" path="res://enemies/scripts/enemy_hit_particles.gd" id="16_mhky0"]
@@ -450,7 +451,7 @@ position = Vector2(0, -25)
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("4_82eyk")
-damage = 0.0
+damage = 3.0
 metadata/_custom_type_script = "uid://ge3vobctdr8l"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
@@ -465,7 +466,7 @@ position = Vector2(0, -1)
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("5_16q2q")
-audio = ExtResource("6_x40vs")
+audio = ExtResource("6_5rner")
 metadata/_custom_type_script = "uid://bcu5i735m7nue"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
@@ -502,7 +503,7 @@ metadata/_custom_type_script = "uid://b7ibbpyblrsky"
 [node name="SSDeath" type="Node" parent="ShadeStateMachine"]
 unique_name_in_owner = true
 script = ExtResource("11_th1ea")
-death_audio = ExtResource("12_5rner")
+death_audio = ExtResource("12_5j1vi")
 metadata/_custom_type_script = "uid://b7ibbpyblrsky"
 
 [node name="SSJump" type="Node" parent="ShadeStateMachine"]
@@ -552,6 +553,7 @@ metadata/_custom_type_script = "uid://bdu71wuxj2dmw"
 
 [node name="ShadeDecisionEngine" type="Node2D" parent="."]
 script = ExtResource("19_fjlmd")
+teleport_audio = ExtResource("14_5j1vi")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("ShaderMaterial_fjlmd")

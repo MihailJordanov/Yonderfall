@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://ciuac7sd14b6r"]
+[gd_scene load_steps=29 format=4 uid="uid://ciuac7sd14b6r"]
 
 [ext_resource type="Material" uid="uid://br3ee7g5souf1" path="res://materials_and_shaders/fog_fade_material.tres" id="1_lxo52"]
 [ext_resource type="Texture2D" uid="uid://c2jjhvttxuj1" path="res://levels/tilesets/sprites/light_stream.jpg" id="2_qmi1f"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://cn8agg0dff18h" path="res://general/general_spawn/player_spawn.tscn" id="8_36vfp"]
 [ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="9_lu13m"]
 [ext_resource type="AudioStream" uid="uid://cw24ii4kfdylq" path="res://music/forest_02.mp3" id="10_xgv2r"]
-[ext_resource type="PackedScene" uid="uid://c2aiqfxf54cg7" path="res://shade/shades/glitched_shade/glitched_shade.tscn" id="11_jtvu8"]
 
 [sub_resource type="Gradient" id="Gradient_o526s"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -2633,7 +2632,7 @@ turbulence_enabled = true
 turbulence_initial_displacement_min = 0.10000149
 turbulence_initial_displacement_max = 0.2000015
 
-[node name="F02" type="Node2D"]
+[node name="F01" type="Node2D"]
 
 [node name="BGParallaxLayers" type="Node2D" parent="."]
 
@@ -2881,6 +2880,3 @@ script = ExtResource("9_lu13m")
 track = ExtResource("10_xgv2r")
 reverb = 1
 metadata/_custom_type_script = "uid://dsi7na4bldclj"
-
-[node name="GlitchedShade" parent="." instance=ExtResource("11_jtvu8")]
-position = Vector2(180, 221)

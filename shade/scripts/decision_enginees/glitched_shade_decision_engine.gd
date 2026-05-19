@@ -5,6 +5,7 @@ extends ShadeDecisionEngine
 @export var glitch_interval_max: float = 1.2
 @export var glitch_distance_min: float = 70.0
 @export var glitch_distance_max: float = 90.0
+@export var teleport_audio : AudioStream
 
 var glitch_timer: float = 0.0
 
@@ -51,6 +52,7 @@ func _try_glitch_teleport() -> void:
 
 	if not shade.test_move(shade.global_transform, motion):
 		shade.global_position += motion
+		Audio.play_spatial_sound( teleport_audio, shade.global_position )
 		
 func _reset_glitch_timer() -> void:
 	glitch_timer = randf_range(
