@@ -456,7 +456,7 @@ metadata/_custom_type_script = "uid://ciu2m1tlank5u"
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 16
+collision_mask = 272
 script = ExtResource("20_47sw2")
 damage = 2.0
 metadata/_custom_type_script = "uid://ge3vobctdr8l"

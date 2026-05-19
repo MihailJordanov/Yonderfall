@@ -2597,7 +2597,7 @@ height = 256
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
-[node name="F02" type="Node2D"]
+[node name="F03" type="Node2D"]
 
 [node name="BGParallaxLayers" type="Node2D" parent="."]
 

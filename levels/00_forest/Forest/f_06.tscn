@@ -1,0 +1,162 @@
+[gd_scene load_steps=16 format=4 uid="uid://k3os2yh24sdr"]
+
+[ext_resource type="Texture2D" uid="uid://c2jjhvttxuj1" path="res://levels/tilesets/sprites/light_stream.jpg" id="1_rj1o7"]
+[ext_resource type="TileSet" uid="uid://mre05p3xygab" path="res://levels/tilesets/main_street.tres" id="2_csek1"]
+[ext_resource type="PackedScene" uid="uid://dv28bqpemmsjj" path="res://levels/props/animated/plant.tscn" id="3_lfltu"]
+[ext_resource type="Script" uid="uid://i0mj0vycwybm" path="res://general/scripts/level_bounds.gd" id="4_dmh17"]
+[ext_resource type="PackedScene" uid="uid://dx6od3nsgcgi8" path="res://general/level_transition/level_transition.tscn" id="5_qd7r5"]
+[ext_resource type="PackedScene" uid="uid://cn8agg0dff18h" path="res://general/general_spawn/player_spawn.tscn" id="6_fwogy"]
+[ext_resource type="Script" uid="uid://dsi7na4bldclj" path="res://music/music_audio_trigger.gd" id="7_mdp7d"]
+[ext_resource type="AudioStream" uid="uid://cw24ii4kfdylq" path="res://music/forest_02.mp3" id="8_50ujw"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ygy8q"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o526s"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_g371p"]
+colors = PackedColorArray(1.328688, 1.8247963, 0.99329084, 1, 0.72156864, 1, 0.53333336, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_var1j"]
+gradient = SubResource("Gradient_g371p")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_var1j"]
+offsets = PackedFloat32Array(0, 0.3490566, 0.6886792, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oox2s"]
+gradient = SubResource("Gradient_var1j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o526s"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(400, 200, 1)
+direction = Vector3(0, 0, 0)
+initial_velocity_max = 300.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.75
+scale_max = 1.25
+color_ramp = SubResource("GradientTexture1D_oox2s")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.049999975
+turbulence_enabled = true
+turbulence_initial_displacement_min = 0.10000149
+turbulence_initial_displacement_max = 0.2000015
+
+[node name="F06" type="Node2D"]
+
+[node name="BGParallaxLayers" type="Node2D" parent="."]
+
+[node name="Parallax2D9Foregroudn" type="Parallax2D" parent="BGParallaxLayers"]
+scroll_scale = Vector2(1.2, 1.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="BGParallaxLayers/Parallax2D9Foregroudn"]
+modulate = Color(1.1638972, 0.9554805, 0.3664772, 0.17254902)
+z_index = 10
+material = SubResource("CanvasItemMaterial_ygy8q")
+position = Vector2(152.51912, -163.06711)
+rotation = 0.12566371
+scale = Vector2(0.5202789, 1.1048387)
+texture = ExtResource("1_rj1o7")
+offset = Vector2(0, 256)
+
+[node name="Sprite2D3" type="Sprite2D" parent="BGParallaxLayers/Parallax2D9Foregroudn"]
+modulate = Color(1.1638972, 0.9554805, 0.3664772, 0.17254902)
+z_index = 10
+material = SubResource("CanvasItemMaterial_ygy8q")
+position = Vector2(328, -194.00003)
+rotation = 0.26011616
+scale = Vector2(0.8220261, 1.0389181)
+texture = ExtResource("1_rj1o7")
+offset = Vector2(0, 256)
+
+[node name="Sprite2D7" type="Sprite2D" parent="BGParallaxLayers/Parallax2D9Foregroudn"]
+modulate = Color(1.1638972, 0.9554805, 0.3664772, 0.17254902)
+z_index = 10
+material = SubResource("CanvasItemMaterial_ygy8q")
+position = Vector2(198, -314)
+rotation = 0.23675221
+scale = Vector2(1.2855321, 1.1067322)
+texture = ExtResource("1_rj1o7")
+offset = Vector2(0, 256)
+
+[node name="Sprite2D8" type="Sprite2D" parent="BGParallaxLayers/Parallax2D9Foregroudn"]
+modulate = Color(1.1638972, 0.9554805, 0.3664772, 0.17254902)
+z_index = 10
+material = SubResource("CanvasItemMaterial_ygy8q")
+position = Vector2(271, -285)
+rotation = 0.34508651
+scale = Vector2(1.0401605, 1.1530416)
+texture = ExtResource("1_rj1o7")
+offset = Vector2(0, 256)
+
+[node name="Parallax2D6" type="Parallax2D" parent="BGParallaxLayers"]
+z_index = -20
+scroll_scale = Vector2(0, 0)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="BGParallaxLayers/Parallax2D6"]
+tile_map_data = PackedByteArray("AAD9/wAAAQAdAAcAAAD9/wEAAQAdAAgAAAD9/wIAAQAdAAkAAAD9/wMAAQAdAAoAAAD9/wQAAQAdAAsAAAD9/wUAAQAdAAwAAAD9/wYAAQAdAA0AAAD9/wcAAQAdAA4AAAD+/wAAAQAdAAcAAAD+/wEAAQAdAAgAAAD+/wIAAQAdAAkAAAD+/wMAAQAdAAoAAAD+/wQAAQAdAAsAAAD+/wUAAQAdAAwAAAD+/wYAAQAdAA0AAAD+/wcAAQAdAA4AAAD//wAAAQAdAAcAAAD//wEAAQAdAAgAAAD//wIAAQAdAAkAAAD//wMAAQAdAAoAAAD//wQAAQAdAAsAAAD//wUAAQAdAAwAAAD//wYAAQAdAA0AAAD//wcAAQAdAA4AAAAAAAAAAQAdAAcAAAAAAAEAAQAdAAgAAAAAAAIAAQAdAAkAAAAAAAMAAQAdAAoAAAAAAAQAAQAdAAsAAAAAAAUAAQAdAAwAAAAAAAYAAQAdAA0AAAAAAAcAAQAdAA4AAAABAAAAAQAdAAcAAAABAAEAAQAdAAgAAAABAAIAAQAdAAkAAAABAAMAAQAdAAoAAAABAAQAAQAdAAsAAAABAAUAAQAdAAwAAAABAAYAAQAdAA0AAAABAAcAAQAdAA4AAAACAAAAAQAdAAcAAAACAAEAAQAdAAgAAAACAAIAAQAdAAkAAAACAAMAAQAdAAoAAAACAAQAAQAdAAsAAAACAAUAAQAdAAwAAAACAAYAAQAdAA0AAAACAAcAAQAdAA4AAAADAAAAAQAdAAcAAAADAAEAAQAdAAgAAAADAAIAAQAdAAkAAAADAAMAAQAdAAoAAAADAAQAAQAdAAsAAAADAAUAAQAdAAwAAAADAAYAAQAdAA0AAAADAAcAAQAdAA4AAAAEAAAAAQAdAAcAAAAEAAEAAQAdAAgAAAAEAAIAAQAdAAkAAAAEAAMAAQAdAAoAAAAEAAQAAQAdAAsAAAAEAAUAAQAdAAwAAAAEAAYAAQAdAA0AAAAEAAcAAQAdAA4AAAAFAAAAAQAdAAcAAAAFAAEAAQAdAAgAAAAFAAIAAQAdAAkAAAAFAAMAAQAdAAoAAAAFAAQAAQAdAAsAAAAFAAUAAQAdAAwAAAAFAAYAAQAdAA0AAAAFAAcAAQAdAA4AAAAGAAAAAQAdAAcAAAAGAAEAAQAdAAgAAAAGAAIAAQAdAAkAAAAGAAMAAQAdAAoAAAAGAAQAAQAdAAsAAAAGAAUAAQAdAAwAAAAGAAYAAQAdAA0AAAAGAAcAAQAdAA4AAAAHAAAAAQAdAAcAAAAHAAEAAQAdAAgAAAAHAAIAAQAdAAkAAAAHAAMAAQAdAAoAAAAHAAYAAQAdAA0AAAAHAAcAAQAdAA4AAAAIAAAAAQAdAAcAAAAIAAEAAQAdAAgAAAAIAAIAAQAdAAkAAAAIAAMAAQAdAAoAAAAIAAQAAQAdAAsAAAAIAAUAAQAdAAwAAAAIAAYAAQAdAA0AAAAIAAcAAQAdAA4AAAAJAAAAAQAdAAcAAAAJAAEAAQAdAAgAAAAJAAIAAQAdAAkAAAAJAAMAAQAdAAoAAAAJAAQAAQAdAAsAAAAJAAUAAQAdAAwAAAAJAAYAAQAdAA0AAAAJAAcAAQAdAA4AAAAKAAAAAQAdAAcAAAAKAAEAAQAdAAgAAAAKAAIAAQAdAAkAAAAKAAMAAQAdAAoAAAAKAAQAAQAdAAsAAAAKAAUAAQAdAAwAAAAKAAYAAQAdAA0AAAAKAAcAAQAdAA4AAAALAAAAAQAdAAcAAAALAAEAAQAdAAgAAAALAAIAAQAdAAkAAAALAAMAAQAdAAoAAAALAAQAAQAdAAsAAAALAAUAAQAdAAwAAAALAAYAAQAdAA0AAAALAAcAAQAdAA4AAAAMAAAAAQAdAAcAAAAMAAEAAQAdAAgAAAAMAAIAAQAdAAkAAAAMAAMAAQAdAAoAAAAMAAQAAQAdAAsAAAAMAAUAAQAdAAwAAAAMAAYAAQAdAA0AAAAMAAcAAQAdAA4AAAANAAAAAQAdAAcAAAANAAEAAQAdAAgAAAANAAIAAQAdAAkAAAANAAMAAQAdAAoAAAANAAQAAQAdAAsAAAANAAUAAQAdAAwAAAANAAYAAQAdAA0AAAANAAcAAQAdAA4AAAAOAAAAAQAdAAcAAAAOAAEAAQAdAAgAAAAOAAIAAQAdAAkAAAAOAAMAAQAdAAoAAAAOAAQAAQAdAAsAAAAOAAUAAQAdAAwAAAAOAAYAAQAdAA0AAAAOAAcAAQAdAA4AAAAHAAgAAQAdAA8AAAAIAAgAAQAdAA8AAAAJAAgAAQAdAA8AAAAKAAgAAQAdAA8AAAALAAgAAQAdAA8AAAAMAAgAAQAdAA8AAAANAAgAAQAdAA8AAAAOAAgAAQAdAA8AAAAGAAgAAQAdAA8AAAAFAAgAAQAdAA8AAAAEAAgAAQAdAA8AAAADAAgAAQAdAA8AAAACAAgAAQAdAA8AAAABAAgAAQAdAA8AAAAAAAgAAQAdAA8AAAD//wgAAQAdAA8AAAD+/wgAAQAdAA8AAAD9/wgAAQAdAA8AAAD8/wAAAQAdAAcAAAD8/wEAAQAdAAgAAAD8/wIAAQAdAAkAAAD8/wMAAQAdAAoAAAD8/wQAAQAdAAsAAAD8/wUAAQAdAAwAAAD8/wYAAQAdAA0AAAD8/wcAAQAdAA4AAAD8/wgAAQAdAA8AAAAHAAUAAQAdAAwAAAAHAAQAAQAdAAsAAAA=")
+tile_set = ExtResource("2_csek1")
+
+[node name="Parallax2D" type="Parallax2D" parent="BGParallaxLayers"]
+scroll_offset = Vector2(0, 11)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="BGParallaxLayers/Parallax2D"]
+position = Vector2(0, -13)
+tile_map_data = PackedByteArray("AAAMAAgAAQATAAUAAAAMAAcAAQAWAAAAAAAMAAMAAQAWAAUAAAAMAAIAAQAWAAQAAAAMAAEAAQAWAAQAAAAMAAAAAQAWAAQAAAAMAP//AQAWAAQAAAAMAP7/AQATAAAAAAALAAgAAQAVAAUAAAALAAcAAQAVAAAAAAALAAMAAQAUAAUAAAALAAIAAQATAAMAAAALAAEAAQATAAMAAAALAAAAAQATAAMAAAALAP//AQAUAAQAAAALAP7/AQAVAAAAAAAKAAgAAQAVAAUAAAAKAAcAAQAVAAAAAAAKAP//AQAVAAUAAAAKAP7/AQAVAAAAAAAJAAgAAQAVAAUAAAAJAAcAAQAVAAAAAAAJAP//AQAVAAUAAAAJAP7/AQAVAAAAAAAIAAgAAQAVAAUAAAAIAAcAAQAVAAAAAAAIAP//AQAVAAUAAAAIAP7/AQAVAAAAAAAHAAgAAQAVAAUAAAAHAAcAAQAVAAAAAAAHAP//AQAVAAUAAAAHAP7/AQAVAAAAAAAGAAgAAQAVAAUAAAAGAAcAAQAVAAAAAAAGAP//AQAVAAUAAAAGAP7/AQAVAAAAAAAFAAgAAQAVAAUAAAAFAAcAAQAVAAAAAAAFAP//AQAVAAUAAAAFAP7/AQAVAAAAAAAEAAgAAQAVAAUAAAAEAAcAAQAVAAAAAAAEAP//AQAVAAUAAAAEAP7/AQAVAAAAAAADAAgAAQAVAAUAAAADAAcAAQAVAAAAAAADAP//AQAVAAUAAAADAP7/AQAVAAAAAAACAAgAAQAVAAUAAAACAAcAAQAVAAAAAAACAP//AQAVAAUAAAACAP7/AQAVAAAAAAABAAgAAQAVAAUAAAABAAcAAQAVAAAAAAABAP//AQAVAAUAAAABAP7/AQAVAAAAAAAAAAgAAQAVAAUAAAAAAAcAAQAVAAAAAAAAAP//AQAVAAUAAAAAAP7/AQAVAAAAAAD//wgAAQAVAAUAAAD//wcAAQAVAAAAAAD/////AQAVAAUAAAD///7/AQAVAAAAAAD+/wgAAQAVAAUAAAD+/wcAAQAVAAAAAAD+////AQAVAAUAAAD+//7/AQAVAAAAAAD9/wgAAQAVAAUAAAD9/wcAAQAUAAMAAAD9/wYAAQAWAAQAAAD9/wUAAQAWAAQAAAD9/wQAAQAWAAQAAAD9/wMAAQAWAAQAAAD9/wIAAQAWAAQAAAD9/wEAAQAWAAQAAAD9/wAAAQAWAAQAAAD9////AQAUAAIAAAD9//7/AQAVAAAAAAD8/wgAAQAUAAUAAAD8/wcAAQATAAMAAAD8/wYAAQATAAMAAAD8/wUAAQATAAMAAAD8/wQAAQATAAMAAAD8/wMAAQATAAMAAAD8/wIAAQATAAMAAAD8/wEAAQATAAMAAAD8/wAAAQATAAMAAAD8////AQATAAMAAAD8//7/AQAUAAAAAAANAAcAAQAXAAUAAAANAAYAAQAXAAQAAAANAAUAAQAXAAQAAAANAAQAAQAXAAQAAAANAAMAAQAXAAEAAAA=")
+tile_set = ExtResource("2_csek1")
+
+[node name="Props" type="Node2D" parent="BGParallaxLayers"]
+
+[node name="Plant" parent="BGParallaxLayers/Props" instance=ExtResource("3_lfltu")]
+modulate = Color(0.6928135, 0.7317452, 0.7919124, 1)
+position = Vector2(-14, 227)
+
+[node name="Plant2" parent="BGParallaxLayers/Props" instance=ExtResource("3_lfltu")]
+modulate = Color(0.81267405, 0.82609314, 0.8462217, 1)
+position = Vector2(336, 227)
+
+[node name="Plant3" parent="BGParallaxLayers/Props" instance=ExtResource("3_lfltu")]
+position = Vector2(268, 227)
+
+[node name="LevelBoudns" type="Node2D" parent="."]
+z_index = 256
+position = Vector2(-96, -33)
+script = ExtResource("4_dmh17")
+metadata/_custom_type_script = "uid://i0mj0vycwybm"
+
+[node name="LevelTransition" parent="." instance=ExtResource("5_qd7r5")]
+position = Vector2(385, 221)
+size = 3
+location = 1
+target_level = "uid://bwe78y53j1brs"
+target_area_name = "LevelTransition3"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_o526s")
+position = Vector2(287, 120)
+amount = 50
+texture = SubResource("GradientTexture2D_var1j")
+lifetime = 5.0
+randomness = 0.85
+visibility_rect = Rect2(-370, -100, 400, 200)
+process_material = SubResource("ParticleProcessMaterial_o526s")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("6_fwogy")]
+position = Vector2(86, 218)
+
+[node name="MusicAutoTrigger" type="Node" parent="."]
+script = ExtResource("7_mdp7d")
+track = ExtResource("8_50ujw")
+reverb = 1
+metadata/_custom_type_script = "uid://dsi7na4bldclj"
+
+[node name="Creates" type="Node2D" parent="."]

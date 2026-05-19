@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="HitParticleSettings" load_steps=4 format=3 uid="uid://dsc1dwedvm103"]
 
 [ext_resource type="Script" uid="uid://cki462eu6q51n" path="res://00_global/visual_effects/hit_particle_settings.gd" id="1_gog3x"]
-[ext_resource type="Texture2D" uid="uid://bly0rgd3en2ka" path="res://general/sprites/props_destructible.png" id="2_nxkeq"]
+[ext_resource type="Texture2D" uid="uid://d7en220c6smu" path="res://general/sprites/simple pixeled art/dirt_stone.png" id="2_7tl3r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4jtec"]
-atlas = ExtResource("2_nxkeq")
-region = Rect2(119, 11, 6, 6)
+atlas = ExtResource("2_7tl3r")
+region = Rect2(0, 2, 12, 10)
 
 [resource]
 script = ExtResource("1_gog3x")

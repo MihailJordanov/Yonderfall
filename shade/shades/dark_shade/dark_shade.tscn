@@ -437,7 +437,7 @@ libraries = {
 unique_name_in_owner = true
 position = Vector2(0, -25)
 collision_layer = 0
-collision_mask = 16
+collision_mask = 272
 script = ExtResource("3_sy0xy")
 metadata/_custom_type_script = "uid://ge3vobctdr8l"
 
