@@ -3,6 +3,7 @@
 class_name Shade
 extends CharacterBody2D
 
+signal was_killed
 signal direction_changed(new_dir: float)
 
 @onready var sprite: Sprite2D = %Sprite2D

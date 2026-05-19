@@ -10,6 +10,7 @@ var timer: float = 0.0
 
 func enter() -> void:
 	shade.play_animation(animation_name if animation_name else "death")
+	shade.was_killed.emit()
 	Audio.play_spatial_sound( death_audio, shade.global_position )
 
 	duration = shade.animation_player.current_animation_length

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://buq5qfplbvqby"]
+[gd_scene load_steps=21 format=4 uid="uid://buq5qfplbvqby"]
 
 [ext_resource type="Texture2D" uid="uid://c2jjhvttxuj1" path="res://levels/tilesets/sprites/light_stream.jpg" id="2_n2v0o"]
 [ext_resource type="TileSet" uid="uid://mre05p3xygab" path="res://levels/tilesets/main_street.tres" id="3_543fr"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://cw24ii4kfdylq" path="res://music/forest_02.mp3" id="10_dywfw"]
 [ext_resource type="PackedScene" uid="uid://difevbwcfjh86" path="res://enemies/slime_2/slime_2.tscn" id="12_4aq7i"]
 [ext_resource type="Script" uid="uid://dprf5hd51ltal" path="res://general/scripts/patrol_limit.gd" id="13_ck3ma"]
+[ext_resource type="PackedScene" uid="uid://ckg4oo8qce5ol" path="res://enemies/corrupted stump/corupted_stump.tscn" id="13_yoir2"]
 [ext_resource type="PackedScene" uid="uid://wulphhwlj8ho" path="res://enemies/skeleton_warrior/skeleton_warrior.tscn" id="14_4ax87"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ygy8q"]
@@ -176,7 +177,7 @@ position = Vector2(241, 769)
 
 [node name="Plant7" parent="BGParallaxLayers/Props" instance=ExtResource("5_2jsq3")]
 modulate = Color(0.67610174, 0.7616034, 0.89374226, 1)
-position = Vector2(525, 865)
+position = Vector2(403, 865)
 
 [node name="Plant8" parent="BGParallaxLayers/Props" instance=ExtResource("5_2jsq3")]
 modulate = Color(0.61458707, 0.68158364, 0.7851237, 1)
@@ -219,7 +220,7 @@ visibility_rect = Rect2(-250, -100, 500, 900)
 process_material = SubResource("ParticleProcessMaterial_o526s")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("8_ck3ma")]
-position = Vector2(-12, 830)
+position = Vector2(310, 123)
 
 [node name="MusicAutoTrigger" type="Node" parent="."]
 script = ExtResource("9_4ax87")
@@ -284,3 +285,6 @@ position = Vector2(31, 0)
 script = ExtResource("13_ck3ma")
 side = 2
 metadata/_custom_type_script = "uid://dprf5hd51ltal"
+
+[node name="CoruptedStump" parent="Enemies" instance=ExtResource("13_yoir2")]
+position = Vector2(536, 863)
