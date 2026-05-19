@@ -1,6 +1,9 @@
 class_name WhiteShadeDecisionEngine
 extends ShadeDecisionEngine
 
+@export var fade_in_audio : AudioStream
+@export var fade_out_audio : AudioStream
+
 var teleport_after_seen_min: float = 0.5
 var teleport_after_seen_max: float = 1.5
 var max_chase_time_before_teleport: float = 3.0
@@ -125,6 +128,11 @@ func _teleport_near_player() -> void:
 
 func _play_fade(anim_name: String) -> void:
 	if shade.has_method("play_fade"):
+		if anim_name == fade_out_animation:
+			Audio.play_spatial_sound( fade_out_audio, shade.global_position )
+		elif anim_name == fade_in_animation:
+			Audio.play_spatial_sound( fade_in_audio, shade.global_position )
+		
 		shade.play_fade(anim_name)
 
 
