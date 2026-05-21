@@ -9,7 +9,7 @@ enum State {
 }
 
 @export var attack_range: float = 120.0
-@export var x_epsilon: float = 10.0
+@export var x_epsilon: float = 20.0
 @export var idle_wait_time: float = 2.0
 @export var attack_hold_time: float = 5.0
 
