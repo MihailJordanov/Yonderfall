@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://basl1kwehrma8" path="res://enemies/corrupted stump/corruped_stump.gd" id="1_p4mx2"]
 [ext_resource type="PackedScene" uid="uid://o55kjc8pawlp" path="res://enemies/corrupted stump/root.tscn" id="2_bd3ig"]
 [ext_resource type="Script" uid="uid://bcu5i735m7nue" path="res://general/scripts/damage_area.gd" id="2_khx7t"]
-[ext_resource type="AudioStream" uid="uid://dj10q11mtghl2" path="res://enemies/skeleton_warrior/skeleton_hit.wav" id="3_34b5k"]
+[ext_resource type="AudioStream" uid="uid://ddm54lsg70k1s" path="res://enemies/corrupted stump/tree_hit.wav" id="5_bd3ig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ca1a2"]
 size = Vector2(16, 30)
@@ -312,7 +312,7 @@ position = Vector2(0, -1)
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("2_khx7t")
-audio = ExtResource("3_34b5k")
+audio = ExtResource("5_bd3ig")
 metadata/_custom_type_script = "uid://bcu5i735m7nue"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]

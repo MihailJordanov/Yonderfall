@@ -209,6 +209,13 @@ location = 0
 target_level = "uid://bwe78y53j1brs"
 target_area_name = "LevelTransition"
 
+[node name="LevelTransition3" parent="." instance=ExtResource("7_4aq7i")]
+position = Vector2(673, 861)
+size = 3
+location = 1
+target_level = "uid://bwe78y53j1brs"
+target_area_name = "LevelTransition"
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_o526s")
 position = Vector2(287, 120)

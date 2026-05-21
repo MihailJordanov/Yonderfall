@@ -203,7 +203,7 @@ target_area_name = "LevelTransition2"
 position = Vector2(-93, 411)
 size = 3
 location = 0
-target_level = "uid://k3os2yh24sdr"
+target_level = "uid://cicwaedj6jbfm"
 target_area_name = "LevelTransition"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]

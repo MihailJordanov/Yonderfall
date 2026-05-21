@@ -196,7 +196,7 @@ offset_right = 66.0
 offset_bottom = 59.0
 linked_scene = "uid://buq5qfplbvqby"
 entrances_top = Array[float]([8.05])
-entrances_right = Array[float]([])
+entrances_right = Array[float]([19.0])
 entrances_bottom = Array[float]([])
 entrances_left = Array[float]([19.0])
 
@@ -223,6 +223,18 @@ entrances_top = Array[float]([])
 entrances_right = Array[float]([2.0])
 entrances_bottom = Array[float]([])
 entrances_left = Array[float]([])
+
+[node name="MapNode_f_07" parent="Control/PauseScreen/Map/Forest" instance=ExtResource("2_rd7dy")]
+modulate = Color(0.38039216, 0.5686275, 0.3019608, 1)
+offset_left = 67.0
+offset_top = 52.0
+offset_right = 84.0
+offset_bottom = 100.0
+linked_scene = "uid://cicwaedj6jbfm"
+entrances_top = Array[float]([])
+entrances_right = Array[float]([])
+entrances_bottom = Array[float]([])
+entrances_left = Array[float]([2.0])
 
 [node name="Castle" type="Node2D" parent="Control/PauseScreen/Map"]
 

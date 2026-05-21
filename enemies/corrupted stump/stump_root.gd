@@ -4,10 +4,13 @@ extends Node2D
 signal root_destroyed
 
 @export var max_hp: float  = 5
+@export var growing_audio : AudioStream
+@export var death_audio : AudioStream
 
 @onready var hazard_area: HazardArea = %HazardArea
 @onready var damage_area: DamageArea = %DamageArea
 @onready var animation_player: AnimationPlayer = %RootsAnimationPlayer
+
 
 var hp: float
 var dead: bool = false
@@ -15,6 +18,7 @@ var dead: bool = false
 
 func _ready() -> void:
 	hp = max_hp
+	Audio.play_spatial_sound( growing_audio, self.global_position )
 
 	damage_area.damage_taken.connect(_on_damage_taken)
 
@@ -48,6 +52,7 @@ func _on_damage_taken(attack_area: AttackArea) -> void:
 func _die() -> void:
 	dead = true
 
+	Audio.play_spatial_sound( death_audio, self.global_position )
 	damage_area.process_mode = Node.PROCESS_MODE_DISABLED
 	hazard_area.monitoring = false
 	hazard_area.visible = false
@@ -62,3 +67,9 @@ func _die() -> void:
 func _play_once(animation_name: String) -> void:
 	animation_player.play(animation_name)
 	await animation_player.animation_finished
+	
+func force_destroy() -> void:
+	if dead:
+		return
+
+	await _die()

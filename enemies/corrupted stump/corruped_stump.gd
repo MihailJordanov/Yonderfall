@@ -9,6 +9,7 @@ enum StumpState {
 }
 
 @export var max_hp: float = 10.0
+@export var hp_for_free: float = 5.0
 @export var root_scene: PackedScene
 @export var root_spawn_range: float = 160.0
 @export var root_spawn_cooldown: float = 2.0
@@ -107,7 +108,7 @@ func _on_damage_taken(attack_area: AttackArea) -> void:
 	save_stump_state()
 	damage_area.make_invulnerable(0.4)
 
-	if state == StumpState.CORRUPTED and hp <= 5 and not has_freed_stump:
+	if state == StumpState.CORRUPTED and hp <= hp_for_free and not has_freed_stump:
 		await _free_stump()
 		return
 
@@ -121,6 +122,8 @@ func _on_damage_taken(attack_area: AttackArea) -> void:
 func _free_stump() -> void:
 	has_freed_stump = true
 	state = StumpState.FREE_LEAVES
+	
+	destroy_all_roots()
 
 	await _play_once("freeing _the_stump")
 	_play_idle()
@@ -190,7 +193,7 @@ func _apply_state_from_hp() -> void:
 		state = StumpState.FREE_NO_LEAVES
 		has_freed_stump = true
 		has_lost_leaves = true
-	elif hp <= 5:
+	elif hp <= hp_for_free:
 		state = StumpState.FREE_LEAVES
 		has_freed_stump = true
 		has_lost_leaves = false
@@ -205,3 +208,14 @@ func unique_name() -> String:
 	var u_name: String = ResourceUID.path_to_uid(owner.scene_file_path)
 	u_name += "/" + get_parent().name + "/" + name
 	return u_name
+
+
+func destroy_all_roots() -> void:
+	for root in active_roots.duplicate():
+		if is_instance_valid(root):
+			if root.has_method("force_destroy"):
+				root.force_destroy()
+			else:
+				root.queue_free()
+
+	active_roots.clear()
