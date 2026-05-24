@@ -20,6 +20,7 @@ export/
 *.blend1
 *.bak
 *.swp
+*.uid
 
 # Builds
 *.aab
