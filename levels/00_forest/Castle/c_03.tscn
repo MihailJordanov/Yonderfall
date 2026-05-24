@@ -92,8 +92,8 @@ metadata/_custom_type_script = "uid://i0mj0vycwybm"
 position = Vector2(0, 489)
 size = 3
 location = 0
-target_level = "uid://cqo6anr484t2l"
-target_area_name = "LevelTransition3"
+target_level = "uid://cegvf7fyn7xne"
+target_area_name = "LevelTransition"
 
 [node name="LevelTransition2" parent="." instance=ExtResource("8_oww1i")]
 position = Vector2(676, 610)
@@ -106,7 +106,7 @@ target_area_name = "LevelTransition3"
 position = Vector2(0, 329)
 size = 3
 location = 0
-target_level = "uid://cqo6anr484t2l"
+target_level = "uid://cegvf7fyn7xne"
 target_area_name = "LevelTransition3"
 
 [node name="LevelTransition4" parent="." instance=ExtResource("8_oww1i")]

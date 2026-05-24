@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cch8l8r4cggny"]
+[gd_scene load_steps=11 format=4 uid="uid://cch8l8r4cggny"]
 
 [ext_resource type="TileSet" uid="uid://mre05p3xygab" path="res://levels/tilesets/main_street.tres" id="1_gti87"]
 [ext_resource type="PackedScene" uid="uid://bhbrw7lh73x1f" path="res://levels/props/animated/torch.tscn" id="2_185as"]
@@ -10,7 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://bvuoq71kx4occ" path="res://music/dungeon_02.mp3" id="8_2rt8j"]
 [ext_resource type="PackedScene" uid="uid://wulphhwlj8ho" path="res://enemies/skeleton_warrior/skeleton_warrior.tscn" id="9_c6154"]
 [ext_resource type="Script" uid="uid://dprf5hd51ltal" path="res://general/scripts/patrol_limit.gd" id="10_osk1v"]
-[ext_resource type="PackedScene" uid="uid://xetjam6s6dam" path="res://shade/shades/white_shade/white_shade.tscn" id="11_osk1v"]
 
 [node name="D01" type="Node2D"]
 
@@ -115,6 +114,3 @@ position = Vector2(180, 95)
 script = ExtResource("10_osk1v")
 side = 2
 metadata/_custom_type_script = "uid://dprf5hd51ltal"
-
-[node name="WhiteShade" parent="." instance=ExtResource("11_osk1v")]
-position = Vector2(567, 317)

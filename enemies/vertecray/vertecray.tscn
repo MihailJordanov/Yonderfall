@@ -1,11 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://pkgp7ge6v4oa"]
+[gd_scene load_steps=12 format=3 uid="uid://pkgp7ge6v4oa"]
 
 [ext_resource type="Script" uid="uid://kq1876a1x76l" path="res://enemies/vertecray/vertecray.gd" id="1_xa80t"]
 [ext_resource type="Texture2D" uid="uid://bkw1y8q1piu0s" path="res://enemies/vertecray/VertecrayAsset.png" id="2_ffg7a"]
+[ext_resource type="Script" uid="uid://bcu5i735m7nue" path="res://general/scripts/damage_area.gd" id="4_2p6nn"]
 [ext_resource type="Script" uid="uid://dak6q8x114k8r" path="res://general/scripts/harard_area.gd" id="4_v1m2w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2p6nn"]
 size = Vector2(32, 121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48wpj"]
+size = Vector2(38, 119)
 
 [sub_resource type="Animation" id="Animation_v1m2w"]
 length = 0.001
@@ -43,7 +47,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -112)]
+"values": [Vector2(0, -140)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -108,7 +112,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.29999995),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -112), Vector2(0, 0)]
+"values": [Vector2(0, -140), Vector2(0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -149,7 +153,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -112)]
+"values": [Vector2(0, -140)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -202,7 +206,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -112)]
+"values": [Vector2(0, 0), Vector2(0, -140)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -229,7 +233,7 @@ _data = {
 script = ExtResource("1_xa80t")
 
 [node name="Body" type="Node2D" parent="."]
-position = Vector2(0, -112)
+position = Vector2(0, -140)
 
 [node name="TailSprite2D" type="Sprite2D" parent="Body"]
 unique_name_in_owner = true
@@ -255,6 +259,14 @@ texture = ExtResource("2_ffg7a")
 region_enabled = true
 region_rect = Rect2(64, 96, 32, 32)
 
+[node name="TailSprite2D4" type="Sprite2D" parent="Body"]
+unique_name_in_owner = true
+z_index = -1
+position = Vector2(0, -121)
+texture = ExtResource("2_ffg7a")
+region_enabled = true
+region_rect = Rect2(64, 96, 32, 32)
+
 [node name="HeadSprite2D" type="Sprite2D" parent="Body"]
 unique_name_in_owner = true
 z_index = -1
@@ -263,7 +275,7 @@ hframes = 3
 vframes = 3
 
 [node name="ToothSprite2D" type="Sprite2D" parent="Body"]
-position = Vector2(0, 32)
+position = Vector2(0, 26)
 texture = ExtResource("2_ffg7a")
 hframes = 3
 vframes = 12
@@ -279,6 +291,18 @@ metadata/_custom_type_script = "uid://dak6q8x114k8r"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/HazardArea"]
 position = Vector2(0, -42.5)
 shape = SubResource("RectangleShape2D_2p6nn")
+
+[node name="DamageArea" type="Area2D" parent="Body"]
+position = Vector2(0, 140)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("4_2p6nn")
+metadata/_custom_type_script = "uid://bcu5i735m7nue"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/DamageArea"]
+position = Vector2(0, -182.5)
+shape = SubResource("RectangleShape2D_48wpj")
+debug_color = Color(0.9490196, 0, 0.45882353, 0.28627452)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
