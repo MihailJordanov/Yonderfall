@@ -28,7 +28,7 @@ func decide() -> EnemyState:
 		else:
 			return es_stun
 			
-	if currer_state is ESDeath or not blackboard.can_decide:
+	if current_state is ESDeath or not blackboard.can_decide:
 		return null
 		
 	if blackboard.target:

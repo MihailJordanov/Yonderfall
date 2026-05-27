@@ -37,7 +37,7 @@ func change_state( new_state : EnemyState ) -> void:
 	states.push_front( new_state )
 	current_state.enter()
 	if enemy:
-		enemy.decision_engine.currer_state = new_state
+		enemy.decision_engine.current_state = new_state
 	states.resize( 2 )
 	pass
 	
