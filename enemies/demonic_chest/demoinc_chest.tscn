@@ -19,6 +19,33 @@
 [ext_resource type="Script" uid="uid://ge3vobctdr8l" path="res://general/scripts/attack_area.gd" id="12_l7ll4"]
 [ext_resource type="Script" uid="uid://bwyb45ikitk1a" path="res://enemies/scripts/sensors/player_sensor.gd" id="18_l7ll4"]
 
+[sub_resource type="Animation" id="Animation_72lkp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_j02mj"]
 resource_name = "attack"
 step = 0.1
@@ -49,33 +76,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_72lkp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_3ptm5"]
 resource_name = "chase"
 length = 0.6
@@ -92,24 +92,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [6, 7, 8, 9, 10, 11]
-}
-
-[sub_resource type="Animation" id="Animation_w656b"]
-resource_name = "fly"
-length = 0.6
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_gr0n4"]
@@ -139,6 +121,24 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w656b"]
+resource_name = "fly"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_y3k0e"]
@@ -196,7 +196,7 @@ fill_to = Vector2(0.5, 0)
 [sub_resource type="Resource" id="Resource_uucha"]
 script = ExtResource("8_nhcb8")
 count = 12
-color = Color(0.9490196, 0.7019608, 0.4862745, 1)
+color = Color(0.6627451, 0.23137255, 0.23137255, 1)
 texture = SubResource("GradientTexture2D_uucha")
 metadata/_custom_type_script = "uid://cki462eu6q51n"
 
@@ -215,7 +215,7 @@ fill_to = Vector2(0.5, 0)
 [sub_resource type="Resource" id="Resource_qpicr"]
 script = ExtResource("8_nhcb8")
 count = 24
-color = Color(0.85882354, 0.5254902, 0.32156864, 1)
+color = Color(0.6627451, 0.23137255, 0.23137255, 1)
 texture = SubResource("GradientTexture2D_qpicr")
 metadata/_custom_type_script = "uid://cki462eu6q51n"
 
@@ -234,6 +234,7 @@ fill_to = Vector2(0.5, 0)
 [sub_resource type="Resource" id="Resource_vpnvx"]
 script = ExtResource("8_nhcb8")
 count = 12
+color = Color(0.23529412, 0.15686275, 0.18039216, 1)
 texture = SubResource("GradientTexture2D_7lkcl")
 metadata/_custom_type_script = "uid://cki462eu6q51n"
 
@@ -252,7 +253,7 @@ fill_to = Vector2(0.5, 0)
 [sub_resource type="Resource" id="Resource_mvpoi"]
 script = ExtResource("8_nhcb8")
 count = 16
-color = Color(0.20392157, 0.44705883, 0.49019608, 1)
+color = Color(0.88235295, 0.25490198, 0.18039216, 1)
 texture = SubResource("GradientTexture2D_id5wf")
 metadata/_custom_type_script = "uid://cki462eu6q51n"
 
@@ -264,12 +265,13 @@ metadata/_custom_type_script = "uid://c2s8el0nvc70c"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_34lnl"]
 size = Vector2(33, 28)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7ll4"]
-size = Vector2(412, 244)
+[sub_resource type="CircleShape2D" id="CircleShape2D_l7ll4"]
+radius = 198.22462
 
 [node name="DemoincChest" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_adm8o")
+affected_by_gravity = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -15)
@@ -382,5 +384,6 @@ use_audio_sensor = false
 metadata/_custom_type_script = "uid://bwyb45ikitk1a"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSensor"]
-shape = SubResource("RectangleShape2D_l7ll4")
-debug_color = Color(0.85490197, 0.015686275, 0.17254902, 0)
+position = Vector2(0, -18)
+shape = SubResource("CircleShape2D_l7ll4")
+debug_color = Color(0.85490197, 0.561281, 0.015686283, 0)

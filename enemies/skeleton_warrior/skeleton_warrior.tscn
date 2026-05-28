@@ -448,10 +448,11 @@ script = ExtResource("16_cyyhm")
 items = Array[ExtResource("17_qweal")]([SubResource("Resource_7lkcl")])
 metadata/_custom_type_script = "uid://bdu71wuxj2dmw"
 
-[node name="DecisionEngineBasicAttack" type="Node" parent="." node_paths=PackedStringArray("attack_state", "chase_state")]
+[node name="DecisionEngineBasicAttack" type="Node" parent="." node_paths=PackedStringArray("attack_state", "chase_state", "es_idle")]
 script = ExtResource("13_id5wf")
 attack_state = NodePath("../EnemyStateMachine/ESAttack")
 chase_state = NodePath("../EnemyStateMachine/ESChase")
+es_idle = NodePath("../EnemyStateMachine/ESIdle")
 metadata/_custom_type_script = "uid://ciu2m1tlank5u"
 
 [node name="AttackArea" type="Area2D" parent="."]

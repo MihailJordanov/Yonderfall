@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://ciuac7sd14b6r"]
+[gd_scene load_steps=32 format=4 uid="uid://ciuac7sd14b6r"]
 
 [ext_resource type="Material" uid="uid://br3ee7g5souf1" path="res://materials_and_shaders/fog_fade_material.tres" id="1_lxo52"]
 [ext_resource type="Texture2D" uid="uid://c2jjhvttxuj1" path="res://levels/tilesets/sprites/light_stream.jpg" id="2_qmi1f"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cw24ii4kfdylq" path="res://music/forest_02.mp3" id="10_xgv2r"]
 [ext_resource type="PackedScene" uid="uid://bwwji34eegsge" path="res://enemies/demonic_chest/demoinc_chest.tscn" id="11_jtvu8"]
 [ext_resource type="Script" uid="uid://dprf5hd51ltal" path="res://general/scripts/patrol_limit.gd" id="12_8l6yd"]
+[ext_resource type="PackedScene" uid="uid://csuiicp575u8c" path="res://enemies/doom_scribe/doom_scribe.tscn" id="13_avr6y"]
 
 [sub_resource type="Gradient" id="Gradient_o526s"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -2896,3 +2897,6 @@ position = Vector2(120, 43)
 script = ExtResource("12_8l6yd")
 side = 2
 metadata/_custom_type_script = "uid://dprf5hd51ltal"
+
+[node name="DoomScribe" parent="." instance=ExtResource("13_avr6y")]
+position = Vector2(379, 72)

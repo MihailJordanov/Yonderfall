@@ -8,11 +8,11 @@ extends DecisionEngine
 
 @export var attack_state : ESAttack
 @export var chase_state : EnemyState
+@export var es_idle: EnemyState
 	
 @onready var es_walk: ESWalk = %ESWalk
 @onready var es_stun: ESStun = %ESStun
 @onready var es_death: ESDeath = %ESDeath
-@onready var es_idle: ESIdle = %ESIdle
 
 var x_epsilon : float = 8.0
 
